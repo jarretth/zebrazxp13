@@ -11,99 +11,99 @@ func abort(funcname string, err error) {
 }
 
 var (
-    zBRPrinter                        , _ = syscall.LoadLibrary("ZBRPrinter.dll")
-    zBRCloseHandle                    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRCloseHandle")
-    zBRGetHandle                      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRGetHandle")
-    zBRPRNCheckForErrors              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNCheckForErrors")
-    zBRPRNChkDueForCleaning           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNChkDueForCleaning")
-    zBRPRNClrColorImgBuf              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrColorImgBuf")
-    zBRPRNClrColorImgBufs             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrColorImgBufs")
-    zBRPRNClrErrStatusLn              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrErrStatusLn")
-    zBRPRNClrMediaPath                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrMediaPath")
-    zBRPRNClrMonoImgBuf               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrMonoImgBuf")
-    zBRPRNClrMonoImgBufs              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrMonoImgBufs")
-    zBRPRNClrSpecifiedBmp             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNClrSpecifiedBmp")
-    zBRPRNEjectCard                   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNEjectCard")
-    zBRPRNEnableMagReadDataEncryption , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNEnableMagReadDataEncryption")
-    zBRPRNEndSmartCard                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNEndSmartCard")
-    zBRPRNFlipCard                    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNFlipCard")
-    zBRPRNGetChecksum                 , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetChecksum")
-    zBRPRNGetCleaningParam            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetCleaningParam")
-    zBRPRNGetIPAddress                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetIPAddress")
-    zBRPRNGetMsgSuppressionState      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetMsgSuppressionState")
-    zBRPRNGetOpParam                  , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetOpParam")
-    zBRPRNGetPanelsPrinted            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPanelsPrinted")
-    zBRPRNGetPanelsRemaining          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPanelsRemaining")
-    zBRPRNGetPrintCount               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrintCount")
-    zBRPRNGetPrinterOptions           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrinterOptions")
-    zBRPRNGetPrinterSerialNumb        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrinterSerialNumb")
-    zBRPRNGetPrinterSerialNumber      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrinterSerialNumber")
-    zBRPRNGetPrinterStatus            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrinterStatus")
-    zBRPRNGetPrintHeadSerialNumb      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrintHeadSerialNumb")
-    zBRPRNGetPrintHeadSerialNumber    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrintHeadSerialNumber")
-    zBRPRNGetPrintStatus              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetPrintStatus")
-    zBRPRNGetSDKProductVer            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetSDKProductVer")
-    zBRPRNGetSDKVer                   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetSDKVer")
-    zBRPRNGetSDKVsn                   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetSDKVsn")
-    zBRPRNGetSensorStatus             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNGetSensorStatus")
-    zBRPRNImmediateParamSave          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNImmediateParamSave")
-    zBRPRNIsPrinterReady              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNIsPrinterReady")
-    zBRPRNMoveCard                    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNMoveCard")
-    zBRPRNMoveCardBkwd                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNMoveCardBkwd")
-    zBRPRNMoveCardFwd                 , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNMoveCardFwd")
-    zBRPRNMovePrintReady              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNMovePrintReady")
-    zBRPRNPrintCardPanel              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintCardPanel")
-    zBRPRNPrintClearVarnish           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintClearVarnish")
-    zBRPRNPrintColorImgBuf            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintColorImgBuf")
-    zBRPRNPrintHologramOverlay        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintHologramOverlay")
-    zBRPRNPrintMonoImgBuf             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintMonoImgBuf")
-    zBRPRNPrintMonoImgBufEx           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintMonoImgBufEx")
-    zBRPRNPrintMonoPanel              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintMonoPanel")
-    zBRPRNPrintPrnFile                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintPrnFile")
-    zBRPRNPrintTestCard               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintTestCard")
-    zBRPRNPrintVarnish                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintVarnish")
-    zBRPRNPrintVarnishEx              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNPrintVarnishEx")
-    zBRPRNReadMag                     , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNReadMag")
-    zBRPRNReadMagByTrk                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNReadMagByTrk")
-    zBRPRNResetMagEncoder             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNResetMagEncoder")
-    zBRPRNResetPrinter                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNResetPrinter")
-    zBRPRNResync                      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNResync")
-    zBRPRNReversePrintReady           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNReversePrintReady")
-    zBRPRNSelfAdj                     , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSelfAdj")
-    zBRPRNSetCardFeedingMode          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetCardFeedingMode")
-    zBRPRNSetCleaningParam            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetCleaningParam")
-    zBRPRNSetColorContrast            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetColorContrast")
-    zBRPRNSetContrastIntensityLvl     , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetContrastIntensityLvl")
-    zBRPRNSetEncoderCoercivity        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetEncoderCoercivity")
-    zBRPRNSetEncodingDir              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetEncodingDir")
-    zBRPRNSetEndOfPrint               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetEndOfPrint")
-    zBRPRNSetHologramIntensity        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetHologramIntensity")
-    zBRPRNSetMagEncodingStd           , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetMagEncodingStd")
-    zBRPRNSetMonoContrast             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetMonoContrast")
-    zBRPRNSetMonoIntensity            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetMonoIntensity")
-    zBRPRNSetOverlayMode              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetOverlayMode")
-    zBRPRNSetPrintHeadResistance      , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetPrintHeadResistance")
-    zBRPRNSetRelativeXOffset          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetRelativeXOffset")
-    zBRPRNSetRelativeYOffset          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetRelativeYOffset")
-    zBRPRNSetStartPrintSideBOffset    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetStartPrintSideBOffset")
-    zBRPRNSetStartPrintSideBXOffset   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetStartPrintSideBXOffset")
-    zBRPRNSetStartPrintSideBYOffset   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetStartPrintSideBYOffset")
-    zBRPRNSetStartPrintXOffset        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetStartPrintXOffset")
-    zBRPRNSetStartPrintYOffset        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetStartPrintYOffset")
-    zBRPRNSetTrkDensity               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSetTrkDensity")
-    zBRPRNStartCleaningCardSeq        , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNStartCleaningCardSeq")
-    zBRPRNStartCleaningSeq            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNStartCleaningSeq")
-    zBRPRNStartSmartCard              , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNStartSmartCard")
-    zBRPRNSuppressStatusMsgs          , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNSuppressStatusMsgs")
-    zBRPRNUpgradeFirmware             , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNUpgradeFirmware")
-    zBRPRNWriteBarCode                , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteBarCode")
-    zBRPRNWriteBox                    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteBox")
-    zBRPRNWriteBoxEx                  , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteBoxEx")
-    zBRPRNWriteMag                    , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteMag")
-    zBRPRNWriteMagByTrk               , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteMagByTrk")
-    zBRPRNWriteMagPassThru            , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteMagPassThru")
-    zBRPRNWriteText                   , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteText")
-    zBRPRNWriteTextEx                 , _ = syscall.GetProcAddress(zBRPrinter, "ZBRPRNWriteTextEx")
+    zBRPrinter                        , _ = syscall.NewLazyDLL("ZBRPrinter.dll")
+    zBRCloseHandle                    , _ = zBRPrinter.NewProc("ZBRCloseHandle")
+    zBRGetHandle                      , _ = zBRPrinter.NewProc("ZBRGetHandle")
+    zBRPRNCheckForErrors              , _ = zBRPrinter.NewProc("ZBRPRNCheckForErrors")
+    zBRPRNChkDueForCleaning           , _ = zBRPrinter.NewProc("ZBRPRNChkDueForCleaning")
+    zBRPRNClrColorImgBuf              , _ = zBRPrinter.NewProc("ZBRPRNClrColorImgBuf")
+    zBRPRNClrColorImgBufs             , _ = zBRPrinter.NewProc("ZBRPRNClrColorImgBufs")
+    zBRPRNClrErrStatusLn              , _ = zBRPrinter.NewProc("ZBRPRNClrErrStatusLn")
+    zBRPRNClrMediaPath                , _ = zBRPrinter.NewProc("ZBRPRNClrMediaPath")
+    zBRPRNClrMonoImgBuf               , _ = zBRPrinter.NewProc("ZBRPRNClrMonoImgBuf")
+    zBRPRNClrMonoImgBufs              , _ = zBRPrinter.NewProc("ZBRPRNClrMonoImgBufs")
+    zBRPRNClrSpecifiedBmp             , _ = zBRPrinter.NewProc("ZBRPRNClrSpecifiedBmp")
+    zBRPRNEjectCard                   , _ = zBRPrinter.NewProc("ZBRPRNEjectCard")
+    zBRPRNEnableMagReadDataEncryption , _ = zBRPrinter.NewProc("ZBRPRNEnableMagReadDataEncryption")
+    zBRPRNEndSmartCard                , _ = zBRPrinter.NewProc("ZBRPRNEndSmartCard")
+    zBRPRNFlipCard                    , _ = zBRPrinter.NewProc("ZBRPRNFlipCard")
+    zBRPRNGetChecksum                 , _ = zBRPrinter.NewProc("ZBRPRNGetChecksum")
+    zBRPRNGetCleaningParam            , _ = zBRPrinter.NewProc("ZBRPRNGetCleaningParam")
+    zBRPRNGetIPAddress                , _ = zBRPrinter.NewProc("ZBRPRNGetIPAddress")
+    zBRPRNGetMsgSuppressionState      , _ = zBRPrinter.NewProc("ZBRPRNGetMsgSuppressionState")
+    zBRPRNGetOpParam                  , _ = zBRPrinter.NewProc("ZBRPRNGetOpParam")
+    zBRPRNGetPanelsPrinted            , _ = zBRPrinter.NewProc("ZBRPRNGetPanelsPrinted")
+    zBRPRNGetPanelsRemaining          , _ = zBRPrinter.NewProc("ZBRPRNGetPanelsRemaining")
+    zBRPRNGetPrintCount               , _ = zBRPrinter.NewProc("ZBRPRNGetPrintCount")
+    zBRPRNGetPrinterOptions           , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterOptions")
+    zBRPRNGetPrinterSerialNumb        , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumb")
+    zBRPRNGetPrinterSerialNumber      , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumber")
+    zBRPRNGetPrinterStatus            , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterStatus")
+    zBRPRNGetPrintHeadSerialNumb      , _ = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumb")
+    zBRPRNGetPrintHeadSerialNumber    , _ = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumber")
+    zBRPRNGetPrintStatus              , _ = zBRPrinter.NewProc("ZBRPRNGetPrintStatus")
+    zBRPRNGetSDKProductVer            , _ = zBRPrinter.NewProc("ZBRPRNGetSDKProductVer")
+    zBRPRNGetSDKVer                   , _ = zBRPrinter.NewProc("ZBRPRNGetSDKVer")
+    zBRPRNGetSDKVsn                   , _ = zBRPrinter.NewProc("ZBRPRNGetSDKVsn")
+    zBRPRNGetSensorStatus             , _ = zBRPrinter.NewProc("ZBRPRNGetSensorStatus")
+    zBRPRNImmediateParamSave          , _ = zBRPrinter.NewProc("ZBRPRNImmediateParamSave")
+    zBRPRNIsPrinterReady              , _ = zBRPrinter.NewProc("ZBRPRNIsPrinterReady")
+    zBRPRNMoveCard                    , _ = zBRPrinter.NewProc("ZBRPRNMoveCard")
+    zBRPRNMoveCardBkwd                , _ = zBRPrinter.NewProc("ZBRPRNMoveCardBkwd")
+    zBRPRNMoveCardFwd                 , _ = zBRPrinter.NewProc("ZBRPRNMoveCardFwd")
+    zBRPRNMovePrintReady              , _ = zBRPrinter.NewProc("ZBRPRNMovePrintReady")
+    zBRPRNPrintCardPanel              , _ = zBRPrinter.NewProc("ZBRPRNPrintCardPanel")
+    zBRPRNPrintClearVarnish           , _ = zBRPrinter.NewProc("ZBRPRNPrintClearVarnish")
+    zBRPRNPrintColorImgBuf            , _ = zBRPrinter.NewProc("ZBRPRNPrintColorImgBuf")
+    zBRPRNPrintHologramOverlay        , _ = zBRPrinter.NewProc("ZBRPRNPrintHologramOverlay")
+    zBRPRNPrintMonoImgBuf             , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBuf")
+    zBRPRNPrintMonoImgBufEx           , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBufEx")
+    zBRPRNPrintMonoPanel              , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoPanel")
+    zBRPRNPrintPrnFile                , _ = zBRPrinter.NewProc("ZBRPRNPrintPrnFile")
+    zBRPRNPrintTestCard               , _ = zBRPrinter.NewProc("ZBRPRNPrintTestCard")
+    zBRPRNPrintVarnish                , _ = zBRPrinter.NewProc("ZBRPRNPrintVarnish")
+    zBRPRNPrintVarnishEx              , _ = zBRPrinter.NewProc("ZBRPRNPrintVarnishEx")
+    zBRPRNReadMag                     , _ = zBRPrinter.NewProc("ZBRPRNReadMag")
+    zBRPRNReadMagByTrk                , _ = zBRPrinter.NewProc("ZBRPRNReadMagByTrk")
+    zBRPRNResetMagEncoder             , _ = zBRPrinter.NewProc("ZBRPRNResetMagEncoder")
+    zBRPRNResetPrinter                , _ = zBRPrinter.NewProc("ZBRPRNResetPrinter")
+    zBRPRNResync                      , _ = zBRPrinter.NewProc("ZBRPRNResync")
+    zBRPRNReversePrintReady           , _ = zBRPrinter.NewProc("ZBRPRNReversePrintReady")
+    zBRPRNSelfAdj                     , _ = zBRPrinter.NewProc("ZBRPRNSelfAdj")
+    zBRPRNSetCardFeedingMode          , _ = zBRPrinter.NewProc("ZBRPRNSetCardFeedingMode")
+    zBRPRNSetCleaningParam            , _ = zBRPrinter.NewProc("ZBRPRNSetCleaningParam")
+    zBRPRNSetColorContrast            , _ = zBRPrinter.NewProc("ZBRPRNSetColorContrast")
+    zBRPRNSetContrastIntensityLvl     , _ = zBRPrinter.NewProc("ZBRPRNSetContrastIntensityLvl")
+    zBRPRNSetEncoderCoercivity        , _ = zBRPrinter.NewProc("ZBRPRNSetEncoderCoercivity")
+    zBRPRNSetEncodingDir              , _ = zBRPrinter.NewProc("ZBRPRNSetEncodingDir")
+    zBRPRNSetEndOfPrint               , _ = zBRPrinter.NewProc("ZBRPRNSetEndOfPrint")
+    zBRPRNSetHologramIntensity        , _ = zBRPrinter.NewProc("ZBRPRNSetHologramIntensity")
+    zBRPRNSetMagEncodingStd           , _ = zBRPrinter.NewProc("ZBRPRNSetMagEncodingStd")
+    zBRPRNSetMonoContrast             , _ = zBRPrinter.NewProc("ZBRPRNSetMonoContrast")
+    zBRPRNSetMonoIntensity            , _ = zBRPrinter.NewProc("ZBRPRNSetMonoIntensity")
+    zBRPRNSetOverlayMode              , _ = zBRPrinter.NewProc("ZBRPRNSetOverlayMode")
+    zBRPRNSetPrintHeadResistance      , _ = zBRPrinter.NewProc("ZBRPRNSetPrintHeadResistance")
+    zBRPRNSetRelativeXOffset          , _ = zBRPrinter.NewProc("ZBRPRNSetRelativeXOffset")
+    zBRPRNSetRelativeYOffset          , _ = zBRPrinter.NewProc("ZBRPRNSetRelativeYOffset")
+    zBRPRNSetStartPrintSideBOffset    , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBOffset")
+    zBRPRNSetStartPrintSideBXOffset   , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBXOffset")
+    zBRPRNSetStartPrintSideBYOffset   , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBYOffset")
+    zBRPRNSetStartPrintXOffset        , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintXOffset")
+    zBRPRNSetStartPrintYOffset        , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintYOffset")
+    zBRPRNSetTrkDensity               , _ = zBRPrinter.NewProc("ZBRPRNSetTrkDensity")
+    zBRPRNStartCleaningCardSeq        , _ = zBRPrinter.NewProc("ZBRPRNStartCleaningCardSeq")
+    zBRPRNStartCleaningSeq            , _ = zBRPrinter.NewProc("ZBRPRNStartCleaningSeq")
+    zBRPRNStartSmartCard              , _ = zBRPrinter.NewProc("ZBRPRNStartSmartCard")
+    zBRPRNSuppressStatusMsgs          , _ = zBRPrinter.NewProc("ZBRPRNSuppressStatusMsgs")
+    zBRPRNUpgradeFirmware             , _ = zBRPrinter.NewProc("ZBRPRNUpgradeFirmware")
+    zBRPRNWriteBarCode                , _ = zBRPrinter.NewProc("ZBRPRNWriteBarCode")
+    zBRPRNWriteBox                    , _ = zBRPrinter.NewProc("ZBRPRNWriteBox")
+    zBRPRNWriteBoxEx                  , _ = zBRPrinter.NewProc("ZBRPRNWriteBoxEx")
+    zBRPRNWriteMag                    , _ = zBRPrinter.NewProc("ZBRPRNWriteMag")
+    zBRPRNWriteMagByTrk               , _ = zBRPrinter.NewProc("ZBRPRNWriteMagByTrk")
+    zBRPRNWriteMagPassThru            , _ = zBRPrinter.NewProc("ZBRPRNWriteMagPassThru")
+    zBRPRNWriteText                   , _ = zBRPrinter.NewProc("ZBRPRNWriteText")
+    zBRPRNWriteTextEx                 , _ = zBRPrinter.NewProc("ZBRPRNWriteTextEx")
 )
 
 const (
@@ -176,2207 +176,737 @@ const (
 )
 
 // extern int ZBRCloseHandle(IntPtr handle, out int err);
-func ZBRCloseHandle() () {
-    if zBRCloseHandle == 0 {
-        panic("ZBRCloseHandle is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRCloseHandle is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRCloseHandle),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRCloseHandle",callErr)
-    }
-    return
+func ZBRCloseHandle() (ret uintptr) {
+    panic("ZBRCloseHandle not implemented")
+    ret, _, _ = zBRCloseHandle.Call(
+        )
+    return ret
 }
 
 // extern int ZBRGetHandle(out IntPtr handle, byte[] drvname, out int printertype, out int err);
-func ZBRGetHandle(drvName string) (ret uintptr, handle syscall.Handle, prn_type int, err int) {
-    if zBRGetHandle == 0 {
-        panic("ZBRGetHandle not defined. Check library")
-    }
-    var nargs uintptr = 4
-    ret, _, callErr := syscall.Syscall9(uintptr(zBRGetHandle),
-        nargs,
-        uintptr(unsafe.Pointer(&handle)),
-        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(drvName))),
-        uintptr(unsafe.Pointer(&prn_type)),
-        uintptr(unsafe.Pointer(&err)),
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGetHandle",callErr)
-    }
-    return ret, handle, prn_type, err
+func ZBRGetHandle() (ret uintptr) {
+    panic("ZBRGetHandle not implemented")
+    ret, _, _ = zBRGetHandle.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNCheckForErrors(IntPtr hprinter, int printertype);
-func ZBRPRNCheckForErrors() () {
-    if zBRPRNCheckForErrors == 0 {
-        panic("ZBRPRNCheckForErrors is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNCheckForErrors is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNCheckForErrors),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNCheckForErrors",callErr)
-    }
-    return
+func ZBRPRNCheckForErrors() (ret uintptr) {
+    panic("ZBRPRNCheckForErrors not implemented")
+    ret, _, _ = zBRPRNCheckForErrors.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNChkDueForCleaning(IntPtr hprinter, int printertype, out int imgcounter, out int cleancounter, out int cleancardcounter, out int err);
-func ZBRPRNChkDueForCleaning() () {
-    if zBRPRNChkDueForCleaning == 0 {
-        panic("ZBRPRNChkDueForCleaning is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNChkDueForCleaning is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNChkDueForCleaning),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNChkDueForCleaning",callErr)
-    }
-    return
+func ZBRPRNChkDueForCleaning() (ret uintptr) {
+    panic("ZBRPRNChkDueForCleaning not implemented")
+    ret, _, _ = zBRPRNChkDueForCleaning.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrColorImgBuf(IntPtr hprinter, int printertype, int colorbufidx, out int err);
-func ZBRPRNClrColorImgBuf() () {
-    if zBRPRNClrColorImgBuf == 0 {
-        panic("ZBRPRNClrColorImgBuf is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrColorImgBuf is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrColorImgBuf),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrColorImgBuf",callErr)
-    }
-    return
+func ZBRPRNClrColorImgBuf() (ret uintptr) {
+    panic("ZBRPRNClrColorImgBuf not implemented")
+    ret, _, _ = zBRPRNClrColorImgBuf.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrColorImgBufs(HANDLE hPrinter, int printerType, int *err)
-func ZBRPRNClrColorImgBufs() () {
-    if zBRPRNClrColorImgBufs == 0 {
-        panic("ZBRPRNClrColorImgBufs is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrColorImgBufs is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrColorImgBufs),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrColorImgBufs",callErr)
-    }
-    return
+func ZBRPRNClrColorImgBufs() (ret uintptr) {
+    panic("ZBRPRNClrColorImgBufs not implemented")
+    ret, _, _ = zBRPRNClrColorImgBufs.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrErrStatusLn(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNClrErrStatusLn() () {
-    if zBRPRNClrErrStatusLn == 0 {
-        panic("ZBRPRNClrErrStatusLn is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrErrStatusLn is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrErrStatusLn),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrErrStatusLn",callErr)
-    }
-    return
+func ZBRPRNClrErrStatusLn() (ret uintptr) {
+    panic("ZBRPRNClrErrStatusLn not implemented")
+    ret, _, _ = zBRPRNClrErrStatusLn.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrMediaPath(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNClrMediaPath() () {
-    if zBRPRNClrMediaPath == 0 {
-        panic("ZBRPRNClrMediaPath is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrMediaPath is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMediaPath),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrMediaPath",callErr)
-    }
-    return
+func ZBRPRNClrMediaPath() (ret uintptr) {
+    panic("ZBRPRNClrMediaPath not implemented")
+    ret, _, _ = zBRPRNClrMediaPath.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrMonoImgBuf(IntPtr hprinter, int printertype, int clrvarnish, out int err);
-func ZBRPRNClrMonoImgBuf() () {
-    if zBRPRNClrMonoImgBuf == 0 {
-        panic("ZBRPRNClrMonoImgBuf is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrMonoImgBuf is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMonoImgBuf),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrMonoImgBuf",callErr)
-    }
-    return
+func ZBRPRNClrMonoImgBuf() (ret uintptr) {
+    panic("ZBRPRNClrMonoImgBuf not implemented")
+    ret, _, _ = zBRPRNClrMonoImgBuf.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrMonoImgBufs(IntPtr hprinter, int printertype, int clrbuffer, out int err);
-func ZBRPRNClrMonoImgBufs() () {
-    if zBRPRNClrMonoImgBufs == 0 {
-        panic("ZBRPRNClrMonoImgBufs is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrMonoImgBufs is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMonoImgBufs),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrMonoImgBufs",callErr)
-    }
-    return
+func ZBRPRNClrMonoImgBufs() (ret uintptr) {
+    panic("ZBRPRNClrMonoImgBufs not implemented")
+    ret, _, _ = zBRPRNClrMonoImgBufs.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNClrSpecifiedBmp(IntPtr hprinter, int printertype, int colorbufidx, out int err);
-func ZBRPRNClrSpecifiedBmp() () {
-    if zBRPRNClrSpecifiedBmp == 0 {
-        panic("ZBRPRNClrSpecifiedBmp is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNClrSpecifiedBmp is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrSpecifiedBmp),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNClrSpecifiedBmp",callErr)
-    }
-    return
+func ZBRPRNClrSpecifiedBmp() (ret uintptr) {
+    panic("ZBRPRNClrSpecifiedBmp not implemented")
+    ret, _, _ = zBRPRNClrSpecifiedBmp.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNEjectCard(IntPtr _handle, int prn_type, out int err);
-func ZBRPRNEjectCard() () {
-    if zBRPRNEjectCard == 0 {
-        panic("ZBRPRNEjectCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNEjectCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEjectCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNEjectCard",callErr)
-    }
-    return
+func ZBRPRNEjectCard() (ret uintptr) {
+    panic("ZBRPRNEjectCard not implemented")
+    ret, _, _ = zBRPRNEjectCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNEnableMagReadDataEncryption(IntPtr handle, int printertype, out int err);
-func ZBRPRNEnableMagReadDataEncryption() () {
-    if zBRPRNEnableMagReadDataEncryption == 0 {
-        panic("ZBRPRNEnableMagReadDataEncryption is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNEnableMagReadDataEncryption is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEnableMagReadDataEncryption),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNEnableMagReadDataEncryption",callErr)
-    }
-    return
+func ZBRPRNEnableMagReadDataEncryption() (ret uintptr) {
+    panic("ZBRPRNEnableMagReadDataEncryption not implemented")
+    ret, _, _ = zBRPRNEnableMagReadDataEncryption.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNEndSmartCard(IntPtr _handle, int printertype, int cardtype, int movement, out int err);
-func ZBRPRNEndSmartCard() () {
-    if zBRPRNEndSmartCard == 0 {
-        panic("ZBRPRNEndSmartCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNEndSmartCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEndSmartCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNEndSmartCard",callErr)
-    }
-    return
+func ZBRPRNEndSmartCard() (ret uintptr) {
+    panic("ZBRPRNEndSmartCard not implemented")
+    ret, _, _ = zBRPRNEndSmartCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNFlipCard(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNFlipCard() () {
-    if zBRPRNFlipCard == 0 {
-        panic("ZBRPRNFlipCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNFlipCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNFlipCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNFlipCard",callErr)
-    }
-    return
+func ZBRPRNFlipCard() (ret uintptr) {
+    panic("ZBRPRNFlipCard not implemented")
+    ret, _, _ = zBRPRNFlipCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetChecksum(IntPtr hprinter, int printertype, out int checksum, out int err);
-func ZBRPRNGetChecksum() () {
-    if zBRPRNGetChecksum == 0 {
-        panic("ZBRPRNGetChecksum is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetChecksum is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetChecksum),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetChecksum",callErr)
-    }
-    return
+func ZBRPRNGetChecksum() (ret uintptr) {
+    panic("ZBRPRNGetChecksum not implemented")
+    ret, _, _ = zBRPRNGetChecksum.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetCleaningParam(IntPtr hprinter, int printertype, out int imgcounter, out int cleancounter, out int cleancardcounter, out int err);
-func ZBRPRNGetCleaningParam() () {
-    if zBRPRNGetCleaningParam == 0 {
-        panic("ZBRPRNGetCleaningParam is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetCleaningParam is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetCleaningParam),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetCleaningParam",callErr)
-    }
-    return
+func ZBRPRNGetCleaningParam() (ret uintptr) {
+    panic("ZBRPRNGetCleaningParam not implemented")
+    ret, _, _ = zBRPRNGetCleaningParam.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetIPAddress(string PrinterName, char* ipAddress);
-func ZBRPRNGetIPAddress() () {
-    if zBRPRNGetIPAddress == 0 {
-        panic("ZBRPRNGetIPAddress is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetIPAddress is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetIPAddress),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetIPAddress",callErr)
-    }
-    return
+func ZBRPRNGetIPAddress() (ret uintptr) {
+    panic("ZBRPRNGetIPAddress not implemented")
+    ret, _, _ = zBRPRNGetIPAddress.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetMsgSuppressionState(IntPtr hprinter, int printertype, out int state, out int err);
-func ZBRPRNGetMsgSuppressionState() () {
-    if zBRPRNGetMsgSuppressionState == 0 {
-        panic("ZBRPRNGetMsgSuppressionState is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetMsgSuppressionState is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetMsgSuppressionState),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetMsgSuppressionState",callErr)
-    }
-    return
+func ZBRPRNGetMsgSuppressionState() (ret uintptr) {
+    panic("ZBRPRNGetMsgSuppressionState not implemented")
+    ret, _, _ = zBRPRNGetMsgSuppressionState.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetOpParam(IntPtr hprinter, int printertype, int paramidx, byte[] opparam, out int respsize, out int err);
-func ZBRPRNGetOpParam() () {
-    if zBRPRNGetOpParam == 0 {
-        panic("ZBRPRNGetOpParam is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetOpParam is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetOpParam),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetOpParam",callErr)
-    }
-    return
+func ZBRPRNGetOpParam() (ret uintptr) {
+    panic("ZBRPRNGetOpParam not implemented")
+    ret, _, _ = zBRPRNGetOpParam.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPanelsPrinted(IntPtr hprinter, int printertype, out int panels, out int err);
-func ZBRPRNGetPanelsPrinted() () {
-    if zBRPRNGetPanelsPrinted == 0 {
-        panic("ZBRPRNGetPanelsPrinted is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPanelsPrinted is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPanelsPrinted),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPanelsPrinted",callErr)
-    }
-    return
+func ZBRPRNGetPanelsPrinted() (ret uintptr) {
+    panic("ZBRPRNGetPanelsPrinted not implemented")
+    ret, _, _ = zBRPRNGetPanelsPrinted.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPanelsRemaining(IntPtr hprinter, int printertype, out int panels, out int err);
-func ZBRPRNGetPanelsRemaining() () {
-    if zBRPRNGetPanelsRemaining == 0 {
-        panic("ZBRPRNGetPanelsRemaining is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPanelsRemaining is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPanelsRemaining),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPanelsRemaining",callErr)
-    }
-    return
+func ZBRPRNGetPanelsRemaining() (ret uintptr) {
+    panic("ZBRPRNGetPanelsRemaining not implemented")
+    ret, _, _ = zBRPRNGetPanelsRemaining.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrintCount(IntPtr hprinter, int printertype, out int printcount, out int err);
-func ZBRPRNGetPrintCount() () {
-    if zBRPRNGetPrintCount == 0 {
-        panic("ZBRPRNGetPrintCount is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrintCount is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintCount),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrintCount",callErr)
-    }
-    return
+func ZBRPRNGetPrintCount() (ret uintptr) {
+    panic("ZBRPRNGetPrintCount not implemented")
+    ret, _, _ = zBRPRNGetPrintCount.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrinterOptions(IntPtr hprinter, int printertype, byte[] options, out int respsize, out int err);
-func ZBRPRNGetPrinterOptions() () {
-    if zBRPRNGetPrinterOptions == 0 {
-        panic("ZBRPRNGetPrinterOptions is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrinterOptions is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterOptions),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrinterOptions",callErr)
-    }
-    return
+func ZBRPRNGetPrinterOptions() (ret uintptr) {
+    panic("ZBRPRNGetPrinterOptions not implemented")
+    ret, _, _ = zBRPRNGetPrinterOptions.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrinterSerialNumb(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrinterSerialNumb() () {
-    if zBRPRNGetPrinterSerialNumb == 0 {
-        panic("ZBRPRNGetPrinterSerialNumb is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrinterSerialNumb is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterSerialNumb),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrinterSerialNumb",callErr)
-    }
-    return
+func ZBRPRNGetPrinterSerialNumb() (ret uintptr) {
+    panic("ZBRPRNGetPrinterSerialNumb not implemented")
+    ret, _, _ = zBRPRNGetPrinterSerialNumb.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrinterSerialNumber(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrinterSerialNumber() () {
-    if zBRPRNGetPrinterSerialNumber == 0 {
-        panic("ZBRPRNGetPrinterSerialNumber is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrinterSerialNumber is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterSerialNumber),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrinterSerialNumber",callErr)
-    }
-    return
+func ZBRPRNGetPrinterSerialNumber() (ret uintptr) {
+    panic("ZBRPRNGetPrinterSerialNumber not implemented")
+    ret, _, _ = zBRPRNGetPrinterSerialNumber.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrinterStatus(out int statuscode);
-func ZBRPRNGetPrinterStatus() () {
-    if zBRPRNGetPrinterStatus == 0 {
-        panic("ZBRPRNGetPrinterStatus is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrinterStatus is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterStatus),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrinterStatus",callErr)
-    }
-    return
+func ZBRPRNGetPrinterStatus() (ret uintptr) {
+    panic("ZBRPRNGetPrinterStatus not implemented")
+    ret, _, _ = zBRPRNGetPrinterStatus.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrintHeadSerialNumb(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrintHeadSerialNumb() () {
-    if zBRPRNGetPrintHeadSerialNumb == 0 {
-        panic("ZBRPRNGetPrintHeadSerialNumb is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrintHeadSerialNumb is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintHeadSerialNumb),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrintHeadSerialNumb",callErr)
-    }
-    return
+func ZBRPRNGetPrintHeadSerialNumb() (ret uintptr) {
+    panic("ZBRPRNGetPrintHeadSerialNumb not implemented")
+    ret, _, _ = zBRPRNGetPrintHeadSerialNumb.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrintHeadSerialNumber(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrintHeadSerialNumber() () {
-    if zBRPRNGetPrintHeadSerialNumber == 0 {
-        panic("ZBRPRNGetPrintHeadSerialNumber is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrintHeadSerialNumber is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintHeadSerialNumber),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrintHeadSerialNumber",callErr)
-    }
-    return
+func ZBRPRNGetPrintHeadSerialNumber() (ret uintptr) {
+    panic("ZBRPRNGetPrintHeadSerialNumber not implemented")
+    ret, _, _ = zBRPRNGetPrintHeadSerialNumber.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetPrintStatus(IntPtr hprinter, int printertype);
-func ZBRPRNGetPrintStatus() () {
-    if zBRPRNGetPrintStatus == 0 {
-        panic("ZBRPRNGetPrintStatus is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetPrintStatus is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintStatus),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetPrintStatus",callErr)
-    }
-    return
+func ZBRPRNGetPrintStatus() (ret uintptr) {
+    panic("ZBRPRNGetPrintStatus not implemented")
+    ret, _, _ = zBRPRNGetPrintStatus.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetSDKProductVer(byte[] productversion, out int buffsize);
-func ZBRPRNGetSDKProductVer() () {
-    if zBRPRNGetSDKProductVer == 0 {
-        panic("ZBRPRNGetSDKProductVer is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetSDKProductVer is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKProductVer),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetSDKProductVer",callErr)
-    }
-    return
+func ZBRPRNGetSDKProductVer() (ret uintptr) {
+    panic("ZBRPRNGetSDKProductVer not implemented")
+    ret, _, _ = zBRPRNGetSDKProductVer.Call(
+        )
+    return ret
 }
 
 // extern void ZBRPRNGetSDKVer(out int major, out int minor, out int englevel);
-func ZBRPRNGetSDKVer() (major uint,minor uint,engLevel uint) {
-    if zBRPRNGetSDKVer == 0 {
-        panic("ZBRPRNGetSDKVer not defined. Check library")
-    }
-    var nargs uintptr = 3
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKVer),
-        nargs,
-        uintptr(unsafe.Pointer(&major)),
-        uintptr(unsafe.Pointer(&minor)),
-        uintptr(unsafe.Pointer(&engLevel)),
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-            abort("Call ZBRPRNGetSDKVer", callErr)
-    }
-    return major,minor,engLevel
+func ZBRPRNGetSDKVer() (ret uintptr) {
+    panic("ZBRPRNGetSDKVer not implemented")
+    ret, _, _ = zBRPRNGetSDKVer.Call(
+        )
+    return ret
 }
 
 // extern void ZBRPRNGetSDKVsn(out int major, out int minor, out int englevel);
-func ZBRPRNGetSDKVsn() () {
-    if zBRPRNGetSDKVsn == 0 {
-        panic("ZBRPRNGetSDKVsn is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetSDKVsn is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKVsn),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetSDKVsn",callErr)
-    }
-    return
+func ZBRPRNGetSDKVsn() (ret uintptr) {
+    panic("ZBRPRNGetSDKVsn not implemented")
+    ret, _, _ = zBRPRNGetSDKVsn.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNGetSensorStatus(IntPtr hprinter, int printertype, out byte status, out int err);
-func ZBRPRNGetSensorStatus() () {
-    if zBRPRNGetSensorStatus == 0 {
-        panic("ZBRPRNGetSensorStatus is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNGetSensorStatus is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSensorStatus),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNGetSensorStatus",callErr)
-    }
-    return
+func ZBRPRNGetSensorStatus() (ret uintptr) {
+    panic("ZBRPRNGetSensorStatus not implemented")
+    ret, _, _ = zBRPRNGetSensorStatus.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNImmediateParamSave(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNImmediateParamSave() () {
-    if zBRPRNImmediateParamSave == 0 {
-        panic("ZBRPRNImmediateParamSave is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNImmediateParamSave is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNImmediateParamSave),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNImmediateParamSave",callErr)
-    }
-    return
+func ZBRPRNImmediateParamSave() (ret uintptr) {
+    panic("ZBRPRNImmediateParamSave not implemented")
+    ret, _, _ = zBRPRNImmediateParamSave.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNIsPrinterReady(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNIsPrinterReady() () {
-    if zBRPRNIsPrinterReady == 0 {
-        panic("ZBRPRNIsPrinterReady is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNIsPrinterReady is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNIsPrinterReady),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNIsPrinterReady",callErr)
-    }
-    return
+func ZBRPRNIsPrinterReady() (ret uintptr) {
+    panic("ZBRPRNIsPrinterReady not implemented")
+    ret, _, _ = zBRPRNIsPrinterReady.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNMoveCard(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCard() () {
-    if zBRPRNMoveCard == 0 {
-        panic("ZBRPRNMoveCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNMoveCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNMoveCard",callErr)
-    }
-    return
+func ZBRPRNMoveCard() (ret uintptr) {
+    panic("ZBRPRNMoveCard not implemented")
+    ret, _, _ = zBRPRNMoveCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNMoveCardBkwd(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCardBkwd() () {
-    if zBRPRNMoveCardBkwd == 0 {
-        panic("ZBRPRNMoveCardBkwd is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNMoveCardBkwd is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCardBkwd),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNMoveCardBkwd",callErr)
-    }
-    return
+func ZBRPRNMoveCardBkwd() (ret uintptr) {
+    panic("ZBRPRNMoveCardBkwd not implemented")
+    ret, _, _ = zBRPRNMoveCardBkwd.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNMoveCardFwd(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCardFwd() () {
-    if zBRPRNMoveCardFwd == 0 {
-        panic("ZBRPRNMoveCardFwd is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNMoveCardFwd is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCardFwd),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNMoveCardFwd",callErr)
-    }
-    return
+func ZBRPRNMoveCardFwd() (ret uintptr) {
+    panic("ZBRPRNMoveCardFwd not implemented")
+    ret, _, _ = zBRPRNMoveCardFwd.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNMovePrintReady(IntPtr handle, int printertype, out int err);
-func ZBRPRNMovePrintReady() () {
-    if zBRPRNMovePrintReady == 0 {
-        panic("ZBRPRNMovePrintReady is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNMovePrintReady is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMovePrintReady),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNMovePrintReady",callErr)
-    }
-    return
+func ZBRPRNMovePrintReady() (ret uintptr) {
+    panic("ZBRPRNMovePrintReady not implemented")
+    ret, _, _ = zBRPRNMovePrintReady.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintCardPanel(IntPtr hprinter, int printertype, int imgbufidx, out int err);
-func ZBRPRNPrintCardPanel() () {
-    if zBRPRNPrintCardPanel == 0 {
-        panic("ZBRPRNPrintCardPanel is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintCardPanel is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintCardPanel),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintCardPanel",callErr)
-    }
-    return
+func ZBRPRNPrintCardPanel() (ret uintptr) {
+    panic("ZBRPRNPrintCardPanel not implemented")
+    ret, _, _ = zBRPRNPrintCardPanel.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintClearVarnish(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintClearVarnish() () {
-    if zBRPRNPrintClearVarnish == 0 {
-        panic("ZBRPRNPrintClearVarnish is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintClearVarnish is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintClearVarnish),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintClearVarnish",callErr)
-    }
-    return
+func ZBRPRNPrintClearVarnish() (ret uintptr) {
+    panic("ZBRPRNPrintClearVarnish not implemented")
+    ret, _, _ = zBRPRNPrintClearVarnish.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintColorImgBuf(IntPtr hprinter, int printertype, int imgbufidx, out int err);
-func ZBRPRNPrintColorImgBuf() () {
-    if zBRPRNPrintColorImgBuf == 0 {
-        panic("ZBRPRNPrintColorImgBuf is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintColorImgBuf is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintColorImgBuf),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintColorImgBuf",callErr)
-    }
-    return
+func ZBRPRNPrintColorImgBuf() (ret uintptr) {
+    panic("ZBRPRNPrintColorImgBuf not implemented")
+    ret, _, _ = zBRPRNPrintColorImgBuf.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintHologramOverlay(IntPtr hprinter, int printertype, int printcardcommand, out int err);
-func ZBRPRNPrintHologramOverlay() () {
-    if zBRPRNPrintHologramOverlay == 0 {
-        panic("ZBRPRNPrintHologramOverlay is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintHologramOverlay is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintHologramOverlay),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintHologramOverlay",callErr)
-    }
-    return
+func ZBRPRNPrintHologramOverlay() (ret uintptr) {
+    panic("ZBRPRNPrintHologramOverlay not implemented")
+    ret, _, _ = zBRPRNPrintHologramOverlay.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintMonoImgBuf(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintMonoImgBuf() () {
-    if zBRPRNPrintMonoImgBuf == 0 {
-        panic("ZBRPRNPrintMonoImgBuf is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintMonoImgBuf is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoImgBuf),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintMonoImgBuf",callErr)
-    }
-    return
+func ZBRPRNPrintMonoImgBuf() (ret uintptr) {
+    panic("ZBRPRNPrintMonoImgBuf not implemented")
+    ret, _, _ = zBRPRNPrintMonoImgBuf.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintMonoImgBufEx(IntPtr hprinter, int printertype, int cardcommand, out int err);
-func ZBRPRNPrintMonoImgBufEx() () {
-    if zBRPRNPrintMonoImgBufEx == 0 {
-        panic("ZBRPRNPrintMonoImgBufEx is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintMonoImgBufEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoImgBufEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintMonoImgBufEx",callErr)
-    }
-    return
+func ZBRPRNPrintMonoImgBufEx() (ret uintptr) {
+    panic("ZBRPRNPrintMonoImgBufEx not implemented")
+    ret, _, _ = zBRPRNPrintMonoImgBufEx.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintMonoPanel(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintMonoPanel() () {
-    if zBRPRNPrintMonoPanel == 0 {
-        panic("ZBRPRNPrintMonoPanel is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintMonoPanel is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoPanel),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintMonoPanel",callErr)
-    }
-    return
+func ZBRPRNPrintMonoPanel() (ret uintptr) {
+    panic("ZBRPRNPrintMonoPanel not implemented")
+    ret, _, _ = zBRPRNPrintMonoPanel.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintPRNFile(IntPtr hprinter, int printertype, byte[] filename, out int err);
-func ZBRPRNPrintPrnFile() () {
-    if zBRPRNPrintPrnFile == 0 {
-        panic("ZBRPRNPrintPrnFile is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintPrnFile is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintPrnFile),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintPrnFile",callErr)
-    }
-    return
+func ZBRPRNPrintPRNFile() (ret uintptr) {
+    panic("ZBRPRNPrintPRNFile not implemented")
+    ret, _, _ = zBRPRNPrintPRNFile.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintTestCard(IntPtr hprinter, int printertype, int testcardtype, out int err);
-func ZBRPRNPrintTestCard() () {
-    if zBRPRNPrintTestCard == 0 {
-        panic("ZBRPRNPrintTestCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintTestCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintTestCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintTestCard",callErr)
-    }
-    return
+func ZBRPRNPrintTestCard() (ret uintptr) {
+    panic("ZBRPRNPrintTestCard not implemented")
+    ret, _, _ = zBRPRNPrintTestCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintVarnish(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintVarnish() () {
-    if zBRPRNPrintVarnish == 0 {
-        panic("ZBRPRNPrintVarnish is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintVarnish is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintVarnish),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintVarnish",callErr)
-    }
-    return
+func ZBRPRNPrintVarnish() (ret uintptr) {
+    panic("ZBRPRNPrintVarnish not implemented")
+    ret, _, _ = zBRPRNPrintVarnish.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNPrintVarnishEx(IntPtr hprinter, int printertype, int printcardcommand, out int err);
-func ZBRPRNPrintVarnishEx() () {
-    if zBRPRNPrintVarnishEx == 0 {
-        panic("ZBRPRNPrintVarnishEx is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNPrintVarnishEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintVarnishEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNPrintVarnishEx",callErr)
-    }
-    return
+func ZBRPRNPrintVarnishEx() (ret uintptr) {
+    panic("ZBRPRNPrintVarnishEx not implemented")
+    ret, _, _ = zBRPRNPrintVarnishEx.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNReadMag(IntPtr handle, int printertype, int trkstoread, byte[] trk1buf, out int trk1bytesneeded, byte[] trk2buf, out int trk2bytesneeded, byte[] trk3buf, out int trk3bytesneeded, out int err);
-func ZBRPRNReadMag() () {
-    if zBRPRNReadMag == 0 {
-        panic("ZBRPRNReadMag is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNReadMag is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReadMag),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNReadMag",callErr)
-    }
-    return
+func ZBRPRNReadMag() (ret uintptr) {
+    panic("ZBRPRNReadMag not implemented")
+    ret, _, _ = zBRPRNReadMag.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNReadMagByTrk(IntPtr hprinter, int printertype, int trknum, byte[] trkbuf, out int respsize, out int err);
-func ZBRPRNReadMagByTrk() () {
-    if zBRPRNReadMagByTrk == 0 {
-        panic("ZBRPRNReadMagByTrk is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNReadMagByTrk is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReadMagByTrk),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNReadMagByTrk",callErr)
-    }
-    return
+func ZBRPRNReadMagByTrk() (ret uintptr) {
+    panic("ZBRPRNReadMagByTrk not implemented")
+    ret, _, _ = zBRPRNReadMagByTrk.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNResetMagEncoder(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResetMagEncoder() () {
-    if zBRPRNResetMagEncoder == 0 {
-        panic("ZBRPRNResetMagEncoder is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNResetMagEncoder is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResetMagEncoder),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNResetMagEncoder",callErr)
-    }
-    return
+func ZBRPRNResetMagEncoder() (ret uintptr) {
+    panic("ZBRPRNResetMagEncoder not implemented")
+    ret, _, _ = zBRPRNResetMagEncoder.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNResetPrinter(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResetPrinter() () {
-    if zBRPRNResetPrinter == 0 {
-        panic("ZBRPRNResetPrinter is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNResetPrinter is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResetPrinter),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNResetPrinter",callErr)
-    }
-    return
+func ZBRPRNResetPrinter() (ret uintptr) {
+    panic("ZBRPRNResetPrinter not implemented")
+    ret, _, _ = zBRPRNResetPrinter.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNResync(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResync() () {
-    if zBRPRNResync == 0 {
-        panic("ZBRPRNResync is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNResync is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResync),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNResync",callErr)
-    }
-    return
+func ZBRPRNResync() (ret uintptr) {
+    panic("ZBRPRNResync not implemented")
+    ret, _, _ = zBRPRNResync.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNReversePrintReady(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNReversePrintReady() () {
-    if zBRPRNReversePrintReady == 0 {
-        panic("ZBRPRNReversePrintReady is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNReversePrintReady is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReversePrintReady),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNReversePrintReady",callErr)
-    }
-    return
+func ZBRPRNReversePrintReady() (ret uintptr) {
+    panic("ZBRPRNReversePrintReady not implemented")
+    ret, _, _ = zBRPRNReversePrintReady.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSelfAdj(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNSelfAdj() () {
-    if zBRPRNSelfAdj == 0 {
-        panic("ZBRPRNSelfAdj is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSelfAdj is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSelfAdj),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSelfAdj",callErr)
-    }
-    return
+func ZBRPRNSelfAdj() (ret uintptr) {
+    panic("ZBRPRNSelfAdj not implemented")
+    ret, _, _ = zBRPRNSelfAdj.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetCardFeedingMode(IntPtr hprinter, int printertype, int mode, out int err);
-func ZBRPRNSetCardFeedingMode() () {
-    if zBRPRNSetCardFeedingMode == 0 {
-        panic("ZBRPRNSetCardFeedingMode is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetCardFeedingMode is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetCardFeedingMode),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetCardFeedingMode",callErr)
-    }
-    return
+func ZBRPRNSetCardFeedingMode() (ret uintptr) {
+    panic("ZBRPRNSetCardFeedingMode not implemented")
+    ret, _, _ = zBRPRNSetCardFeedingMode.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetCleaningParam(IntPtr hprinter, int printertype, int ribbonpanelcounter, int cleancardpass, out int err);
-func ZBRPRNSetCleaningParam() () {
-    if zBRPRNSetCleaningParam == 0 {
-        panic("ZBRPRNSetCleaningParam is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetCleaningParam is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetCleaningParam),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetCleaningParam",callErr)
-    }
-    return
+func ZBRPRNSetCleaningParam() (ret uintptr) {
+    panic("ZBRPRNSetCleaningParam not implemented")
+    ret, _, _ = zBRPRNSetCleaningParam.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetColorContrast(IntPtr hprinter, int printertype, int imgbufidx, int contrast, out int err);
-func ZBRPRNSetColorContrast() () {
-    if zBRPRNSetColorContrast == 0 {
-        panic("ZBRPRNSetColorContrast is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetColorContrast is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetColorContrast),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetColorContrast",callErr)
-    }
-    return
+func ZBRPRNSetColorContrast() (ret uintptr) {
+    panic("ZBRPRNSetColorContrast not implemented")
+    ret, _, _ = zBRPRNSetColorContrast.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetContrastIntensityLvl(IntPtr hprinter, int printertype, int imgbufidx, int intensity, out int err);
-func ZBRPRNSetContrastIntensityLvl() () {
-    if zBRPRNSetContrastIntensityLvl == 0 {
-        panic("ZBRPRNSetContrastIntensityLvl is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetContrastIntensityLvl is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetContrastIntensityLvl),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetContrastIntensityLvl",callErr)
-    }
-    return
+func ZBRPRNSetContrastIntensityLvl() (ret uintptr) {
+    panic("ZBRPRNSetContrastIntensityLvl not implemented")
+    ret, _, _ = zBRPRNSetContrastIntensityLvl.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetEncoderCoercivity(IntPtr hprinter, int printertype, int coercivity, out int err);
-func ZBRPRNSetEncoderCoercivity() () {
-    if zBRPRNSetEncoderCoercivity == 0 {
-        panic("ZBRPRNSetEncoderCoercivity is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetEncoderCoercivity is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEncoderCoercivity),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetEncoderCoercivity",callErr)
-    }
-    return
+func ZBRPRNSetEncoderCoercivity() (ret uintptr) {
+    panic("ZBRPRNSetEncoderCoercivity not implemented")
+    ret, _, _ = zBRPRNSetEncoderCoercivity.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetEncodingDir(IntPtr hprinter, int printertype, int dir, out int err);
-func ZBRPRNSetEncodingDir() () {
-    if zBRPRNSetEncodingDir == 0 {
-        panic("ZBRPRNSetEncodingDir is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetEncodingDir is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEncodingDir),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetEncodingDir",callErr)
-    }
-    return
+func ZBRPRNSetEncodingDir() (ret uintptr) {
+    panic("ZBRPRNSetEncodingDir not implemented")
+    ret, _, _ = zBRPRNSetEncodingDir.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetEndOfPrint(IntPtr hprinter, int printertype, int xwidth, out int err);
-func ZBRPRNSetEndOfPrint() () {
-    if zBRPRNSetEndOfPrint == 0 {
-        panic("ZBRPRNSetEndOfPrint is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetEndOfPrint is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEndOfPrint),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetEndOfPrint",callErr)
-    }
-    return
+func ZBRPRNSetEndOfPrint() (ret uintptr) {
+    panic("ZBRPRNSetEndOfPrint not implemented")
+    ret, _, _ = zBRPRNSetEndOfPrint.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetHologramIntensity(IntPtr hprinter, int printertype, int intensity, out int err);
-func ZBRPRNSetHologramIntensity() () {
-    if zBRPRNSetHologramIntensity == 0 {
-        panic("ZBRPRNSetHologramIntensity is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetHologramIntensity is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetHologramIntensity),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetHologramIntensity",callErr)
-    }
-    return
+func ZBRPRNSetHologramIntensity() (ret uintptr) {
+    panic("ZBRPRNSetHologramIntensity not implemented")
+    ret, _, _ = zBRPRNSetHologramIntensity.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetMagEncodingStd(IntPtr hprinter, int printertype, int standard, out int err);
-func ZBRPRNSetMagEncodingStd() () {
-    if zBRPRNSetMagEncodingStd == 0 {
-        panic("ZBRPRNSetMagEncodingStd is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetMagEncodingStd is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMagEncodingStd),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetMagEncodingStd",callErr)
-    }
-    return
+func ZBRPRNSetMagEncodingStd() (ret uintptr) {
+    panic("ZBRPRNSetMagEncodingStd not implemented")
+    ret, _, _ = zBRPRNSetMagEncodingStd.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetMonoContrast(IntPtr hprinter, int printertype, int contrast, out int err);
-func ZBRPRNSetMonoContrast() () {
-    if zBRPRNSetMonoContrast == 0 {
-        panic("ZBRPRNSetMonoContrast is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetMonoContrast is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMonoContrast),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetMonoContrast",callErr)
-    }
-    return
+func ZBRPRNSetMonoContrast() (ret uintptr) {
+    panic("ZBRPRNSetMonoContrast not implemented")
+    ret, _, _ = zBRPRNSetMonoContrast.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetMonoIntensity(IntPtr hprinter, int printertype, int intensity, out int err);
-func ZBRPRNSetMonoIntensity() () {
-    if zBRPRNSetMonoIntensity == 0 {
-        panic("ZBRPRNSetMonoIntensity is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetMonoIntensity is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMonoIntensity),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetMonoIntensity",callErr)
-    }
-    return
+func ZBRPRNSetMonoIntensity() (ret uintptr) {
+    panic("ZBRPRNSetMonoIntensity not implemented")
+    ret, _, _ = zBRPRNSetMonoIntensity.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetOverlayMode(HANDLE hPrinter, int printerType, int side, OverlayType overlay, char *filename, int *err);
-func ZBRPRNSetOverlayMode() () {
-    if zBRPRNSetOverlayMode == 0 {
-        panic("ZBRPRNSetOverlayMode is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetOverlayMode is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetOverlayMode),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetOverlayMode",callErr)
-    }
-    return
+func ZBRPRNSetOverlayMode() (ret uintptr) {
+    panic("ZBRPRNSetOverlayMode not implemented")
+    ret, _, _ = zBRPRNSetOverlayMode.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetPrintHeadResistance(IntPtr hprinter, int printertype, int resistance, out int err);
-func ZBRPRNSetPrintHeadResistance() () {
-    if zBRPRNSetPrintHeadResistance == 0 {
-        panic("ZBRPRNSetPrintHeadResistance is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetPrintHeadResistance is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetPrintHeadResistance),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetPrintHeadResistance",callErr)
-    }
-    return
+func ZBRPRNSetPrintHeadResistance() (ret uintptr) {
+    panic("ZBRPRNSetPrintHeadResistance not implemented")
+    ret, _, _ = zBRPRNSetPrintHeadResistance.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetRelativeXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetRelativeXOffset() () {
-    if zBRPRNSetRelativeXOffset == 0 {
-        panic("ZBRPRNSetRelativeXOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetRelativeXOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetRelativeXOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetRelativeXOffset",callErr)
-    }
-    return
+func ZBRPRNSetRelativeXOffset() (ret uintptr) {
+    panic("ZBRPRNSetRelativeXOffset not implemented")
+    ret, _, _ = zBRPRNSetRelativeXOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetRelativeYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetRelativeYOffset() () {
-    if zBRPRNSetRelativeYOffset == 0 {
-        panic("ZBRPRNSetRelativeYOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetRelativeYOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetRelativeYOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetRelativeYOffset",callErr)
-    }
-    return
+func ZBRPRNSetRelativeYOffset() (ret uintptr) {
+    panic("ZBRPRNSetRelativeYOffset not implemented")
+    ret, _, _ = zBRPRNSetRelativeYOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetStartPrintSideBOffset(IntPtr hprinter, int printertype, int x_y, int offset, out int err);
-func ZBRPRNSetStartPrintSideBOffset() () {
-    if zBRPRNSetStartPrintSideBOffset == 0 {
-        panic("ZBRPRNSetStartPrintSideBOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetStartPrintSideBOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetStartPrintSideBOffset",callErr)
-    }
-    return
+func ZBRPRNSetStartPrintSideBOffset() (ret uintptr) {
+    panic("ZBRPRNSetStartPrintSideBOffset not implemented")
+    ret, _, _ = zBRPRNSetStartPrintSideBOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetStartPrintSideBXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintSideBXOffset() () {
-    if zBRPRNSetStartPrintSideBXOffset == 0 {
-        panic("ZBRPRNSetStartPrintSideBXOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetStartPrintSideBXOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBXOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetStartPrintSideBXOffset",callErr)
-    }
-    return
+func ZBRPRNSetStartPrintSideBXOffset() (ret uintptr) {
+    panic("ZBRPRNSetStartPrintSideBXOffset not implemented")
+    ret, _, _ = zBRPRNSetStartPrintSideBXOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetStartPrintSideBYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintSideBYOffset() () {
-    if zBRPRNSetStartPrintSideBYOffset == 0 {
-        panic("ZBRPRNSetStartPrintSideBYOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetStartPrintSideBYOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBYOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetStartPrintSideBYOffset",callErr)
-    }
-    return
+func ZBRPRNSetStartPrintSideBYOffset() (ret uintptr) {
+    panic("ZBRPRNSetStartPrintSideBYOffset not implemented")
+    ret, _, _ = zBRPRNSetStartPrintSideBYOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetStartPrintXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintXOffset() () {
-    if zBRPRNSetStartPrintXOffset == 0 {
-        panic("ZBRPRNSetStartPrintXOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetStartPrintXOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintXOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetStartPrintXOffset",callErr)
-    }
-    return
+func ZBRPRNSetStartPrintXOffset() (ret uintptr) {
+    panic("ZBRPRNSetStartPrintXOffset not implemented")
+    ret, _, _ = zBRPRNSetStartPrintXOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetStartPrintYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintYOffset() () {
-    if zBRPRNSetStartPrintYOffset == 0 {
-        panic("ZBRPRNSetStartPrintYOffset is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetStartPrintYOffset is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintYOffset),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetStartPrintYOffset",callErr)
-    }
-    return
+func ZBRPRNSetStartPrintYOffset() (ret uintptr) {
+    panic("ZBRPRNSetStartPrintYOffset not implemented")
+    ret, _, _ = zBRPRNSetStartPrintYOffset.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSetTrkDensity(IntPtr hprinter, int printertype, int trknum, int density, out int err);
-func ZBRPRNSetTrkDensity() () {
-    if zBRPRNSetTrkDensity == 0 {
-        panic("ZBRPRNSetTrkDensity is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSetTrkDensity is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetTrkDensity),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSetTrkDensity",callErr)
-    }
-    return
+func ZBRPRNSetTrkDensity() (ret uintptr) {
+    panic("ZBRPRNSetTrkDensity not implemented")
+    ret, _, _ = zBRPRNSetTrkDensity.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNStartCleaningCardSeq(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNStartCleaningCardSeq() () {
-    if zBRPRNStartCleaningCardSeq == 0 {
-        panic("ZBRPRNStartCleaningCardSeq is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNStartCleaningCardSeq is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartCleaningCardSeq),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNStartCleaningCardSeq",callErr)
-    }
-    return
+func ZBRPRNStartCleaningCardSeq() (ret uintptr) {
+    panic("ZBRPRNStartCleaningCardSeq not implemented")
+    ret, _, _ = zBRPRNStartCleaningCardSeq.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNStartCleaningSeq(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNStartCleaningSeq() () {
-    if zBRPRNStartCleaningSeq == 0 {
-        panic("ZBRPRNStartCleaningSeq is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNStartCleaningSeq is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartCleaningSeq),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNStartCleaningSeq",callErr)
-    }
-    return
+func ZBRPRNStartCleaningSeq() (ret uintptr) {
+    panic("ZBRPRNStartCleaningSeq not implemented")
+    ret, _, _ = zBRPRNStartCleaningSeq.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNStartSmartCard(IntPtr _handle, int printertype, int cardtype, out int err);
-func ZBRPRNStartSmartCard() () {
-    if zBRPRNStartSmartCard == 0 {
-        panic("ZBRPRNStartSmartCard is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNStartSmartCard is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartSmartCard),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNStartSmartCard",callErr)
-    }
-    return
+func ZBRPRNStartSmartCard() (ret uintptr) {
+    panic("ZBRPRNStartSmartCard not implemented")
+    ret, _, _ = zBRPRNStartSmartCard.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNSuppressStatusMsgs(IntPtr hprinter, int printertype, int suppressmsgs, out int err);
-func ZBRPRNSuppressStatusMsgs() () {
-    if zBRPRNSuppressStatusMsgs == 0 {
-        panic("ZBRPRNSuppressStatusMsgs is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNSuppressStatusMsgs is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSuppressStatusMsgs),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNSuppressStatusMsgs",callErr)
-    }
-    return
+func ZBRPRNSuppressStatusMsgs() (ret uintptr) {
+    panic("ZBRPRNSuppressStatusMsgs not implemented")
+    ret, _, _ = zBRPRNSuppressStatusMsgs.Call(
+        )
+    return ret
 }
 
 // extern intZBRPRNUpgradeFirmware(HANDLE hPrinter, int printerType, char *filename, int *err);
-func ZBRPRNUpgradeFirmware() () {
-    if zBRPRNUpgradeFirmware == 0 {
-        panic("ZBRPRNUpgradeFirmware is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNUpgradeFirmware is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNUpgradeFirmware),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNUpgradeFirmware",callErr)
-    }
-    return
+func HANDLE() (ret uintptr) {
+    panic("HANDLE not implemented")
+    ret, _, _ = hANDLE.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteBarcode(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
-func ZBRPRNWriteBarCode() () {
-    if zBRPRNWriteBarCode == 0 {
-        panic("ZBRPRNWriteBarCode is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteBarCode is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBarCode),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteBarCode",callErr)
-    }
-    return
+func ZBRPRNWriteBarcode() (ret uintptr) {
+    panic("ZBRPRNWriteBarcode not implemented")
+    ret, _, _ = zBRPRNWriteBarcode.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteBox(IntPtr hprinter, int printertype, int startx, int starty, int width, int height, int thickness, out int err);
-func ZBRPRNWriteBox() () {
-    if zBRPRNWriteBox == 0 {
-        panic("ZBRPRNWriteBox is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteBox is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBox),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteBox",callErr)
-    }
-    return
+func ZBRPRNWriteBox() (ret uintptr) {
+    panic("ZBRPRNWriteBox not implemented")
+    ret, _, _ = zBRPRNWriteBox.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteBoxEx(IntPtr hprinter, int printertype, int startx, int starty, int width, int height, int thickness, int gmode, int isvarnish, out int err);
-func ZBRPRNWriteBoxEx() () {
-    if zBRPRNWriteBoxEx == 0 {
-        panic("ZBRPRNWriteBoxEx is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteBoxEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBoxEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteBoxEx",callErr)
-    }
-    return
+func ZBRPRNWriteBoxEx() (ret uintptr) {
+    panic("ZBRPRNWriteBoxEx not implemented")
+    ret, _, _ = zBRPRNWriteBoxEx.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteMag(IntPtr handle, int printertype, int trkstowrite, byte[] trk1data, byte[] trk2data, byte[] trk3data, out int err);
-func ZBRPRNWriteMag() () {
-    if zBRPRNWriteMag == 0 {
-        panic("ZBRPRNWriteMag is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteMag is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMag),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteMag",callErr)
-    }
-    return
+func ZBRPRNWriteMag() (ret uintptr) {
+    panic("ZBRPRNWriteMag not implemented")
+    ret, _, _ = zBRPRNWriteMag.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteMagByTrk(IntPtr hprinter, int printertype, int trknum, byte[] trkdata, out int err);
-func ZBRPRNWriteMagByTrk() () {
-    if zBRPRNWriteMagByTrk == 0 {
-        panic("ZBRPRNWriteMagByTrk is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteMagByTrk is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMagByTrk),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteMagByTrk",callErr)
-    }
-    return
+func ZBRPRNWriteMagByTrk() (ret uintptr) {
+    panic("ZBRPRNWriteMagByTrk not implemented")
+    ret, _, _ = zBRPRNWriteMagByTrk.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteMagPassThru(IntPtr hdc, int printertype, int trknum, byte[] trkdata, out int err);
-func ZBRPRNWriteMagPassThru() () {
-    if zBRPRNWriteMagPassThru == 0 {
-        panic("ZBRPRNWriteMagPassThru is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteMagPassThru is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMagPassThru),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteMagPassThru",callErr)
-    }
-    return
+func ZBRPRNWriteMagPassThru() (ret uintptr) {
+    panic("ZBRPRNWriteMagPassThru not implemented")
+    ret, _, _ = zBRPRNWriteMagPassThru.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteText(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int isbold, int height, byte[] text, out int err);
-func ZBRPRNWriteText() () {
-    if zBRPRNWriteText == 0 {
-        panic("ZBRPRNWriteText is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteText is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteText),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteText",callErr)
-    }
-    return
+func ZBRPRNWriteText() (ret uintptr) {
+    panic("ZBRPRNWriteText not implemented")
+    ret, _, _ = zBRPRNWriteText.Call(
+        )
+    return ret
 }
 
 // extern int ZBRPRNWriteTextEx(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int isbold, int widht, int height, int gmode, byte[] text, int isvarnish, out int err);
-func ZBRPRNWriteTextEx() () {
-    if zBRPRNWriteTextEx == 0 {
-        panic("ZBRPRNWriteTextEx is not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("ZBRPRNWriteTextEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteTextEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRPRNWriteTextEx",callErr)
-    }
-    return
+func ZBRPRNWriteTextEx() (ret uintptr) {
+    panic("ZBRPRNWriteTextEx not implemented")
+    ret, _, _ = zBRPRNWriteTextEx.Call(
+        )
+    return ret
 }

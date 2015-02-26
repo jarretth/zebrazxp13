@@ -1,47 +1,46 @@
 package zbrgraphics
 
-
 func abort(funcname string, err error) {
         panic(fmt.Sprintf("%s failed: %v", funcname, err))
 }
 
 var (
-    zBRGraphics                    , _ = syscall.LoadLibrary("ZBRGraphics.dll")
-    zBRGDICancelJob                , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDICancelJob")
-    zBRGDIClearGraphics            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIClearGraphics")
-    zBRGDICloseGraphics            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDICloseGraphics")
-    zBRGDIDrawBarCode              , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawBarCode")
-    zBRGDIDrawEllipse              , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawEllipse")
-    zBRGDIDrawImage                , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImage")
-    zBRGDIDrawImageEx              , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImageEx")
-    zBRGDIDrawImagePos             , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImagePos")
-    zBRGDIDrawImagePosEx           , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImagePosEx")
-    zBRGDIDrawImageRect            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImageRect")
-    zBRGDIDrawImageRectEx          , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawImageRectEx")
-    zBRGDIDrawLine                 , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawLine")
-    zBRGDIDrawRectangle            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawRectangle")
-    zBRGDIDrawText                 , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawText")
-    zBRGDIDrawTextEx               , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawTextEx")
-    zBRGDIDrawTextRect             , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawTextRect")
-    zBRGDIDrawTextRectEx           , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawTextRectEx")
-    zBRGDIDrawTextUnicode          , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawTextUnicode")
-    zBRGDIDrawTextUnicodeEx        , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIDrawTextUnicodeEx")
-    zBRGDIEndPage                  , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIEndPage")
-    zBRGDIGetSDKProductVer         , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIGetSDKProductVer")
-    zBRGDIGetSDKVer                , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIGetSDKVer")
-    zBRGDIGetSDKVsn                , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIGetSDKVsn")
-    zBRGDIInitGraphics             , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIInitGraphics")
-    zBRGDIInitGraphicsEx           , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIInitGraphicsEx")
-    zBRGDIInitGraphicsFromPrintDlg , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIInitGraphicsFromPrintDlg")
-    zBRGDIIsPrinterReady           , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIIsPrinterReady")
-    zBRGDIPreviewGraphics          , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPreviewGraphics")
-    zBRGDIPrintFilePos             , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintFilePos")
-    zBRGDIPrintFileRect            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintFileRect")
-    zBRGDIPrintGraphics            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintGraphics")
-    zBRGDIPrintGraphicsEx          , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintGraphicsEx")
-    zBRGDIPrintImagePos            , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintImagePos")
-    zBRGDIPrintImageRect           , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIPrintImageRect")
-    zBRGDIStartPage                , _ = syscall.GetProcAddress(zBRGraphics, "ZBRGDIStartPage")
+    zBRGraphics                    , _ = syscall.NewLazyDLL("ZBRGraphics.dll")
+    zBRGDICancelJob                , _ = zBRGraphics.NewProc("ZBRGDICancelJob")
+    zBRGDIClearGraphics            , _ = zBRGraphics.NewProc("ZBRGDIClearGraphics")
+    zBRGDICloseGraphics            , _ = zBRGraphics.NewProc("ZBRGDICloseGraphics")
+    zBRGDIDrawBarCode              , _ = zBRGraphics.NewProc("ZBRGDIDrawBarCode")
+    zBRGDIDrawEllipse              , _ = zBRGraphics.NewProc("ZBRGDIDrawEllipse")
+    zBRGDIDrawImage                , _ = zBRGraphics.NewProc("ZBRGDIDrawImage")
+    zBRGDIDrawImageEx              , _ = zBRGraphics.NewProc("ZBRGDIDrawImageEx")
+    zBRGDIDrawImagePos             , _ = zBRGraphics.NewProc("ZBRGDIDrawImagePos")
+    zBRGDIDrawImagePosEx           , _ = zBRGraphics.NewProc("ZBRGDIDrawImagePosEx")
+    zBRGDIDrawImageRect            , _ = zBRGraphics.NewProc("ZBRGDIDrawImageRect")
+    zBRGDIDrawImageRectEx          , _ = zBRGraphics.NewProc("ZBRGDIDrawImageRectEx")
+    zBRGDIDrawLine                 , _ = zBRGraphics.NewProc("ZBRGDIDrawLine")
+    zBRGDIDrawRectangle            , _ = zBRGraphics.NewProc("ZBRGDIDrawRectangle")
+    zBRGDIDrawText                 , _ = zBRGraphics.NewProc("ZBRGDIDrawText")
+    zBRGDIDrawTextEx               , _ = zBRGraphics.NewProc("ZBRGDIDrawTextEx")
+    zBRGDIDrawTextRect             , _ = zBRGraphics.NewProc("ZBRGDIDrawTextRect")
+    zBRGDIDrawTextRectEx           , _ = zBRGraphics.NewProc("ZBRGDIDrawTextRectEx")
+    zBRGDIDrawTextUnicode          , _ = zBRGraphics.NewProc("ZBRGDIDrawTextUnicode")
+    zBRGDIDrawTextUnicodeEx        , _ = zBRGraphics.NewProc("ZBRGDIDrawTextUnicodeEx")
+    zBRGDIEndPage                  , _ = zBRGraphics.NewProc("ZBRGDIEndPage")
+    zBRGDIGetSDKProductVer         , _ = zBRGraphics.NewProc("ZBRGDIGetSDKProductVer")
+    zBRGDIGetSDKVer                , _ = zBRGraphics.NewProc("ZBRGDIGetSDKVer")
+    zBRGDIGetSDKVsn                , _ = zBRGraphics.NewProc("ZBRGDIGetSDKVsn")
+    zBRGDIInitGraphics             , _ = zBRGraphics.NewProc("ZBRGDIInitGraphics")
+    zBRGDIInitGraphicsEx           , _ = zBRGraphics.NewProc("ZBRGDIInitGraphicsEx")
+    zBRGDIInitGraphicsFromPrintDlg , _ = zBRGraphics.NewProc("ZBRGDIInitGraphicsFromPrintDlg")
+    zBRGDIIsPrinterReady           , _ = zBRGraphics.NewProc("ZBRGDIIsPrinterReady")
+    zBRGDIPreviewGraphics          , _ = zBRGraphics.NewProc("ZBRGDIPreviewGraphics")
+    zBRGDIPrintFilePos             , _ = zBRGraphics.NewProc("ZBRGDIPrintFilePos")
+    zBRGDIPrintFileRect            , _ = zBRGraphics.NewProc("ZBRGDIPrintFileRect")
+    zBRGDIPrintGraphics            , _ = zBRGraphics.NewProc("ZBRGDIPrintGraphics")
+    zBRGDIPrintGraphicsEx          , _ = zBRGraphics.NewProc("ZBRGDIPrintGraphicsEx")
+    zBRGDIPrintImagePos            , _ = zBRGraphics.NewProc("ZBRGDIPrintImagePos")
+    zBRGDIPrintImageRect           , _ = zBRGraphics.NewProc("ZBRGDIPrintImageRect")
+    zBRGDIStartPage                , _ = zBRGraphics.NewProc("ZBRGDIStartPage")
 )
 
 const (
@@ -85,840 +84,247 @@ const (
 )
 
 // extern void ZBRGDIGetSDKVer(out int major, out int minor, out int englevel);
-func ZBRGDIGetSDKVer() (major uint, minor uint, engLevel uint) {
-    if zBRGDIGetSDKVer == 0 {
-        panic("ZBRGDIGetSDKVer not defined. Check library")
-    }
-    var nargs uintptr = 3
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIGetSDKVer),
-            nargs,
-            uintptr(unsafe.Pointer(&major)),
-            uintptr(unsafe.Pointer(&minor)),
-            uintptr(unsafe.Pointer(&engLevel)),
-            0,
-            0,
-            0,
-            0,
-            0,
-            0)
-    if callErr != 0 {
-            abort("Call ZBRGDIGetSDKVer", callErr)
-    }
-    return major,minor,engLevel
+func ZBRGDIGetSDKVer() (ret uintptr) {
+    panic("ZBRGDIGetSDKVer not implemented")
+    ret, _, _ =  zBRGDIGetSDKVer.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIIsPrinterReady(byte[] printername, out int err);
-func ZBRGDIIsPrinterReady(strPrinterName []byte) (ret uintptr, err uint) {
-    if zBRGDIIsPrinterReady == 0 {
-        panic("ZBRGDIIsPrinterReady not defined. Check library")
-    }
-    var nargs uintptr = 2
-    ret, _, callErr := syscall.Syscall9(uintptr(zBRGDIIsPrinterReady),
-            nargs,
-            // uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(strPrinterName))),
-            uintptr(unsafe.Pointer(&strPrinterName)),
-            uintptr(err),
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0)
-    if callErr != 0 {
-            abort("Call ZBRGDIIsPrinterReady", callErr)
-    }
-    return ret, err
+func ZBRGDIIsPrinterReady() (ret uintptr) {
+    panic("ZBRGDIIsPrinterReady not implemented")
+    ret, _, _ =  zBRGDIIsPrinterReady.Call(
+        )
+    return ret
 }
-
 // extern void ZBRGDIGetSDKVsn(out int major, out int minor, out int englevel);
-func ZBRGDIGetSDKVsn() () {
-    if zBRGDIGetSDKVsn == 0 {
-        panic("ZBRGDIGetSDKVsn not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIGetSDKVsn is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIGetSDKVsn),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIGetSDKVsn",callErr)
-    }
-    return
+func ZBRGDIGetSDKVsn() (ret uintptr) {
+    panic("ZBRGDIGetSDKVsn not implemented")
+    ret, _, _ =  zBRGDIGetSDKVsn.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIGetSDKProductVer(byte[] productversion, out int buffsize, out int err);
-func ZBRGDIGetSDKProductVer() () {
-    if zBRGDIGetSDKProductVer == 0 {
-        panic("ZBRGDIGetSDKProductVer not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIGetSDKProductVer is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIGetSDKProductVer),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIGetSDKProductVer",callErr)
-    }
-    return
+func ZBRGDIGetSDKProductVer() (ret uintptr) {
+    panic("ZBRGDIGetSDKProductVer not implemented")
+    ret, _, _ =  zBRGDIGetSDKProductVer.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIInitGraphics(byte[] printername, out IntPtr hdc, out int err);
-func ZBRGDIInitGraphics() () {
-    if zBRGDIInitGraphics == 0 {
-        panic("ZBRGDIInitGraphics not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIInitGraphics is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphics),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIInitGraphics",callErr)
-    }
-    return
+func ZBRGDIInitGraphics() (ret uintptr) {
+    panic("ZBRGDIInitGraphics not implemented")
+    ret, _, _ =  zBRGDIInitGraphics.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIInitGraphicsEx(byte[] printername, out IntPtr hdc, byte[] jobname, out int jobid, out int err);
-func ZBRGDIInitGraphicsEx() () {
-    if zBRGDIInitGraphicsEx == 0 {
-        panic("ZBRGDIInitGraphicsEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIInitGraphicsEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphicsEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIInitGraphicsEx",callErr)
-    }
-    return
+func ZBRGDIInitGraphicsEx() (ret uintptr) {
+    panic("ZBRGDIInitGraphicsEx not implemented")
+    ret, _, _ =  zBRGDIInitGraphicsEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIInitGraphicsFromPrintDlg(out IntPtr hdc, out int err);
-func ZBRGDIInitGraphicsFromPrintDlg() () {
-    if zBRGDIInitGraphicsFromPrintDlg == 0 {
-        panic("ZBRGDIInitGraphicsFromPrintDlg not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIInitGraphicsFromPrintDlg is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphicsFromPrintDlg),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIInitGraphicsFromPrintDlg",callErr)
-    }
-    return
+func ZBRGDIInitGraphicsFromPrintDlg() (ret uintptr) {
+    panic("ZBRGDIInitGraphicsFromPrintDlg not implemented")
+    ret, _, _ =  zBRGDIInitGraphicsFromPrintDlg.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDICloseGraphics(IntPtr hdc, out int err);
-func ZBRGDICloseGraphics() () {
-    if zBRGDICloseGraphics == 0 {
-        panic("ZBRGDICloseGraphics not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDICloseGraphics is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDICloseGraphics),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDICloseGraphics",callErr)
-    }
-    return
+func ZBRGDICloseGraphics() (ret uintptr) {
+    panic("ZBRGDICloseGraphics not implemented")
+    ret, _, _ =  zBRGDICloseGraphics.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIClearGraphics(out int err);
-func ZBRGDIClearGraphics() () {
-    if zBRGDIClearGraphics == 0 {
-        panic("ZBRGDIClearGraphics not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIClearGraphics is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIClearGraphics),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIClearGraphics",callErr)
-    }
-    return
+func ZBRGDIClearGraphics() (ret uintptr) {
+    panic("ZBRGDIClearGraphics not implemented")
+    ret, _, _ =  zBRGDIClearGraphics.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIStartPage(IntPtr hdc, out int err);
-func ZBRGDIStartPage() () {
-    if zBRGDIStartPage == 0 {
-        panic("ZBRGDIStartPage not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIStartPage is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIStartPage),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIStartPage",callErr)
-    }
-    return
+func ZBRGDIStartPage() (ret uintptr) {
+    panic("ZBRGDIStartPage not implemented")
+    ret, _, _ =  zBRGDIStartPage.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIEndPage(IntPtr hdc, out int err);
-func ZBRGDIEndPage() () {
-    if zBRGDIEndPage == 0 {
-        panic("ZBRGDIEndPage not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIEndPage is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIEndPage),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIEndPage",callErr)
-    }
-    return
+func ZBRGDIEndPage() (ret uintptr) {
+    panic("ZBRGDIEndPage not implemented")
+    ret, _, _ =  zBRGDIEndPage.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPreviewGraphics(IntPtr hwnd, out int err);
-func ZBRGDIPreviewGraphics() () {
-    if zBRGDIPreviewGraphics == 0 {
-        panic("ZBRGDIPreviewGraphics not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPreviewGraphics is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPreviewGraphics),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPreviewGraphics",callErr)
-    }
-    return
+func ZBRGDIPreviewGraphics() (ret uintptr) {
+    panic("ZBRGDIPreviewGraphics not implemented")
+    ret, _, _ =  zBRGDIPreviewGraphics.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintGraphics(IntPtr hdc, out int err);
-func ZBRGDIPrintGraphics() () {
-    if zBRGDIPrintGraphics == 0 {
-        panic("ZBRGDIPrintGraphics not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintGraphics is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintGraphics),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintGraphics",callErr)
-    }
-    return
+func ZBRGDIPrintGraphics() (ret uintptr) {
+    panic("ZBRGDIPrintGraphics not implemented")
+    ret, _, _ =  zBRGDIPrintGraphics.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintGraphicsEx(IntPtr hdc, out int err);
-func ZBRGDIPrintGraphicsEx() () {
-    if zBRGDIPrintGraphicsEx == 0 {
-        panic("ZBRGDIPrintGraphicsEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintGraphicsEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintGraphicsEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintGraphicsEx",callErr)
-    }
-    return
+func ZBRGDIPrintGraphicsEx() (ret uintptr) {
+    panic("ZBRGDIPrintGraphicsEx not implemented")
+    ret, _, _ =  zBRGDIPrintGraphicsEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintFilePos(IntPtr hdc, byte[] filename, int position, out int err);
-func ZBRGDIPrintFilePos() () {
-    if zBRGDIPrintFilePos == 0 {
-        panic("ZBRGDIPrintFilePos not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintFilePos is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintFilePos),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintFilePos",callErr)
-    }
-    return
+func ZBRGDIPrintFilePos() (ret uintptr) {
+    panic("ZBRGDIPrintFilePos not implemented")
+    ret, _, _ =  zBRGDIPrintFilePos.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintFilePos(IntPtr hdc, byte[] filename, int position, out int err);
-func ZBRGDIPrintFileRect() () {
-    if zBRGDIPrintFileRect == 0 {
-        panic("ZBRGDIPrintFileRect not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintFileRect is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintFileRect),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintFileRect",callErr)
-    }
-    return
+func ZBRGDIPrintFilePos() (ret uintptr) {
+    panic("ZBRGDIPrintFilePos not implemented")
+    ret, _, _ =  zBRGDIPrintFilePos.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintImagePos(IntPtr hdc, byte[] imagedata, int imagesize, int position, out int err);
-func ZBRGDIPrintImagePos() () {
-    if zBRGDIPrintImagePos == 0 {
-        panic("ZBRGDIPrintImagePos not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintImagePos is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintImagePos),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintImagePos",callErr)
-    }
-    return
+func ZBRGDIPrintImagePos() (ret uintptr) {
+    panic("ZBRGDIPrintImagePos not implemented")
+    ret, _, _ =  zBRGDIPrintImagePos.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIPrintImageRect(IntPtr hdc, byte[] imagedata, int imagesize, int x, int y, int width, int height, out int err);
-func ZBRGDIPrintImageRect() () {
-    if zBRGDIPrintImageRect == 0 {
-        panic("ZBRGDIPrintImageRect not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIPrintImageRect is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintImageRect),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIPrintImageRect",callErr)
-    }
-    return
+func ZBRGDIPrintImageRect() (ret uintptr) {
+    panic("ZBRGDIPrintImageRect not implemented")
+    ret, _, _ =  zBRGDIPrintImageRect.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDICancelJob(byte[] printername, int jobid, out int err);
-func ZBRGDICancelJob() () {
-    if zBRGDICancelJob == 0 {
-        panic("ZBRGDICancelJob not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDICancelJob is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDICancelJob),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDICancelJob",callErr)
-    }
-    return
+func ZBRGDICancelJob() (ret uintptr) {
+    panic("ZBRGDICancelJob not implemented")
+    ret, _, _ =  zBRGDICancelJob.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawText(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawText() () {
-    if zBRGDIDrawText == 0 {
-        panic("ZBRGDIDrawText not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawText is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawText),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawText",callErr)
-    }
-    return
+func ZBRGDIDrawText() (ret uintptr) {
+    panic("ZBRGDIDrawText not implemented")
+    ret, _, _ =  zBRGDIDrawText.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawTextEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextEx() () {
-    if zBRGDIDrawTextEx == 0 {
-        panic("ZBRGDIDrawTextEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawTextEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawTextEx",callErr)
-    }
-    return
+func ZBRGDIDrawTextEx() (ret uintptr) {
+    panic("ZBRGDIDrawTextEx not implemented")
+    ret, _, _ =  zBRGDIDrawTextEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawTextUnicode(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextUnicode() () {
-    if zBRGDIDrawTextUnicode == 0 {
-        panic("ZBRGDIDrawTextUnicode not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawTextUnicode is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextUnicode),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawTextUnicode",callErr)
-    }
-    return
+func ZBRGDIDrawTextUnicode() (ret uintptr) {
+    panic("ZBRGDIDrawTextUnicode not implemented")
+    ret, _, _ =  zBRGDIDrawTextUnicode.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawTextUnicodeEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextUnicodeEx() () {
-    if zBRGDIDrawTextUnicodeEx == 0 {
-        panic("ZBRGDIDrawTextUnicodeEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawTextUnicodeEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextUnicodeEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawTextUnicodeEx",callErr)
-    }
-    return
+func ZBRGDIDrawTextUnicodeEx() (ret uintptr) {
+    panic("ZBRGDIDrawTextUnicodeEx not implemented")
+    ret, _, _ =  zBRGDIDrawTextUnicodeEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawTextRect(int x, int y, int width, int height, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextRect() () {
-    if zBRGDIDrawTextRect == 0 {
-        panic("ZBRGDIDrawTextRect not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawTextRect is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextRect),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawTextRect",callErr)
-    }
-    return
+func ZBRGDIDrawTextRect() (ret uintptr) {
+    panic("ZBRGDIDrawTextRect not implemented")
+    ret, _, _ =  zBRGDIDrawTextRect.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawTextRectEx(int x, int y, int width, int height, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextRectEx() () {
-    if zBRGDIDrawTextRectEx == 0 {
-        panic("ZBRGDIDrawTextRectEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawTextRectEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextRectEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawTextRectEx",callErr)
-    }
-    return
+func ZBRGDIDrawTextRectEx() (ret uintptr) {
+    panic("ZBRGDIDrawTextRectEx not implemented")
+    ret, _, _ =  zBRGDIDrawTextRectEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawLine(int x1, int y1, int x2, int y2, int color, float thickness, out int err);
-func ZBRGDIDrawLine() () {
-    if zBRGDIDrawLine == 0 {
-        panic("ZBRGDIDrawLine not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawLine is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawLine),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawLine",callErr)
-    }
-    return
+func ZBRGDIDrawLine() (ret uintptr) {
+    panic("ZBRGDIDrawLine not implemented")
+    ret, _, _ =  zBRGDIDrawLine.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImage(byte[] filename, int x, int y, out int err);
-func ZBRGDIDrawImage() () {
-    if zBRGDIDrawImage == 0 {
-        panic("ZBRGDIDrawImage not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImage is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImage),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImage",callErr)
-    }
-    return
+func ZBRGDIDrawImage() (ret uintptr) {
+    panic("ZBRGDIDrawImage not implemented")
+    ret, _, _ =  zBRGDIDrawImage.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImageEx(byte[] filename, int imagesize, int x, int y, out int err);
-func ZBRGDIDrawImageEx() () {
-    if zBRGDIDrawImageEx == 0 {
-        panic("ZBRGDIDrawImageEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImageEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImageEx",callErr)
-    }
-    return
+func ZBRGDIDrawImageEx() (ret uintptr) {
+    panic("ZBRGDIDrawImageEx not implemented")
+    ret, _, _ =  zBRGDIDrawImageEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImagePos(byte[] filename, int position, out int err);
-func ZBRGDIDrawImagePos() () {
-    if zBRGDIDrawImagePos == 0 {
-        panic("ZBRGDIDrawImagePos not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImagePos is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImagePos),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImagePos",callErr)
-    }
-    return
+func ZBRGDIDrawImagePos() (ret uintptr) {
+    panic("ZBRGDIDrawImagePos not implemented")
+    ret, _, _ =  zBRGDIDrawImagePos.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImagePosEx(byte[] filename, int imagesize, int position, out int err);
-func ZBRGDIDrawImagePosEx() () {
-    if zBRGDIDrawImagePosEx == 0 {
-        panic("ZBRGDIDrawImagePosEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImagePosEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImagePosEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImagePosEx",callErr)
-    }
-    return
+func ZBRGDIDrawImagePosEx() (ret uintptr) {
+    panic("ZBRGDIDrawImagePosEx not implemented")
+    ret, _, _ =  zBRGDIDrawImagePosEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImageRect(byte[] filename, int x, int y, int width, int height, out int err);
-func ZBRGDIDrawImageRect() () {
-    if zBRGDIDrawImageRect == 0 {
-        panic("ZBRGDIDrawImageRect not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImageRect is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageRect),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImageRect",callErr)
-    }
-    return
+func ZBRGDIDrawImageRect() (ret uintptr) {
+    panic("ZBRGDIDrawImageRect not implemented")
+    ret, _, _ =  zBRGDIDrawImageRect.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawImageRectEx(byte[] filename, int imagesize, int x, int y, int width, int height, out int err);
-func ZBRGDIDrawImageRectEx() () {
-    if zBRGDIDrawImageRectEx == 0 {
-        panic("ZBRGDIDrawImageRectEx not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawImageRectEx is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageRectEx),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawImageRectEx",callErr)
-    }
-    return
+func ZBRGDIDrawImageRectEx() (ret uintptr) {
+    panic("ZBRGDIDrawImageRectEx not implemented")
+    ret, _, _ =  zBRGDIDrawImageRectEx.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawRectangle(int x, int y, int width, int height, float thickness, int color, out int err);
-func ZBRGDIDrawRectangle() () {
-    if zBRGDIDrawRectangle == 0 {
-        panic("ZBRGDIDrawRectangle not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawRectangle is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawRectangle),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawRectangle",callErr)
-    }
-    return
+func ZBRGDIDrawRectangle() (ret uintptr) {
+    panic("ZBRGDIDrawRectangle not implemented")
+    ret, _, _ =  zBRGDIDrawRectangle.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawEllipse(int x, int y, int width, int height, float thickness, int color, out int err);
-func ZBRGDIDrawEllipse() () {
-    if zBRGDIDrawEllipse == 0 {
-        panic("ZBRGDIDrawEllipse not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawEllipse is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawEllipse),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawEllipse",callErr)
-    }
-    return
+func ZBRGDIDrawEllipse() (ret uintptr) {
+    panic("ZBRGDIDrawEllipse not implemented")
+    ret, _, _ =  zBRGDIDrawEllipse.Call(
+        )
+    return ret
 }
-
 // extern int ZBRGDIDrawBarcode(int x, int y, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
-func ZBRGDIDrawBarCode() () {
-    if zBRGDIDrawBarCode == 0 {
-        panic("ZBRGDIDrawBarCode not defined. Check library")
-    }
-    var nargs uintptr = 0
-    panic("Call ZBRGDIDrawBarCode is not implemented")
-    _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawBarCode),
-        nargs,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0)
-    if callErr != 0 {
-        abort("ZBRGDIDrawBarCode",callErr)
-    }
-    return
+func ZBRGDIDrawBarcode() (ret uintptr) {
+    panic("ZBRGDIDrawBarcode not implemented")
+    ret, _, _ =  zBRGDIDrawBarcode.Call(
+        )
+    return ret
 }
