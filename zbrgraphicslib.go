@@ -84,6 +84,7 @@ const (
     ZBR_DLG_ERROR_DEFAULT_DIFFERENT            = 8037
 )
 
+// extern void ZBRGDIGetSDKVer(out int major, out int minor, out int englevel);
 func ZBRGDIGetSDKVer() (major uint, minor uint, engLevel uint) {
     if zBRGDIGetSDKVer == 0 {
         panic("ZBRGDIGetSDKVer not defined. Check library")
@@ -106,7 +107,7 @@ func ZBRGDIGetSDKVer() (major uint, minor uint, engLevel uint) {
     return major,minor,engLevel
 }
 
-//int
+// extern int ZBRGDIIsPrinterReady(byte[] printername, out int err);
 func ZBRGDIIsPrinterReady(strPrinterName []byte) (ret uintptr, err uint) {
     if zBRGDIIsPrinterReady == 0 {
         panic("ZBRGDIIsPrinterReady not defined. Check library")
@@ -130,6 +131,7 @@ func ZBRGDIIsPrinterReady(strPrinterName []byte) (ret uintptr, err uint) {
     return ret, err
 }
 
+// extern void ZBRGDIGetSDKVsn(out int major, out int minor, out int englevel);
 func ZBRGDIGetSDKVsn() () {
     if zBRGDIGetSDKVsn == 0 {
         panic("ZBRGDIGetSDKVsn not defined. Check library")
@@ -149,6 +151,8 @@ func ZBRGDIGetSDKVsn() () {
         0)
     return
 }
+
+// extern int ZBRGDIGetSDKProductVer(byte[] productversion, out int buffsize, out int err);
 func ZBRGDIGetSDKProductVer() () {
     if zBRGDIGetSDKProductVer == 0 {
         panic("ZBRGDIGetSDKProductVer not defined. Check library")
@@ -168,6 +172,8 @@ func ZBRGDIGetSDKProductVer() () {
         0)
     return
 }
+
+// extern int ZBRGDIInitGraphics(byte[] printername, out IntPtr hdc, out int err);
 func ZBRGDIInitGraphics() () {
     if zBRGDIInitGraphics == 0 {
         panic("ZBRGDIInitGraphics not defined. Check library")
@@ -187,6 +193,8 @@ func ZBRGDIInitGraphics() () {
         0)
     return
 }
+
+// extern int ZBRGDIInitGraphicsEx(byte[] printername, out IntPtr hdc, byte[] jobname, out int jobid, out int err);
 func ZBRGDIInitGraphicsEx() () {
     if zBRGDIInitGraphicsEx == 0 {
         panic("ZBRGDIInitGraphicsEx not defined. Check library")
@@ -206,6 +214,8 @@ func ZBRGDIInitGraphicsEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIInitGraphicsFromPrintDlg(out IntPtr hdc, out int err);
 func ZBRGDIInitGraphicsFromPrintDlg() () {
     if zBRGDIInitGraphicsFromPrintDlg == 0 {
         panic("ZBRGDIInitGraphicsFromPrintDlg not defined. Check library")
@@ -225,6 +235,8 @@ func ZBRGDIInitGraphicsFromPrintDlg() () {
         0)
     return
 }
+
+// extern int ZBRGDICloseGraphics(IntPtr hdc, out int err);
 func ZBRGDICloseGraphics() () {
     if zBRGDICloseGraphics == 0 {
         panic("ZBRGDICloseGraphics not defined. Check library")
@@ -244,6 +256,8 @@ func ZBRGDICloseGraphics() () {
         0)
     return
 }
+
+// extern int ZBRGDIClearGraphics(out int err);
 func ZBRGDIClearGraphics() () {
     if zBRGDIClearGraphics == 0 {
         panic("ZBRGDIClearGraphics not defined. Check library")
@@ -263,6 +277,8 @@ func ZBRGDIClearGraphics() () {
         0)
     return
 }
+
+// extern int ZBRGDIStartPage(IntPtr hdc, out int err);
 func ZBRGDIStartPage() () {
     if zBRGDIStartPage == 0 {
         panic("ZBRGDIStartPage not defined. Check library")
@@ -282,6 +298,8 @@ func ZBRGDIStartPage() () {
         0)
     return
 }
+
+// extern int ZBRGDIEndPage(IntPtr hdc, out int err);
 func ZBRGDIEndPage() () {
     if zBRGDIEndPage == 0 {
         panic("ZBRGDIEndPage not defined. Check library")
@@ -301,6 +319,8 @@ func ZBRGDIEndPage() () {
         0)
     return
 }
+
+// extern int ZBRGDIPreviewGraphics(IntPtr hwnd, out int err);
 func ZBRGDIPreviewGraphics() () {
     if zBRGDIPreviewGraphics == 0 {
         panic("ZBRGDIPreviewGraphics not defined. Check library")
@@ -320,6 +340,8 @@ func ZBRGDIPreviewGraphics() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintGraphics(IntPtr hdc, out int err);
 func ZBRGDIPrintGraphics() () {
     if zBRGDIPrintGraphics == 0 {
         panic("ZBRGDIPrintGraphics not defined. Check library")
@@ -339,6 +361,8 @@ func ZBRGDIPrintGraphics() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintGraphicsEx(IntPtr hdc, out int err);
 func ZBRGDIPrintGraphicsEx() () {
     if zBRGDIPrintGraphicsEx == 0 {
         panic("ZBRGDIPrintGraphicsEx not defined. Check library")
@@ -358,6 +382,8 @@ func ZBRGDIPrintGraphicsEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintFilePos(IntPtr hdc, byte[] filename, int position, out int err);
 func ZBRGDIPrintFilePos() () {
     if zBRGDIPrintFilePos == 0 {
         panic("ZBRGDIPrintFilePos not defined. Check library")
@@ -377,6 +403,8 @@ func ZBRGDIPrintFilePos() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintFilePos(IntPtr hdc, byte[] filename, int position, out int err);
 func ZBRGDIPrintFileRect() () {
     if zBRGDIPrintFileRect == 0 {
         panic("ZBRGDIPrintFileRect not defined. Check library")
@@ -396,6 +424,8 @@ func ZBRGDIPrintFileRect() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintImagePos(IntPtr hdc, byte[] imagedata, int imagesize, int position, out int err);
 func ZBRGDIPrintImagePos() () {
     if zBRGDIPrintImagePos == 0 {
         panic("ZBRGDIPrintImagePos not defined. Check library")
@@ -415,6 +445,8 @@ func ZBRGDIPrintImagePos() () {
         0)
     return
 }
+
+// extern int ZBRGDIPrintImageRect(IntPtr hdc, byte[] imagedata, int imagesize, int x, int y, int width, int height, out int err);
 func ZBRGDIPrintImageRect() () {
     if zBRGDIPrintImageRect == 0 {
         panic("ZBRGDIPrintImageRect not defined. Check library")
@@ -434,6 +466,8 @@ func ZBRGDIPrintImageRect() () {
         0)
     return
 }
+
+// extern int ZBRGDICancelJob(byte[] printername, int jobid, out int err);
 func ZBRGDICancelJob() () {
     if zBRGDICancelJob == 0 {
         panic("ZBRGDICancelJob not defined. Check library")
@@ -453,6 +487,8 @@ func ZBRGDICancelJob() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawText(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawText() () {
     if zBRGDIDrawText == 0 {
         panic("ZBRGDIDrawText not defined. Check library")
@@ -472,6 +508,8 @@ func ZBRGDIDrawText() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawTextEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawTextEx() () {
     if zBRGDIDrawTextEx == 0 {
         panic("ZBRGDIDrawTextEx not defined. Check library")
@@ -491,6 +529,8 @@ func ZBRGDIDrawTextEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawTextUnicode(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawTextUnicode() () {
     if zBRGDIDrawTextUnicode == 0 {
         panic("ZBRGDIDrawTextUnicode not defined. Check library")
@@ -510,6 +550,8 @@ func ZBRGDIDrawTextUnicode() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawTextUnicodeEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawTextUnicodeEx() () {
     if zBRGDIDrawTextUnicodeEx == 0 {
         panic("ZBRGDIDrawTextUnicodeEx not defined. Check library")
@@ -529,6 +571,8 @@ func ZBRGDIDrawTextUnicodeEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawTextRect(int x, int y, int width, int height, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawTextRect() () {
     if zBRGDIDrawTextRect == 0 {
         panic("ZBRGDIDrawTextRect not defined. Check library")
@@ -548,6 +592,8 @@ func ZBRGDIDrawTextRect() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawTextRectEx(int x, int y, int width, int height, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
 func ZBRGDIDrawTextRectEx() () {
     if zBRGDIDrawTextRectEx == 0 {
         panic("ZBRGDIDrawTextRectEx not defined. Check library")
@@ -567,6 +613,8 @@ func ZBRGDIDrawTextRectEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawLine(int x1, int y1, int x2, int y2, int color, float thickness, out int err);
 func ZBRGDIDrawLine() () {
     if zBRGDIDrawLine == 0 {
         panic("ZBRGDIDrawLine not defined. Check library")
@@ -586,6 +634,8 @@ func ZBRGDIDrawLine() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImage(byte[] filename, int x, int y, out int err);
 func ZBRGDIDrawImage() () {
     if zBRGDIDrawImage == 0 {
         panic("ZBRGDIDrawImage not defined. Check library")
@@ -605,6 +655,8 @@ func ZBRGDIDrawImage() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImageEx(byte[] filename, int imagesize, int x, int y, out int err);
 func ZBRGDIDrawImageEx() () {
     if zBRGDIDrawImageEx == 0 {
         panic("ZBRGDIDrawImageEx not defined. Check library")
@@ -624,6 +676,8 @@ func ZBRGDIDrawImageEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImagePos(byte[] filename, int position, out int err);
 func ZBRGDIDrawImagePos() () {
     if zBRGDIDrawImagePos == 0 {
         panic("ZBRGDIDrawImagePos not defined. Check library")
@@ -643,6 +697,8 @@ func ZBRGDIDrawImagePos() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImagePosEx(byte[] filename, int imagesize, int position, out int err);
 func ZBRGDIDrawImagePosEx() () {
     if zBRGDIDrawImagePosEx == 0 {
         panic("ZBRGDIDrawImagePosEx not defined. Check library")
@@ -662,6 +718,8 @@ func ZBRGDIDrawImagePosEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImageRect(byte[] filename, int x, int y, int width, int height, out int err);
 func ZBRGDIDrawImageRect() () {
     if zBRGDIDrawImageRect == 0 {
         panic("ZBRGDIDrawImageRect not defined. Check library")
@@ -681,6 +739,8 @@ func ZBRGDIDrawImageRect() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawImageRectEx(byte[] filename, int imagesize, int x, int y, int width, int height, out int err);
 func ZBRGDIDrawImageRectEx() () {
     if zBRGDIDrawImageRectEx == 0 {
         panic("ZBRGDIDrawImageRectEx not defined. Check library")
@@ -700,6 +760,8 @@ func ZBRGDIDrawImageRectEx() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawRectangle(int x, int y, int width, int height, float thickness, int color, out int err);
 func ZBRGDIDrawRectangle() () {
     if zBRGDIDrawRectangle == 0 {
         panic("ZBRGDIDrawRectangle not defined. Check library")
@@ -719,6 +781,8 @@ func ZBRGDIDrawRectangle() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawEllipse(int x, int y, int width, int height, float thickness, int color, out int err);
 func ZBRGDIDrawEllipse() () {
     if zBRGDIDrawEllipse == 0 {
         panic("ZBRGDIDrawEllipse not defined. Check library")
@@ -738,6 +802,8 @@ func ZBRGDIDrawEllipse() () {
         0)
     return
 }
+
+// extern int ZBRGDIDrawBarcode(int x, int y, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
 func ZBRGDIDrawBarCode() () {
     if zBRGDIDrawBarCode == 0 {
         panic("ZBRGDIDrawBarCode not defined. Check library")
