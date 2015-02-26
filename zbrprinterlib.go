@@ -183,6 +183,7 @@ func ZBRCloseHandle() () {
     var nargs uintptr = 0
     panic("ZBRCloseHandle is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRCloseHandle),
+        nargs,
         0,
         0,
         0,
@@ -199,23 +200,26 @@ func ZBRCloseHandle() () {
 }
 
 // extern int ZBRGetHandle(out IntPtr handle, byte[] drvname, out int printertype, out int err);
-func ZBRGetHandle(drvName string) (handle syscall.Handle, prn_type int, err int) {
+func ZBRGetHandle(drvName string) (ret uintptr, handle syscall.Handle, prn_type int, err int) {
     if zBRGetHandle == 0 {
         panic("ZBRGetHandle not defined. Check library")
     }
     var nargs uintptr = 4
     ret, _, callErr := syscall.Syscall9(uintptr(zBRGetHandle),
-            nargs,
-            uintptr(unsafe.Pointer(&handle)),
-            uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(drvName))),
-            uintptr(unsafe.Pointer(&prn_type)),
-            uintptr(unsafe.Pointer(&err)),
-            0,
-            0,
-            0,
-            0,
-            0)
-    return handle, prn_type, err
+        nargs,
+        uintptr(unsafe.Pointer(&handle)),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(drvName))),
+        uintptr(unsafe.Pointer(&prn_type)),
+        uintptr(unsafe.Pointer(&err)),
+        0,
+        0,
+        0,
+        0,
+        0)
+    if callErr != 0 {
+        abort("ZBRGetHandle",callErr)
+    }
+    return ret, handle, prn_type, err
 }
 
 // extern int ZBRPRNCheckForErrors(IntPtr hprinter, int printertype);
@@ -226,6 +230,7 @@ func ZBRPRNCheckForErrors() () {
     var nargs uintptr = 0
     panic("ZBRPRNCheckForErrors is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNCheckForErrors),
+        nargs,
         0,
         0,
         0,
@@ -249,6 +254,7 @@ func ZBRPRNChkDueForCleaning() () {
     var nargs uintptr = 0
     panic("ZBRPRNChkDueForCleaning is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNChkDueForCleaning),
+        nargs,
         0,
         0,
         0,
@@ -272,6 +278,7 @@ func ZBRPRNClrColorImgBuf() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrColorImgBuf is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrColorImgBuf),
+        nargs,
         0,
         0,
         0,
@@ -295,6 +302,7 @@ func ZBRPRNClrColorImgBufs() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrColorImgBufs is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrColorImgBufs),
+        nargs,
         0,
         0,
         0,
@@ -318,6 +326,7 @@ func ZBRPRNClrErrStatusLn() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrErrStatusLn is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrErrStatusLn),
+        nargs,
         0,
         0,
         0,
@@ -341,6 +350,7 @@ func ZBRPRNClrMediaPath() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrMediaPath is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMediaPath),
+        nargs,
         0,
         0,
         0,
@@ -364,6 +374,7 @@ func ZBRPRNClrMonoImgBuf() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrMonoImgBuf is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMonoImgBuf),
+        nargs,
         0,
         0,
         0,
@@ -387,6 +398,7 @@ func ZBRPRNClrMonoImgBufs() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrMonoImgBufs is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrMonoImgBufs),
+        nargs,
         0,
         0,
         0,
@@ -410,6 +422,7 @@ func ZBRPRNClrSpecifiedBmp() () {
     var nargs uintptr = 0
     panic("ZBRPRNClrSpecifiedBmp is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNClrSpecifiedBmp),
+        nargs,
         0,
         0,
         0,
@@ -433,6 +446,7 @@ func ZBRPRNEjectCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNEjectCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEjectCard),
+        nargs,
         0,
         0,
         0,
@@ -456,6 +470,7 @@ func ZBRPRNEnableMagReadDataEncryption() () {
     var nargs uintptr = 0
     panic("ZBRPRNEnableMagReadDataEncryption is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEnableMagReadDataEncryption),
+        nargs,
         0,
         0,
         0,
@@ -479,6 +494,7 @@ func ZBRPRNEndSmartCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNEndSmartCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNEndSmartCard),
+        nargs,
         0,
         0,
         0,
@@ -502,6 +518,7 @@ func ZBRPRNFlipCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNFlipCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNFlipCard),
+        nargs,
         0,
         0,
         0,
@@ -525,6 +542,7 @@ func ZBRPRNGetChecksum() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetChecksum is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetChecksum),
+        nargs,
         0,
         0,
         0,
@@ -548,6 +566,7 @@ func ZBRPRNGetCleaningParam() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetCleaningParam is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetCleaningParam),
+        nargs,
         0,
         0,
         0,
@@ -571,6 +590,7 @@ func ZBRPRNGetIPAddress() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetIPAddress is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetIPAddress),
+        nargs,
         0,
         0,
         0,
@@ -594,6 +614,7 @@ func ZBRPRNGetMsgSuppressionState() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetMsgSuppressionState is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetMsgSuppressionState),
+        nargs,
         0,
         0,
         0,
@@ -617,6 +638,7 @@ func ZBRPRNGetOpParam() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetOpParam is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetOpParam),
+        nargs,
         0,
         0,
         0,
@@ -640,6 +662,7 @@ func ZBRPRNGetPanelsPrinted() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPanelsPrinted is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPanelsPrinted),
+        nargs,
         0,
         0,
         0,
@@ -663,6 +686,7 @@ func ZBRPRNGetPanelsRemaining() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPanelsRemaining is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPanelsRemaining),
+        nargs,
         0,
         0,
         0,
@@ -686,6 +710,7 @@ func ZBRPRNGetPrintCount() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrintCount is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintCount),
+        nargs,
         0,
         0,
         0,
@@ -709,6 +734,7 @@ func ZBRPRNGetPrinterOptions() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrinterOptions is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterOptions),
+        nargs,
         0,
         0,
         0,
@@ -732,6 +758,7 @@ func ZBRPRNGetPrinterSerialNumb() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrinterSerialNumb is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterSerialNumb),
+        nargs,
         0,
         0,
         0,
@@ -755,6 +782,7 @@ func ZBRPRNGetPrinterSerialNumber() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrinterSerialNumber is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterSerialNumber),
+        nargs,
         0,
         0,
         0,
@@ -778,6 +806,7 @@ func ZBRPRNGetPrinterStatus() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrinterStatus is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrinterStatus),
+        nargs,
         0,
         0,
         0,
@@ -801,6 +830,7 @@ func ZBRPRNGetPrintHeadSerialNumb() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrintHeadSerialNumb is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintHeadSerialNumb),
+        nargs,
         0,
         0,
         0,
@@ -824,6 +854,7 @@ func ZBRPRNGetPrintHeadSerialNumber() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrintHeadSerialNumber is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintHeadSerialNumber),
+        nargs,
         0,
         0,
         0,
@@ -847,6 +878,7 @@ func ZBRPRNGetPrintStatus() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetPrintStatus is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetPrintStatus),
+        nargs,
         0,
         0,
         0,
@@ -870,6 +902,7 @@ func ZBRPRNGetSDKProductVer() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetSDKProductVer is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKProductVer),
+        nargs,
         0,
         0,
         0,
@@ -892,16 +925,16 @@ func ZBRPRNGetSDKVer() (major uint,minor uint,engLevel uint) {
     }
     var nargs uintptr = 3
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKVer),
-            nargs,
-            uintptr(unsafe.Pointer(&major)),
-            uintptr(unsafe.Pointer(&minor)),
-            uintptr(unsafe.Pointer(&engLevel)),
-            0,
-            0,
-            0,
-            0,
-            0,
-            0)
+        nargs,
+        uintptr(unsafe.Pointer(&major)),
+        uintptr(unsafe.Pointer(&minor)),
+        uintptr(unsafe.Pointer(&engLevel)),
+        0,
+        0,
+        0,
+        0,
+        0,
+        0)
     if callErr != 0 {
             abort("Call ZBRPRNGetSDKVer", callErr)
     }
@@ -916,6 +949,7 @@ func ZBRPRNGetSDKVsn() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetSDKVsn is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSDKVsn),
+        nargs,
         0,
         0,
         0,
@@ -939,6 +973,7 @@ func ZBRPRNGetSensorStatus() () {
     var nargs uintptr = 0
     panic("ZBRPRNGetSensorStatus is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNGetSensorStatus),
+        nargs,
         0,
         0,
         0,
@@ -962,6 +997,7 @@ func ZBRPRNImmediateParamSave() () {
     var nargs uintptr = 0
     panic("ZBRPRNImmediateParamSave is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNImmediateParamSave),
+        nargs,
         0,
         0,
         0,
@@ -985,6 +1021,7 @@ func ZBRPRNIsPrinterReady() () {
     var nargs uintptr = 0
     panic("ZBRPRNIsPrinterReady is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNIsPrinterReady),
+        nargs,
         0,
         0,
         0,
@@ -1008,6 +1045,7 @@ func ZBRPRNMoveCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNMoveCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCard),
+        nargs,
         0,
         0,
         0,
@@ -1031,6 +1069,7 @@ func ZBRPRNMoveCardBkwd() () {
     var nargs uintptr = 0
     panic("ZBRPRNMoveCardBkwd is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCardBkwd),
+        nargs,
         0,
         0,
         0,
@@ -1054,6 +1093,7 @@ func ZBRPRNMoveCardFwd() () {
     var nargs uintptr = 0
     panic("ZBRPRNMoveCardFwd is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMoveCardFwd),
+        nargs,
         0,
         0,
         0,
@@ -1077,6 +1117,7 @@ func ZBRPRNMovePrintReady() () {
     var nargs uintptr = 0
     panic("ZBRPRNMovePrintReady is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNMovePrintReady),
+        nargs,
         0,
         0,
         0,
@@ -1100,6 +1141,7 @@ func ZBRPRNPrintCardPanel() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintCardPanel is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintCardPanel),
+        nargs,
         0,
         0,
         0,
@@ -1123,6 +1165,7 @@ func ZBRPRNPrintClearVarnish() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintClearVarnish is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintClearVarnish),
+        nargs,
         0,
         0,
         0,
@@ -1146,6 +1189,7 @@ func ZBRPRNPrintColorImgBuf() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintColorImgBuf is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintColorImgBuf),
+        nargs,
         0,
         0,
         0,
@@ -1169,6 +1213,7 @@ func ZBRPRNPrintHologramOverlay() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintHologramOverlay is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintHologramOverlay),
+        nargs,
         0,
         0,
         0,
@@ -1192,6 +1237,7 @@ func ZBRPRNPrintMonoImgBuf() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintMonoImgBuf is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoImgBuf),
+        nargs,
         0,
         0,
         0,
@@ -1215,6 +1261,7 @@ func ZBRPRNPrintMonoImgBufEx() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintMonoImgBufEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoImgBufEx),
+        nargs,
         0,
         0,
         0,
@@ -1238,6 +1285,7 @@ func ZBRPRNPrintMonoPanel() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintMonoPanel is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintMonoPanel),
+        nargs,
         0,
         0,
         0,
@@ -1261,6 +1309,7 @@ func ZBRPRNPrintPrnFile() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintPrnFile is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintPrnFile),
+        nargs,
         0,
         0,
         0,
@@ -1284,6 +1333,7 @@ func ZBRPRNPrintTestCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintTestCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintTestCard),
+        nargs,
         0,
         0,
         0,
@@ -1307,6 +1357,7 @@ func ZBRPRNPrintVarnish() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintVarnish is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintVarnish),
+        nargs,
         0,
         0,
         0,
@@ -1330,6 +1381,7 @@ func ZBRPRNPrintVarnishEx() () {
     var nargs uintptr = 0
     panic("ZBRPRNPrintVarnishEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNPrintVarnishEx),
+        nargs,
         0,
         0,
         0,
@@ -1353,6 +1405,7 @@ func ZBRPRNReadMag() () {
     var nargs uintptr = 0
     panic("ZBRPRNReadMag is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReadMag),
+        nargs,
         0,
         0,
         0,
@@ -1376,6 +1429,7 @@ func ZBRPRNReadMagByTrk() () {
     var nargs uintptr = 0
     panic("ZBRPRNReadMagByTrk is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReadMagByTrk),
+        nargs,
         0,
         0,
         0,
@@ -1399,6 +1453,7 @@ func ZBRPRNResetMagEncoder() () {
     var nargs uintptr = 0
     panic("ZBRPRNResetMagEncoder is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResetMagEncoder),
+        nargs,
         0,
         0,
         0,
@@ -1422,6 +1477,7 @@ func ZBRPRNResetPrinter() () {
     var nargs uintptr = 0
     panic("ZBRPRNResetPrinter is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResetPrinter),
+        nargs,
         0,
         0,
         0,
@@ -1445,6 +1501,7 @@ func ZBRPRNResync() () {
     var nargs uintptr = 0
     panic("ZBRPRNResync is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNResync),
+        nargs,
         0,
         0,
         0,
@@ -1468,6 +1525,7 @@ func ZBRPRNReversePrintReady() () {
     var nargs uintptr = 0
     panic("ZBRPRNReversePrintReady is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNReversePrintReady),
+        nargs,
         0,
         0,
         0,
@@ -1491,6 +1549,7 @@ func ZBRPRNSelfAdj() () {
     var nargs uintptr = 0
     panic("ZBRPRNSelfAdj is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSelfAdj),
+        nargs,
         0,
         0,
         0,
@@ -1514,6 +1573,7 @@ func ZBRPRNSetCardFeedingMode() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetCardFeedingMode is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetCardFeedingMode),
+        nargs,
         0,
         0,
         0,
@@ -1537,6 +1597,7 @@ func ZBRPRNSetCleaningParam() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetCleaningParam is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetCleaningParam),
+        nargs,
         0,
         0,
         0,
@@ -1560,6 +1621,7 @@ func ZBRPRNSetColorContrast() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetColorContrast is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetColorContrast),
+        nargs,
         0,
         0,
         0,
@@ -1583,6 +1645,7 @@ func ZBRPRNSetContrastIntensityLvl() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetContrastIntensityLvl is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetContrastIntensityLvl),
+        nargs,
         0,
         0,
         0,
@@ -1606,6 +1669,7 @@ func ZBRPRNSetEncoderCoercivity() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetEncoderCoercivity is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEncoderCoercivity),
+        nargs,
         0,
         0,
         0,
@@ -1629,6 +1693,7 @@ func ZBRPRNSetEncodingDir() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetEncodingDir is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEncodingDir),
+        nargs,
         0,
         0,
         0,
@@ -1652,6 +1717,7 @@ func ZBRPRNSetEndOfPrint() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetEndOfPrint is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetEndOfPrint),
+        nargs,
         0,
         0,
         0,
@@ -1675,6 +1741,7 @@ func ZBRPRNSetHologramIntensity() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetHologramIntensity is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetHologramIntensity),
+        nargs,
         0,
         0,
         0,
@@ -1698,6 +1765,7 @@ func ZBRPRNSetMagEncodingStd() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetMagEncodingStd is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMagEncodingStd),
+        nargs,
         0,
         0,
         0,
@@ -1721,6 +1789,7 @@ func ZBRPRNSetMonoContrast() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetMonoContrast is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMonoContrast),
+        nargs,
         0,
         0,
         0,
@@ -1744,6 +1813,7 @@ func ZBRPRNSetMonoIntensity() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetMonoIntensity is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetMonoIntensity),
+        nargs,
         0,
         0,
         0,
@@ -1767,6 +1837,7 @@ func ZBRPRNSetOverlayMode() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetOverlayMode is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetOverlayMode),
+        nargs,
         0,
         0,
         0,
@@ -1790,6 +1861,7 @@ func ZBRPRNSetPrintHeadResistance() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetPrintHeadResistance is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetPrintHeadResistance),
+        nargs,
         0,
         0,
         0,
@@ -1813,6 +1885,7 @@ func ZBRPRNSetRelativeXOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetRelativeXOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetRelativeXOffset),
+        nargs,
         0,
         0,
         0,
@@ -1836,6 +1909,7 @@ func ZBRPRNSetRelativeYOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetRelativeYOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetRelativeYOffset),
+        nargs,
         0,
         0,
         0,
@@ -1859,6 +1933,7 @@ func ZBRPRNSetStartPrintSideBOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetStartPrintSideBOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBOffset),
+        nargs,
         0,
         0,
         0,
@@ -1882,6 +1957,7 @@ func ZBRPRNSetStartPrintSideBXOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetStartPrintSideBXOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBXOffset),
+        nargs,
         0,
         0,
         0,
@@ -1905,6 +1981,7 @@ func ZBRPRNSetStartPrintSideBYOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetStartPrintSideBYOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintSideBYOffset),
+        nargs,
         0,
         0,
         0,
@@ -1928,6 +2005,7 @@ func ZBRPRNSetStartPrintXOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetStartPrintXOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintXOffset),
+        nargs,
         0,
         0,
         0,
@@ -1951,6 +2029,7 @@ func ZBRPRNSetStartPrintYOffset() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetStartPrintYOffset is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetStartPrintYOffset),
+        nargs,
         0,
         0,
         0,
@@ -1974,6 +2053,7 @@ func ZBRPRNSetTrkDensity() () {
     var nargs uintptr = 0
     panic("ZBRPRNSetTrkDensity is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSetTrkDensity),
+        nargs,
         0,
         0,
         0,
@@ -1997,6 +2077,7 @@ func ZBRPRNStartCleaningCardSeq() () {
     var nargs uintptr = 0
     panic("ZBRPRNStartCleaningCardSeq is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartCleaningCardSeq),
+        nargs,
         0,
         0,
         0,
@@ -2020,6 +2101,7 @@ func ZBRPRNStartCleaningSeq() () {
     var nargs uintptr = 0
     panic("ZBRPRNStartCleaningSeq is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartCleaningSeq),
+        nargs,
         0,
         0,
         0,
@@ -2043,6 +2125,7 @@ func ZBRPRNStartSmartCard() () {
     var nargs uintptr = 0
     panic("ZBRPRNStartSmartCard is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNStartSmartCard),
+        nargs,
         0,
         0,
         0,
@@ -2066,6 +2149,7 @@ func ZBRPRNSuppressStatusMsgs() () {
     var nargs uintptr = 0
     panic("ZBRPRNSuppressStatusMsgs is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNSuppressStatusMsgs),
+        nargs,
         0,
         0,
         0,
@@ -2089,6 +2173,7 @@ func ZBRPRNUpgradeFirmware() () {
     var nargs uintptr = 0
     panic("ZBRPRNUpgradeFirmware is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNUpgradeFirmware),
+        nargs,
         0,
         0,
         0,
@@ -2112,6 +2197,7 @@ func ZBRPRNWriteBarCode() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteBarCode is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBarCode),
+        nargs,
         0,
         0,
         0,
@@ -2135,6 +2221,7 @@ func ZBRPRNWriteBox() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteBox is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBox),
+        nargs,
         0,
         0,
         0,
@@ -2158,6 +2245,7 @@ func ZBRPRNWriteBoxEx() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteBoxEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteBoxEx),
+        nargs,
         0,
         0,
         0,
@@ -2181,6 +2269,7 @@ func ZBRPRNWriteMag() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteMag is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMag),
+        nargs,
         0,
         0,
         0,
@@ -2204,6 +2293,7 @@ func ZBRPRNWriteMagByTrk() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteMagByTrk is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMagByTrk),
+        nargs,
         0,
         0,
         0,
@@ -2227,6 +2317,7 @@ func ZBRPRNWriteMagPassThru() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteMagPassThru is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteMagPassThru),
+        nargs,
         0,
         0,
         0,
@@ -2250,6 +2341,7 @@ func ZBRPRNWriteText() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteText is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteText),
+        nargs,
         0,
         0,
         0,
@@ -2273,6 +2365,7 @@ func ZBRPRNWriteTextEx() () {
     var nargs uintptr = 0
     panic("ZBRPRNWriteTextEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRPRNWriteTextEx),
+        nargs,
         0,
         0,
         0,
