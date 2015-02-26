@@ -137,7 +137,7 @@ func ZBRGDIGetSDKVsn() () {
         panic("ZBRGDIGetSDKVsn not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIGetSDKVsn not implemented")
+    panic("Call ZBRGDIGetSDKVsn is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIGetSDKVsn),
         nargs,
         0,
@@ -158,7 +158,7 @@ func ZBRGDIGetSDKProductVer() () {
         panic("ZBRGDIGetSDKProductVer not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIGetSDKProductVer not implemented")
+    panic("Call ZBRGDIGetSDKProductVer is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIGetSDKProductVer),
         nargs,
         0,
@@ -179,7 +179,7 @@ func ZBRGDIInitGraphics() () {
         panic("ZBRGDIInitGraphics not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIInitGraphics not implemented")
+    panic("Call ZBRGDIInitGraphics is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphics),
         nargs,
         0,
@@ -200,7 +200,7 @@ func ZBRGDIInitGraphicsEx() () {
         panic("ZBRGDIInitGraphicsEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIInitGraphicsEx not implemented")
+    panic("Call ZBRGDIInitGraphicsEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphicsEx),
         nargs,
         0,
@@ -221,7 +221,7 @@ func ZBRGDIInitGraphicsFromPrintDlg() () {
         panic("ZBRGDIInitGraphicsFromPrintDlg not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIInitGraphicsFromPrintDlg not implemented")
+    panic("Call ZBRGDIInitGraphicsFromPrintDlg is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIInitGraphicsFromPrintDlg),
         nargs,
         0,
@@ -242,7 +242,7 @@ func ZBRGDICloseGraphics() () {
         panic("ZBRGDICloseGraphics not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDICloseGraphics not implemented")
+    panic("Call ZBRGDICloseGraphics is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDICloseGraphics),
         nargs,
         0,
@@ -263,7 +263,7 @@ func ZBRGDIClearGraphics() () {
         panic("ZBRGDIClearGraphics not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIClearGraphics not implemented")
+    panic("Call ZBRGDIClearGraphics is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIClearGraphics),
         nargs,
         0,
@@ -284,7 +284,7 @@ func ZBRGDIStartPage() () {
         panic("ZBRGDIStartPage not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIStartPage not implemented")
+    panic("Call ZBRGDIStartPage is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIStartPage),
         nargs,
         0,
@@ -305,7 +305,7 @@ func ZBRGDIEndPage() () {
         panic("ZBRGDIEndPage not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIEndPage not implemented")
+    panic("Call ZBRGDIEndPage is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIEndPage),
         nargs,
         0,
@@ -326,7 +326,7 @@ func ZBRGDIPreviewGraphics() () {
         panic("ZBRGDIPreviewGraphics not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPreviewGraphics not implemented")
+    panic("Call ZBRGDIPreviewGraphics is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPreviewGraphics),
         nargs,
         0,
@@ -347,7 +347,7 @@ func ZBRGDIPrintGraphics() () {
         panic("ZBRGDIPrintGraphics not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintGraphics not implemented")
+    panic("Call ZBRGDIPrintGraphics is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintGraphics),
         nargs,
         0,
@@ -368,7 +368,7 @@ func ZBRGDIPrintGraphicsEx() () {
         panic("ZBRGDIPrintGraphicsEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintGraphicsEx not implemented")
+    panic("Call ZBRGDIPrintGraphicsEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintGraphicsEx),
         nargs,
         0,
@@ -389,7 +389,7 @@ func ZBRGDIPrintFilePos() () {
         panic("ZBRGDIPrintFilePos not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintFilePos not implemented")
+    panic("Call ZBRGDIPrintFilePos is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintFilePos),
         nargs,
         0,
@@ -410,7 +410,7 @@ func ZBRGDIPrintFileRect() () {
         panic("ZBRGDIPrintFileRect not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintFileRect not implemented")
+    panic("Call ZBRGDIPrintFileRect is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintFileRect),
         nargs,
         0,
@@ -431,7 +431,7 @@ func ZBRGDIPrintImagePos() () {
         panic("ZBRGDIPrintImagePos not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintImagePos not implemented")
+    panic("Call ZBRGDIPrintImagePos is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintImagePos),
         nargs,
         0,
@@ -452,7 +452,7 @@ func ZBRGDIPrintImageRect() () {
         panic("ZBRGDIPrintImageRect not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIPrintImageRect not implemented")
+    panic("Call ZBRGDIPrintImageRect is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIPrintImageRect),
         nargs,
         0,
@@ -473,7 +473,7 @@ func ZBRGDICancelJob() () {
         panic("ZBRGDICancelJob not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDICancelJob not implemented")
+    panic("Call ZBRGDICancelJob is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDICancelJob),
         nargs,
         0,
@@ -494,7 +494,7 @@ func ZBRGDIDrawText() () {
         panic("ZBRGDIDrawText not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawText not implemented")
+    panic("Call ZBRGDIDrawText is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawText),
         nargs,
         0,
@@ -515,7 +515,7 @@ func ZBRGDIDrawTextEx() () {
         panic("ZBRGDIDrawTextEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawTextEx not implemented")
+    panic("Call ZBRGDIDrawTextEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextEx),
         nargs,
         0,
@@ -536,7 +536,7 @@ func ZBRGDIDrawTextUnicode() () {
         panic("ZBRGDIDrawTextUnicode not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawTextUnicode not implemented")
+    panic("Call ZBRGDIDrawTextUnicode is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextUnicode),
         nargs,
         0,
@@ -557,7 +557,7 @@ func ZBRGDIDrawTextUnicodeEx() () {
         panic("ZBRGDIDrawTextUnicodeEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawTextUnicodeEx not implemented")
+    panic("Call ZBRGDIDrawTextUnicodeEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextUnicodeEx),
         nargs,
         0,
@@ -578,7 +578,7 @@ func ZBRGDIDrawTextRect() () {
         panic("ZBRGDIDrawTextRect not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawTextRect not implemented")
+    panic("Call ZBRGDIDrawTextRect is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextRect),
         nargs,
         0,
@@ -599,7 +599,7 @@ func ZBRGDIDrawTextRectEx() () {
         panic("ZBRGDIDrawTextRectEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawTextRectEx not implemented")
+    panic("Call ZBRGDIDrawTextRectEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawTextRectEx),
         nargs,
         0,
@@ -620,7 +620,7 @@ func ZBRGDIDrawLine() () {
         panic("ZBRGDIDrawLine not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawLine not implemented")
+    panic("Call ZBRGDIDrawLine is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawLine),
         nargs,
         0,
@@ -641,7 +641,7 @@ func ZBRGDIDrawImage() () {
         panic("ZBRGDIDrawImage not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImage not implemented")
+    panic("Call ZBRGDIDrawImage is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImage),
         nargs,
         0,
@@ -662,7 +662,7 @@ func ZBRGDIDrawImageEx() () {
         panic("ZBRGDIDrawImageEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImageEx not implemented")
+    panic("Call ZBRGDIDrawImageEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageEx),
         nargs,
         0,
@@ -683,7 +683,7 @@ func ZBRGDIDrawImagePos() () {
         panic("ZBRGDIDrawImagePos not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImagePos not implemented")
+    panic("Call ZBRGDIDrawImagePos is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImagePos),
         nargs,
         0,
@@ -704,7 +704,7 @@ func ZBRGDIDrawImagePosEx() () {
         panic("ZBRGDIDrawImagePosEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImagePosEx not implemented")
+    panic("Call ZBRGDIDrawImagePosEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImagePosEx),
         nargs,
         0,
@@ -725,7 +725,7 @@ func ZBRGDIDrawImageRect() () {
         panic("ZBRGDIDrawImageRect not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImageRect not implemented")
+    panic("Call ZBRGDIDrawImageRect is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageRect),
         nargs,
         0,
@@ -746,7 +746,7 @@ func ZBRGDIDrawImageRectEx() () {
         panic("ZBRGDIDrawImageRectEx not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawImageRectEx not implemented")
+    panic("Call ZBRGDIDrawImageRectEx is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawImageRectEx),
         nargs,
         0,
@@ -767,7 +767,7 @@ func ZBRGDIDrawRectangle() () {
         panic("ZBRGDIDrawRectangle not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawRectangle not implemented")
+    panic("Call ZBRGDIDrawRectangle is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawRectangle),
         nargs,
         0,
@@ -788,7 +788,7 @@ func ZBRGDIDrawEllipse() () {
         panic("ZBRGDIDrawEllipse not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawEllipse not implemented")
+    panic("Call ZBRGDIDrawEllipse is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawEllipse),
         nargs,
         0,
@@ -809,7 +809,7 @@ func ZBRGDIDrawBarCode() () {
         panic("ZBRGDIDrawBarCode not defined. Check library")
     }
     var nargs uintptr = 0
-    abort("Call ZBRGDIDrawBarCode not implemented")
+    panic("Call ZBRGDIDrawBarCode is not implemented")
     _, _, callErr := syscall.Syscall9(uintptr(zBRGDIDrawBarCode),
         nargs,
         0,
