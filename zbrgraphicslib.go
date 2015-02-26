@@ -149,6 +149,9 @@ func ZBRGDIGetSDKVsn() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIGetSDKVsn",callErr)
+    }
     return
 }
 
@@ -170,6 +173,9 @@ func ZBRGDIGetSDKProductVer() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIGetSDKProductVer",callErr)
+    }
     return
 }
 
@@ -191,6 +197,9 @@ func ZBRGDIInitGraphics() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIInitGraphics",callErr)
+    }
     return
 }
 
@@ -212,6 +221,9 @@ func ZBRGDIInitGraphicsEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIInitGraphicsEx",callErr)
+    }
     return
 }
 
@@ -233,6 +245,9 @@ func ZBRGDIInitGraphicsFromPrintDlg() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIInitGraphicsFromPrintDlg",callErr)
+    }
     return
 }
 
@@ -254,6 +269,9 @@ func ZBRGDICloseGraphics() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDICloseGraphics",callErr)
+    }
     return
 }
 
@@ -275,6 +293,9 @@ func ZBRGDIClearGraphics() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIClearGraphics",callErr)
+    }
     return
 }
 
@@ -296,6 +317,9 @@ func ZBRGDIStartPage() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIStartPage",callErr)
+    }
     return
 }
 
@@ -317,6 +341,9 @@ func ZBRGDIEndPage() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIEndPage",callErr)
+    }
     return
 }
 
@@ -338,6 +365,9 @@ func ZBRGDIPreviewGraphics() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPreviewGraphics",callErr)
+    }
     return
 }
 
@@ -359,6 +389,9 @@ func ZBRGDIPrintGraphics() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintGraphics",callErr)
+    }
     return
 }
 
@@ -380,6 +413,9 @@ func ZBRGDIPrintGraphicsEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintGraphicsEx",callErr)
+    }
     return
 }
 
@@ -401,6 +437,9 @@ func ZBRGDIPrintFilePos() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintFilePos",callErr)
+    }
     return
 }
 
@@ -422,6 +461,9 @@ func ZBRGDIPrintFileRect() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintFileRect",callErr)
+    }
     return
 }
 
@@ -443,6 +485,9 @@ func ZBRGDIPrintImagePos() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintImagePos",callErr)
+    }
     return
 }
 
@@ -464,6 +509,9 @@ func ZBRGDIPrintImageRect() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIPrintImageRect",callErr)
+    }
     return
 }
 
@@ -485,6 +533,9 @@ func ZBRGDICancelJob() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDICancelJob",callErr)
+    }
     return
 }
 
@@ -506,6 +557,9 @@ func ZBRGDIDrawText() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawText",callErr)
+    }
     return
 }
 
@@ -527,6 +581,9 @@ func ZBRGDIDrawTextEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawTextEx",callErr)
+    }
     return
 }
 
@@ -548,6 +605,9 @@ func ZBRGDIDrawTextUnicode() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawTextUnicode",callErr)
+    }
     return
 }
 
@@ -569,6 +629,9 @@ func ZBRGDIDrawTextUnicodeEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawTextUnicodeEx",callErr)
+    }
     return
 }
 
@@ -590,6 +653,9 @@ func ZBRGDIDrawTextRect() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawTextRect",callErr)
+    }
     return
 }
 
@@ -611,6 +677,9 @@ func ZBRGDIDrawTextRectEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawTextRectEx",callErr)
+    }
     return
 }
 
@@ -632,6 +701,9 @@ func ZBRGDIDrawLine() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawLine",callErr)
+    }
     return
 }
 
@@ -653,6 +725,9 @@ func ZBRGDIDrawImage() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImage",callErr)
+    }
     return
 }
 
@@ -674,6 +749,9 @@ func ZBRGDIDrawImageEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImageEx",callErr)
+    }
     return
 }
 
@@ -695,6 +773,9 @@ func ZBRGDIDrawImagePos() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImagePos",callErr)
+    }
     return
 }
 
@@ -716,6 +797,9 @@ func ZBRGDIDrawImagePosEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImagePosEx",callErr)
+    }
     return
 }
 
@@ -737,6 +821,9 @@ func ZBRGDIDrawImageRect() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImageRect",callErr)
+    }
     return
 }
 
@@ -758,6 +845,9 @@ func ZBRGDIDrawImageRectEx() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawImageRectEx",callErr)
+    }
     return
 }
 
@@ -779,6 +869,9 @@ func ZBRGDIDrawRectangle() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawRectangle",callErr)
+    }
     return
 }
 
@@ -800,6 +893,9 @@ func ZBRGDIDrawEllipse() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawEllipse",callErr)
+    }
     return
 }
 
@@ -821,5 +917,8 @@ func ZBRGDIDrawBarCode() () {
         0,
         0,
         0)
+    if callErr != 0 {
+        abort("ZBRGDIDrawBarCode",callErr)
+    }
     return
 }
