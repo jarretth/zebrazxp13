@@ -116,6 +116,7 @@ const (
 
 
 const (
+    TEXT_FONT_STYLE_NONE      TextFontStyle = 0
     TEXT_FONT_STYLE_BOLD      TextFontStyle = 1
     TEXT_FONT_STYLE_ITALIC    TextFontStyle = 2
     TEXT_FONT_STYLE_UNDERLINE TextFontStyle = 4
