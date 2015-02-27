@@ -118,7 +118,7 @@ func ZBRGetHandle(drvName string) (success SuccessReturn, handle syscall.Handle,
             uintptr(unsafe.Pointer(&prn_type)),
             uintptr(unsafe.Pointer(&err)),
     )
-    return uint(ret), handle, prn_type, err
+    return SuccessReturn(ret), handle, prn_type, err
 }
 
 // extern int ZBRPRNCheckForErrors(IntPtr hprinter, int printertype);
