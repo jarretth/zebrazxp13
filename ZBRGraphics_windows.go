@@ -337,7 +337,7 @@ func ZBRGDIDrawRectangle(x uint, y uint, width uint, height uint, thickness floa
         uintptr(y),
         uintptr(width),
         uintptr(height),
-        uintptr(Math.Float32bits(thickness)),
+        uintptr(math.Float32bits(thickness)),
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
