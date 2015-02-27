@@ -55,149 +55,149 @@ func ZBRGDIGetSDKVer() (major, minor, engLevel int) {
 }
 
 // extern int ZBRGDIIsPrinterReady(byte[] printername, out int err);
-func ZBRGDIIsPrinterReady(strPrinterName string) (ret uintptr,err uint) {
-        ret, _, _ = zBRGDIIsPrinterReady.Call(
+func ZBRGDIIsPrinterReady(strPrinterName string) (success SuccessReturn,err uint) {
+        ret, _, _ := zBRGDIIsPrinterReady.Call(
                 uintptr(unsafe.Pointer(&([]byte(strPrinterName))[0])),
                 uintptr(unsafe.Pointer(&err)),
         )
-        return ret, err
+        return SuccessReturn(ret), err
 }
 
 // extern void ZBRGDIGetSDKVsn(out int major, out int minor, out int englevel);
-func ZBRGDIGetSDKVsn() (ret uintptr) {
+func ZBRGDIGetSDKVsn() (success SuccessReturn) {
     panic("ZBRGDIGetSDKVsn not implemented")
-    ret, _, _ =  zBRGDIGetSDKVsn.Call(
+    ret, _, _ :=  zBRGDIGetSDKVsn.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIGetSDKProductVer(byte[] productversion, out int buffsize, out int err);
-func ZBRGDIGetSDKProductVer() (ret uintptr) {
+func ZBRGDIGetSDKProductVer() (success SuccessReturn) {
     panic("ZBRGDIGetSDKProductVer not implemented")
-    ret, _, _ =  zBRGDIGetSDKProductVer.Call(
+    ret, _, _ :=  zBRGDIGetSDKProductVer.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIInitGraphics(byte[] printername, out IntPtr hdc, out int err);
-func ZBRGDIInitGraphics(strPrinterName string) (ret uintptr, handle syscall.Handle, err uint) {
-        ret, _, _ = zBRGDIInitGraphics.Call(
+func ZBRGDIInitGraphics(strPrinterName string) (success SuccessReturn, handle syscall.Handle, err uint) {
+        ret, _, _ := zBRGDIInitGraphics.Call(
                 uintptr(unsafe.Pointer(&([]byte(strPrinterName))[0])),
                 uintptr(unsafe.Pointer(&handle)),
                 uintptr(unsafe.Pointer(&err)),
         )
-        return ret, handle, err
+        return SuccessReturn(ret), handle, err
 }
 
 // extern int ZBRGDIInitGraphicsEx(byte[] printername, out IntPtr hdc, byte[] jobname, out int jobid, out int err);
-func ZBRGDIInitGraphicsEx() (ret uintptr) {
+func ZBRGDIInitGraphicsEx() (success SuccessReturn) {
     panic("ZBRGDIInitGraphicsEx not implemented")
-    ret, _, _ =  zBRGDIInitGraphicsEx.Call(
+    ret, _, _ :=  zBRGDIInitGraphicsEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIInitGraphicsFromPrintDlg(out IntPtr hdc, out int err);
-func ZBRGDIInitGraphicsFromPrintDlg() (ret uintptr) {
+func ZBRGDIInitGraphicsFromPrintDlg() (success SuccessReturn) {
     panic("ZBRGDIInitGraphicsFromPrintDlg not implemented")
-    ret, _, _ =  zBRGDIInitGraphicsFromPrintDlg.Call(
+    ret, _, _ :=  zBRGDIInitGraphicsFromPrintDlg.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDICloseGraphics(IntPtr hdc, out int err);
-func ZBRGDICloseGraphics(handle syscall.Handle) (ret uintptr, err uint){
-    ret, _, _ = zBRGDICloseGraphics.Call(
+func ZBRGDICloseGraphics(handle syscall.Handle) (success SuccessReturn, err uint){
+    ret, _, _ := zBRGDICloseGraphics.Call(
         uintptr(handle),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIClearGraphics(out int err);
-func ZBRGDIClearGraphics() (ret uintptr, err uint) {
-    ret, _, _ = zBRGDIClearGraphics.Call(
+func ZBRGDIClearGraphics() (success SuccessReturn, err uint) {
+    ret, _, _ := zBRGDIClearGraphics.Call(
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIStartPage(IntPtr hdc, out int err);
-func ZBRGDIStartPage() (ret uintptr) {
+func ZBRGDIStartPage() (success SuccessReturn) {
     panic("ZBRGDIStartPage not implemented")
-    ret, _, _ =  zBRGDIStartPage.Call(
+    ret, _, _ :=  zBRGDIStartPage.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIEndPage(IntPtr hdc, out int err);
-func ZBRGDIEndPage() (ret uintptr) {
+func ZBRGDIEndPage() (success SuccessReturn) {
     panic("ZBRGDIEndPage not implemented")
-    ret, _, _ =  zBRGDIEndPage.Call(
+    ret, _, _ :=  zBRGDIEndPage.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIPreviewGraphics(IntPtr hwnd, out int err);
-func ZBRGDIPreviewGraphics() (ret uintptr) {
+func ZBRGDIPreviewGraphics() (success SuccessReturn) {
     panic("ZBRGDIPreviewGraphics not implemented")
-    ret, _, _ =  zBRGDIPreviewGraphics.Call(
+    ret, _, _ :=  zBRGDIPreviewGraphics.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIPrintGraphics(IntPtr hdc, out int err);
-func ZBRGDIPrintGraphics(handle syscall.Handle) (ret uintptr, err uint) {
-        ret, _, _ = zBRGDIPrintGraphics.Call(
+func ZBRGDIPrintGraphics(handle syscall.Handle) (success SuccessReturn, err uint) {
+        ret, _, _ := zBRGDIPrintGraphics.Call(
                 uintptr(handle),
                 uintptr(unsafe.Pointer(&err)),
         )
-        return ret, err
+        return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIPrintGraphicsEx(IntPtr hdc, out int err);
-func ZBRGDIPrintGraphicsEx() (ret uintptr) {
+func ZBRGDIPrintGraphicsEx() (success SuccessReturn) {
     panic("ZBRGDIPrintGraphicsEx not implemented")
-    ret, _, _ =  zBRGDIPrintGraphicsEx.Call(
+    ret, _, _ :=  zBRGDIPrintGraphicsEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIPrintFilePos(IntPtr hdc, byte[] filename, int position, out int err);
-func ZBRGDIPrintFilePos() (ret uintptr) {
+func ZBRGDIPrintFilePos() (success SuccessReturn) {
     panic("ZBRGDIPrintFilePos not implemented")
-    ret, _, _ =  zBRGDIPrintFilePos.Call(
+    ret, _, _ :=  zBRGDIPrintFilePos.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIPrintImagePos(IntPtr hdc, byte[] imagedata, int imagesize, int position, out int err);
-func ZBRGDIPrintImagePos() (ret uintptr) {
+func ZBRGDIPrintImagePos() (success SuccessReturn) {
     panic("ZBRGDIPrintImagePos not implemented")
-    ret, _, _ =  zBRGDIPrintImagePos.Call(
+    ret, _, _ :=  zBRGDIPrintImagePos.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIPrintImageRect(IntPtr hdc, byte[] imagedata, int imagesize, int x, int y, int width, int height, out int err);
-func ZBRGDIPrintImageRect() (ret uintptr) {
+func ZBRGDIPrintImageRect() (success SuccessReturn) {
     panic("ZBRGDIPrintImageRect not implemented")
-    ret, _, _ =  zBRGDIPrintImageRect.Call(
+    ret, _, _ :=  zBRGDIPrintImageRect.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDICancelJob(byte[] printername, int jobid, out int err);
-func ZBRGDICancelJob() (ret uintptr) {
+func ZBRGDICancelJob() (success SuccessReturn) {
     panic("ZBRGDICancelJob not implemented")
-    ret, _, _ =  zBRGDICancelJob.Call(
+    ret, _, _ :=  zBRGDICancelJob.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawText(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawText(x uint, y uint, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawText.Call(
+func ZBRGDIDrawText(x uint, y uint, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawText.Call(
         uintptr(x),
         uintptr(y),
         uintptr(unsafe.Pointer(&([]byte(text))[0])),
@@ -207,20 +207,20 @@ func ZBRGDIDrawText(x uint, y uint, text string, font string, fontsize uint, fon
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawTextEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextEx() (ret uintptr) {
+func ZBRGDIDrawTextEx() (success SuccessReturn) {
     panic("ZBRGDIDrawTextEx not implemented")
-    ret, _, _ =  zBRGDIDrawTextEx.Call(
+    ret, _, _ :=  zBRGDIDrawTextEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawTextUnicode(int x, int y, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextUnicode(x uint, y uint, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawTextUnicode.Call(
+func ZBRGDIDrawTextUnicode(x uint, y uint, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawTextUnicode.Call(
         uintptr(x),
         uintptr(y),
         uintptr(unsafe.Pointer(&([]byte(text))[0])),
@@ -230,20 +230,20 @@ func ZBRGDIDrawTextUnicode(x uint, y uint, text string, font string, fontsize ui
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawTextUnicodeEx(int x, int y, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextUnicodeEx() (ret uintptr) {
+func ZBRGDIDrawTextUnicodeEx() (success SuccessReturn) {
     panic("ZBRGDIDrawTextUnicodeEx not implemented")
-    ret, _, _ =  zBRGDIDrawTextUnicodeEx.Call(
+    ret, _, _ :=  zBRGDIDrawTextUnicodeEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawTextRect(int x, int y, int width, int height, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextRect(x uint, y uint, width uint, height uint, alignment TextAlignment, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawTextRect.Call(
+func ZBRGDIDrawTextRect(x uint, y uint, width uint, height uint, alignment TextAlignment, text string, font string, fontsize uint, fontstyle TextFontStyle, color uint32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawTextRect.Call(
         uintptr(x),
         uintptr(y),
         uintptr(width),
@@ -256,20 +256,20 @@ func ZBRGDIDrawTextRect(x uint, y uint, width uint, height uint, alignment TextA
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawTextRectEx(int x, int y, int width, int height, int angle, int alignment, byte[] text, byte[] font, int fontsize, int fontstyle, int color, out int err);
-func ZBRGDIDrawTextRectEx() (ret uintptr) {
+func ZBRGDIDrawTextRectEx() (success SuccessReturn) {
     panic("ZBRGDIDrawTextRectEx not implemented")
-    ret, _, _ =  zBRGDIDrawTextRectEx.Call(
+    ret, _, _ :=  zBRGDIDrawTextRectEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawLine(int x1, int y1, int x2, int y2, int color, float thickness, out int err);
-func ZBRGDIDrawLine(x1 uint, y1 uint, x2 uint, y2 uint, color uint32, thickness float32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawLine.Call(
+func ZBRGDIDrawLine(x1 uint, y1 uint, x2 uint, y2 uint, color uint32, thickness float32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawLine.Call(
         uintptr(x1),
         uintptr(y1),
         uintptr(x2),
@@ -278,60 +278,60 @@ func ZBRGDIDrawLine(x1 uint, y1 uint, x2 uint, y2 uint, color uint32, thickness 
         uintptr(thickness),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawImage(byte[] filename, int x, int y, out int err);
-func ZBRGDIDrawImage() (ret uintptr) {
+func ZBRGDIDrawImage() (success SuccessReturn) {
     panic("ZBRGDIDrawImage not implemented")
-    ret, _, _ =  zBRGDIDrawImage.Call(
+    ret, _, _ :=  zBRGDIDrawImage.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawImageEx(byte[] filename, int imagesize, int x, int y, out int err);
-func ZBRGDIDrawImageEx() (ret uintptr) {
+func ZBRGDIDrawImageEx() (success SuccessReturn) {
     panic("ZBRGDIDrawImageEx not implemented")
-    ret, _, _ =  zBRGDIDrawImageEx.Call(
+    ret, _, _ :=  zBRGDIDrawImageEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawImagePos(byte[] filename, int position, out int err);
-func ZBRGDIDrawImagePos() (ret uintptr) {
+func ZBRGDIDrawImagePos() (success SuccessReturn) {
     panic("ZBRGDIDrawImagePos not implemented")
-    ret, _, _ =  zBRGDIDrawImagePos.Call(
+    ret, _, _ :=  zBRGDIDrawImagePos.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawImagePosEx(byte[] filename, int imagesize, int position, out int err);
-func ZBRGDIDrawImagePosEx() (ret uintptr) {
+func ZBRGDIDrawImagePosEx() (success SuccessReturn) {
     panic("ZBRGDIDrawImagePosEx not implemented")
-    ret, _, _ =  zBRGDIDrawImagePosEx.Call(
+    ret, _, _ :=  zBRGDIDrawImagePosEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawImageRect(byte[] filename, int x, int y, int width, int height, out int err);
-func ZBRGDIDrawImageRect() (ret uintptr) {
+func ZBRGDIDrawImageRect() (success SuccessReturn) {
     panic("ZBRGDIDrawImageRect not implemented")
-    ret, _, _ =  zBRGDIDrawImageRect.Call(
+    ret, _, _ :=  zBRGDIDrawImageRect.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawImageRectEx(byte[] filename, int imagesize, int x, int y, int width, int height, out int err);
-func ZBRGDIDrawImageRectEx() (ret uintptr) {
+func ZBRGDIDrawImageRectEx() (success SuccessReturn) {
     panic("ZBRGDIDrawImageRectEx not implemented")
-    ret, _, _ =  zBRGDIDrawImageRectEx.Call(
+    ret, _, _ :=  zBRGDIDrawImageRectEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRGDIDrawRectangle(int x, int y, int width, int height, float thickness, int color, out int err);
-func ZBRGDIDrawRectangle(x uint, y uint, width uint, height uint, thickness float32, color uint32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawRectangle.Call(
+func ZBRGDIDrawRectangle(x uint, y uint, width uint, height uint, thickness float32, color uint32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawRectangle.Call(
         uintptr(x),
         uintptr(y),
         uintptr(width),
@@ -340,12 +340,12 @@ func ZBRGDIDrawRectangle(x uint, y uint, width uint, height uint, thickness floa
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawEllipse(int x, int y, int width, int height, float thickness, int color, out int err);
-func ZBRGDIDrawEllipse(x uint, y uint, width uint, height uint, thickness float32, color uint32) (ret uintptr, err uint) {
-    ret, _, _ =  zBRGDIDrawEllipse.Call(
+func ZBRGDIDrawEllipse(x uint, y uint, width uint, height uint, thickness float32, color uint32) (success SuccessReturn, err uint) {
+    ret, _, _ :=  zBRGDIDrawEllipse.Call(
         uintptr(x),
         uintptr(y),
         uintptr(width),
@@ -354,12 +354,12 @@ func ZBRGDIDrawEllipse(x uint, y uint, width uint, height uint, thickness float3
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGDIDrawBarCode(int x, int y, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
-func ZBRGDIDrawBarCode(x uint, y uint, rotation BarCodeRotation, barcodetype BarCodeType, barwidthratio BarCodeWidth, barcodemultiplier uint, barcodeheight uint, textunder BarCodeTextUnder, barcodedata string) (ret uintptr,err uint) {
-    ret, _, _ = zBRGDIDrawBarCode.Call(
+func ZBRGDIDrawBarCode(x uint, y uint, rotation BarCodeRotation, barcodetype BarCodeType, barwidthratio BarCodeWidth, barcodemultiplier uint, barcodeheight uint, textunder BarCodeTextUnder, barcodedata string) (success SuccessReturn,err uint) {
+    ret, _, _ := zBRGDIDrawBarCode.Call(
             uintptr(x),
             uintptr(y),
             uintptr(rotation),
@@ -371,6 +371,6 @@ func ZBRGDIDrawBarCode(x uint, y uint, rotation BarCodeRotation, barcodetype Bar
             uintptr(unsafe.Pointer(&([]byte(barcodedata))[0])),
             uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 

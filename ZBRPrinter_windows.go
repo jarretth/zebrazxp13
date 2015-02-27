@@ -102,17 +102,17 @@ var (
 )
 
 // extern int ZBRCloseHandle(IntPtr handle, out int err);
-func ZBRCloseHandle(handle syscall.Handle) (ret uintptr, err uint) {
-    ret, _, _ = zBRCloseHandle.Call(
+func ZBRCloseHandle(handle syscall.Handle) (success SuccessReturn, err uint) {
+    ret, _, _ := zBRCloseHandle.Call(
         uintptr(handle),
         uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRGetHandle(out IntPtr handle, byte[] drvname, out int printertype, out int err);
-func ZBRGetHandle(drvName string) (ret uint, handle syscall.Handle, prn_type uint, err uint) {
-    retu, _, _ := zBRGetHandle.Call(
+func ZBRGetHandle(drvName string) (success SuccessReturn, handle syscall.Handle, prn_type uint, err uint) {
+    ret, _, _ := zBRGetHandle.Call(
             uintptr(unsafe.Pointer(&handle)),
             uintptr(unsafe.Pointer(&([]byte(drvName))[0])),
             uintptr(unsafe.Pointer(&prn_type)),
@@ -122,237 +122,237 @@ func ZBRGetHandle(drvName string) (ret uint, handle syscall.Handle, prn_type uin
 }
 
 // extern int ZBRPRNCheckForErrors(IntPtr hprinter, int printertype);
-func ZBRPRNCheckForErrors() (ret uintptr) {
+func ZBRPRNCheckForErrors() (success SuccessReturn) {
     panic("ZBRPRNCheckForErrors not implemented")
-    ret, _, _ = zBRPRNCheckForErrors.Call(
+    ret, _, _ := zBRPRNCheckForErrors.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNChkDueForCleaning(IntPtr hprinter, int printertype, out int imgcounter, out int cleancounter, out int cleancardcounter, out int err);
-func ZBRPRNChkDueForCleaning() (ret uintptr) {
+func ZBRPRNChkDueForCleaning() (success SuccessReturn) {
     panic("ZBRPRNChkDueForCleaning not implemented")
-    ret, _, _ = zBRPRNChkDueForCleaning.Call(
+    ret, _, _ := zBRPRNChkDueForCleaning.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrColorImgBuf(IntPtr hprinter, int printertype, int colorbufidx, out int err);
-func ZBRPRNClrColorImgBuf() (ret uintptr) {
+func ZBRPRNClrColorImgBuf() (success SuccessReturn) {
     panic("ZBRPRNClrColorImgBuf not implemented")
-    ret, _, _ = zBRPRNClrColorImgBuf.Call(
+    ret, _, _ := zBRPRNClrColorImgBuf.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrColorImgBufs(HANDLE hPrinter, int printerType, int *err)
-func ZBRPRNClrColorImgBufs() (ret uintptr) {
+func ZBRPRNClrColorImgBufs() (success SuccessReturn) {
     panic("ZBRPRNClrColorImgBufs not implemented")
-    ret, _, _ = zBRPRNClrColorImgBufs.Call(
+    ret, _, _ := zBRPRNClrColorImgBufs.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrErrStatusLn(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNClrErrStatusLn() (ret uintptr) {
+func ZBRPRNClrErrStatusLn() (success SuccessReturn) {
     panic("ZBRPRNClrErrStatusLn not implemented")
-    ret, _, _ = zBRPRNClrErrStatusLn.Call(
+    ret, _, _ := zBRPRNClrErrStatusLn.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrMediaPath(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNClrMediaPath() (ret uintptr) {
+func ZBRPRNClrMediaPath() (success SuccessReturn) {
     panic("ZBRPRNClrMediaPath not implemented")
-    ret, _, _ = zBRPRNClrMediaPath.Call(
+    ret, _, _ := zBRPRNClrMediaPath.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrMonoImgBuf(IntPtr hprinter, int printertype, int clrvarnish, out int err);
-func ZBRPRNClrMonoImgBuf() (ret uintptr) {
+func ZBRPRNClrMonoImgBuf() (success SuccessReturn) {
     panic("ZBRPRNClrMonoImgBuf not implemented")
-    ret, _, _ = zBRPRNClrMonoImgBuf.Call(
+    ret, _, _ := zBRPRNClrMonoImgBuf.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrMonoImgBufs(IntPtr hprinter, int printertype, int clrbuffer, out int err);
-func ZBRPRNClrMonoImgBufs() (ret uintptr) {
+func ZBRPRNClrMonoImgBufs() (success SuccessReturn) {
     panic("ZBRPRNClrMonoImgBufs not implemented")
-    ret, _, _ = zBRPRNClrMonoImgBufs.Call(
+    ret, _, _ := zBRPRNClrMonoImgBufs.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNClrSpecifiedBmp(IntPtr hprinter, int printertype, int colorbufidx, out int err);
-func ZBRPRNClrSpecifiedBmp() (ret uintptr) {
+func ZBRPRNClrSpecifiedBmp() (success SuccessReturn) {
     panic("ZBRPRNClrSpecifiedBmp not implemented")
-    ret, _, _ = zBRPRNClrSpecifiedBmp.Call(
+    ret, _, _ := zBRPRNClrSpecifiedBmp.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNEjectCard(IntPtr _handle, int prn_type, out int err);
-func ZBRPRNEjectCard(handle syscall.Handle, prn_type uint) (ret uintptr, err uint) {
-    ret, _, _ = zBRPRNEjectCard.Call(
+func ZBRPRNEjectCard(handle syscall.Handle, prn_type uint) (success SuccessReturn, err uint) {
+    ret, _, _ := zBRPRNEjectCard.Call(
             uintptr(handle),
             uintptr(prn_type),
             uintptr(unsafe.Pointer(&err)),
     )
-    return ret, err
+    return SuccessReturn(ret), err
 }
 
 // extern int ZBRPRNEnableMagReadDataEncryption(IntPtr handle, int printertype, out int err);
-func ZBRPRNEnableMagReadDataEncryption() (ret uintptr) {
+func ZBRPRNEnableMagReadDataEncryption() (success SuccessReturn) {
     panic("ZBRPRNEnableMagReadDataEncryption not implemented")
-    ret, _, _ = zBRPRNEnableMagReadDataEncryption.Call(
+    ret, _, _ := zBRPRNEnableMagReadDataEncryption.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNEndSmartCard(IntPtr _handle, int printertype, int cardtype, int movement, out int err);
-func ZBRPRNEndSmartCard() (ret uintptr) {
+func ZBRPRNEndSmartCard() (success SuccessReturn) {
     panic("ZBRPRNEndSmartCard not implemented")
-    ret, _, _ = zBRPRNEndSmartCard.Call(
+    ret, _, _ := zBRPRNEndSmartCard.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNFlipCard(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNFlipCard() (ret uintptr) {
+func ZBRPRNFlipCard() (success SuccessReturn) {
     panic("ZBRPRNFlipCard not implemented")
-    ret, _, _ = zBRPRNFlipCard.Call(
+    ret, _, _ := zBRPRNFlipCard.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetChecksum(IntPtr hprinter, int printertype, out int checksum, out int err);
-func ZBRPRNGetChecksum() (ret uintptr) {
+func ZBRPRNGetChecksum() (success SuccessReturn) {
     panic("ZBRPRNGetChecksum not implemented")
-    ret, _, _ = zBRPRNGetChecksum.Call(
+    ret, _, _ := zBRPRNGetChecksum.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetCleaningParam(IntPtr hprinter, int printertype, out int imgcounter, out int cleancounter, out int cleancardcounter, out int err);
-func ZBRPRNGetCleaningParam() (ret uintptr) {
+func ZBRPRNGetCleaningParam() (success SuccessReturn) {
     panic("ZBRPRNGetCleaningParam not implemented")
-    ret, _, _ = zBRPRNGetCleaningParam.Call(
+    ret, _, _ := zBRPRNGetCleaningParam.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetIPAddress(string PrinterName, char* ipAddress);
-func ZBRPRNGetIPAddress() (ret uintptr) {
+func ZBRPRNGetIPAddress() (success SuccessReturn) {
     panic("ZBRPRNGetIPAddress not implemented")
-    ret, _, _ = zBRPRNGetIPAddress.Call(
+    ret, _, _ := zBRPRNGetIPAddress.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetMsgSuppressionState(IntPtr hprinter, int printertype, out int state, out int err);
-func ZBRPRNGetMsgSuppressionState() (ret uintptr) {
+func ZBRPRNGetMsgSuppressionState() (success SuccessReturn) {
     panic("ZBRPRNGetMsgSuppressionState not implemented")
-    ret, _, _ = zBRPRNGetMsgSuppressionState.Call(
+    ret, _, _ := zBRPRNGetMsgSuppressionState.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetOpParam(IntPtr hprinter, int printertype, int paramidx, byte[] opparam, out int respsize, out int err);
-func ZBRPRNGetOpParam() (ret uintptr) {
+func ZBRPRNGetOpParam() (success SuccessReturn) {
     panic("ZBRPRNGetOpParam not implemented")
-    ret, _, _ = zBRPRNGetOpParam.Call(
+    ret, _, _ := zBRPRNGetOpParam.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPanelsPrinted(IntPtr hprinter, int printertype, out int panels, out int err);
-func ZBRPRNGetPanelsPrinted() (ret uintptr) {
+func ZBRPRNGetPanelsPrinted() (success SuccessReturn) {
     panic("ZBRPRNGetPanelsPrinted not implemented")
-    ret, _, _ = zBRPRNGetPanelsPrinted.Call(
+    ret, _, _ := zBRPRNGetPanelsPrinted.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPanelsRemaining(IntPtr hprinter, int printertype, out int panels, out int err);
-func ZBRPRNGetPanelsRemaining() (ret uintptr) {
+func ZBRPRNGetPanelsRemaining() (success SuccessReturn) {
     panic("ZBRPRNGetPanelsRemaining not implemented")
-    ret, _, _ = zBRPRNGetPanelsRemaining.Call(
+    ret, _, _ := zBRPRNGetPanelsRemaining.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrintCount(IntPtr hprinter, int printertype, out int printcount, out int err);
-func ZBRPRNGetPrintCount() (ret uintptr) {
+func ZBRPRNGetPrintCount() (success SuccessReturn) {
     panic("ZBRPRNGetPrintCount not implemented")
-    ret, _, _ = zBRPRNGetPrintCount.Call(
+    ret, _, _ := zBRPRNGetPrintCount.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrinterOptions(IntPtr hprinter, int printertype, byte[] options, out int respsize, out int err);
-func ZBRPRNGetPrinterOptions() (ret uintptr) {
+func ZBRPRNGetPrinterOptions() (success SuccessReturn) {
     panic("ZBRPRNGetPrinterOptions not implemented")
-    ret, _, _ = zBRPRNGetPrinterOptions.Call(
+    ret, _, _ := zBRPRNGetPrinterOptions.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrinterSerialNumb(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrinterSerialNumb() (ret uintptr) {
+func ZBRPRNGetPrinterSerialNumb() (success SuccessReturn) {
     panic("ZBRPRNGetPrinterSerialNumb not implemented")
-    ret, _, _ = zBRPRNGetPrinterSerialNumb.Call(
+    ret, _, _ := zBRPRNGetPrinterSerialNumb.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrinterSerialNumber(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrinterSerialNumber() (ret uintptr) {
+func ZBRPRNGetPrinterSerialNumber() (success SuccessReturn) {
     panic("ZBRPRNGetPrinterSerialNumber not implemented")
-    ret, _, _ = zBRPRNGetPrinterSerialNumber.Call(
+    ret, _, _ := zBRPRNGetPrinterSerialNumber.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrinterStatus(out int statuscode);
-func ZBRPRNGetPrinterStatus() (ret uintptr) {
+func ZBRPRNGetPrinterStatus() (success SuccessReturn) {
     panic("ZBRPRNGetPrinterStatus not implemented")
-    ret, _, _ = zBRPRNGetPrinterStatus.Call(
+    ret, _, _ := zBRPRNGetPrinterStatus.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrintHeadSerialNumb(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrintHeadSerialNumb() (ret uintptr) {
+func ZBRPRNGetPrintHeadSerialNumb() (success SuccessReturn) {
     panic("ZBRPRNGetPrintHeadSerialNumb not implemented")
-    ret, _, _ = zBRPRNGetPrintHeadSerialNumb.Call(
+    ret, _, _ := zBRPRNGetPrintHeadSerialNumb.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrintHeadSerialNumber(IntPtr hprinter, int printertype, byte[] serialnum, out int respsize, out int err);
-func ZBRPRNGetPrintHeadSerialNumber() (ret uintptr) {
+func ZBRPRNGetPrintHeadSerialNumber() (success SuccessReturn) {
     panic("ZBRPRNGetPrintHeadSerialNumber not implemented")
-    ret, _, _ = zBRPRNGetPrintHeadSerialNumber.Call(
+    ret, _, _ := zBRPRNGetPrintHeadSerialNumber.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetPrintStatus(IntPtr hprinter, int printertype);
-func ZBRPRNGetPrintStatus() (ret uintptr) {
+func ZBRPRNGetPrintStatus() (success SuccessReturn) {
     panic("ZBRPRNGetPrintStatus not implemented")
-    ret, _, _ = zBRPRNGetPrintStatus.Call(
+    ret, _, _ := zBRPRNGetPrintStatus.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetSDKProductVer(byte[] productversion, out int buffsize);
-func ZBRPRNGetSDKProductVer() (ret uintptr) {
+func ZBRPRNGetSDKProductVer() (success SuccessReturn) {
     panic("ZBRPRNGetSDKProductVer not implemented")
-    ret, _, _ = zBRPRNGetSDKProductVer.Call(
+    ret, _, _ := zBRPRNGetSDKProductVer.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern void ZBRPRNGetSDKVer(out int major, out int minor, out int englevel);
@@ -366,481 +366,481 @@ func ZBRPRNGetSDKVer() (major, minor, engLevel int) {
 }
 
 // extern void ZBRPRNGetSDKVsn(out int major, out int minor, out int englevel);
-func ZBRPRNGetSDKVsn() (ret uintptr) {
+func ZBRPRNGetSDKVsn() (success SuccessReturn) {
     panic("ZBRPRNGetSDKVsn not implemented")
-    ret, _, _ = zBRPRNGetSDKVsn.Call(
+    ret, _, _ := zBRPRNGetSDKVsn.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNGetSensorStatus(IntPtr hprinter, int printertype, out byte status, out int err);
-func ZBRPRNGetSensorStatus() (ret uintptr) {
+func ZBRPRNGetSensorStatus() (success SuccessReturn) {
     panic("ZBRPRNGetSensorStatus not implemented")
-    ret, _, _ = zBRPRNGetSensorStatus.Call(
+    ret, _, _ := zBRPRNGetSensorStatus.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNImmediateParamSave(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNImmediateParamSave() (ret uintptr) {
+func ZBRPRNImmediateParamSave() (success SuccessReturn) {
     panic("ZBRPRNImmediateParamSave not implemented")
-    ret, _, _ = zBRPRNImmediateParamSave.Call(
+    ret, _, _ := zBRPRNImmediateParamSave.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNIsPrinterReady(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNIsPrinterReady() (ret uintptr) {
+func ZBRPRNIsPrinterReady() (success SuccessReturn) {
     panic("ZBRPRNIsPrinterReady not implemented")
-    ret, _, _ = zBRPRNIsPrinterReady.Call(
+    ret, _, _ := zBRPRNIsPrinterReady.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNMoveCard(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCard() (ret uintptr) {
+func ZBRPRNMoveCard() (success SuccessReturn) {
     panic("ZBRPRNMoveCard not implemented")
-    ret, _, _ = zBRPRNMoveCard.Call(
+    ret, _, _ := zBRPRNMoveCard.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNMoveCardBkwd(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCardBkwd() (ret uintptr) {
+func ZBRPRNMoveCardBkwd() (success SuccessReturn) {
     panic("ZBRPRNMoveCardBkwd not implemented")
-    ret, _, _ = zBRPRNMoveCardBkwd.Call(
+    ret, _, _ := zBRPRNMoveCardBkwd.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNMoveCardFwd(IntPtr hprinter, int printertype, int steps, out int err);
-func ZBRPRNMoveCardFwd() (ret uintptr) {
+func ZBRPRNMoveCardFwd() (success SuccessReturn) {
     panic("ZBRPRNMoveCardFwd not implemented")
-    ret, _, _ = zBRPRNMoveCardFwd.Call(
+    ret, _, _ := zBRPRNMoveCardFwd.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNMovePrintReady(IntPtr handle, int printertype, out int err);
-func ZBRPRNMovePrintReady() (ret uintptr) {
+func ZBRPRNMovePrintReady() (success SuccessReturn) {
     panic("ZBRPRNMovePrintReady not implemented")
-    ret, _, _ = zBRPRNMovePrintReady.Call(
+    ret, _, _ := zBRPRNMovePrintReady.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintCardPanel(IntPtr hprinter, int printertype, int imgbufidx, out int err);
-func ZBRPRNPrintCardPanel() (ret uintptr) {
+func ZBRPRNPrintCardPanel() (success SuccessReturn) {
     panic("ZBRPRNPrintCardPanel not implemented")
-    ret, _, _ = zBRPRNPrintCardPanel.Call(
+    ret, _, _ := zBRPRNPrintCardPanel.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintClearVarnish(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintClearVarnish() (ret uintptr) {
+func ZBRPRNPrintClearVarnish() (success SuccessReturn) {
     panic("ZBRPRNPrintClearVarnish not implemented")
-    ret, _, _ = zBRPRNPrintClearVarnish.Call(
+    ret, _, _ := zBRPRNPrintClearVarnish.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintColorImgBuf(IntPtr hprinter, int printertype, int imgbufidx, out int err);
-func ZBRPRNPrintColorImgBuf() (ret uintptr) {
+func ZBRPRNPrintColorImgBuf() (success SuccessReturn) {
     panic("ZBRPRNPrintColorImgBuf not implemented")
-    ret, _, _ = zBRPRNPrintColorImgBuf.Call(
+    ret, _, _ := zBRPRNPrintColorImgBuf.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintHologramOverlay(IntPtr hprinter, int printertype, int printcardcommand, out int err);
-func ZBRPRNPrintHologramOverlay() (ret uintptr) {
+func ZBRPRNPrintHologramOverlay() (success SuccessReturn) {
     panic("ZBRPRNPrintHologramOverlay not implemented")
-    ret, _, _ = zBRPRNPrintHologramOverlay.Call(
+    ret, _, _ := zBRPRNPrintHologramOverlay.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintMonoImgBuf(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintMonoImgBuf() (ret uintptr) {
+func ZBRPRNPrintMonoImgBuf() (success SuccessReturn) {
     panic("ZBRPRNPrintMonoImgBuf not implemented")
-    ret, _, _ = zBRPRNPrintMonoImgBuf.Call(
+    ret, _, _ := zBRPRNPrintMonoImgBuf.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintMonoImgBufEx(IntPtr hprinter, int printertype, int cardcommand, out int err);
-func ZBRPRNPrintMonoImgBufEx() (ret uintptr) {
+func ZBRPRNPrintMonoImgBufEx() (success SuccessReturn) {
     panic("ZBRPRNPrintMonoImgBufEx not implemented")
-    ret, _, _ = zBRPRNPrintMonoImgBufEx.Call(
+    ret, _, _ := zBRPRNPrintMonoImgBufEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintMonoPanel(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintMonoPanel() (ret uintptr) {
+func ZBRPRNPrintMonoPanel() (success SuccessReturn) {
     panic("ZBRPRNPrintMonoPanel not implemented")
-    ret, _, _ = zBRPRNPrintMonoPanel.Call(
+    ret, _, _ := zBRPRNPrintMonoPanel.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintPRNFile(IntPtr hprinter, int printertype, byte[] filename, out int err);
-func ZBRPRNPrintPrnFile() (ret uintptr) {
+func ZBRPRNPrintPrnFile() (success SuccessReturn) {
     panic("ZBRPRNPrintPrnFile not implemented")
-    ret, _, _ = zBRPRNPrintPrnFile.Call(
+    ret, _, _ := zBRPRNPrintPrnFile.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintTestCard(IntPtr hprinter, int printertype, int testcardtype, out int err);
-func ZBRPRNPrintTestCard() (ret uintptr) {
+func ZBRPRNPrintTestCard() (success SuccessReturn) {
     panic("ZBRPRNPrintTestCard not implemented")
-    ret, _, _ = zBRPRNPrintTestCard.Call(
+    ret, _, _ := zBRPRNPrintTestCard.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintVarnish(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNPrintVarnish() (ret uintptr) {
+func ZBRPRNPrintVarnish() (success SuccessReturn) {
     panic("ZBRPRNPrintVarnish not implemented")
-    ret, _, _ = zBRPRNPrintVarnish.Call(
+    ret, _, _ := zBRPRNPrintVarnish.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNPrintVarnishEx(IntPtr hprinter, int printertype, int printcardcommand, out int err);
-func ZBRPRNPrintVarnishEx() (ret uintptr) {
+func ZBRPRNPrintVarnishEx() (success SuccessReturn) {
     panic("ZBRPRNPrintVarnishEx not implemented")
-    ret, _, _ = zBRPRNPrintVarnishEx.Call(
+    ret, _, _ := zBRPRNPrintVarnishEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNReadMag(IntPtr handle, int printertype, int trkstoread, byte[] trk1buf, out int trk1bytesneeded, byte[] trk2buf, out int trk2bytesneeded, byte[] trk3buf, out int trk3bytesneeded, out int err);
-func ZBRPRNReadMag() (ret uintptr) {
+func ZBRPRNReadMag() (success SuccessReturn) {
     panic("ZBRPRNReadMag not implemented")
-    ret, _, _ = zBRPRNReadMag.Call(
+    ret, _, _ := zBRPRNReadMag.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNReadMagByTrk(IntPtr hprinter, int printertype, int trknum, byte[] trkbuf, out int respsize, out int err);
-func ZBRPRNReadMagByTrk() (ret uintptr) {
+func ZBRPRNReadMagByTrk() (success SuccessReturn) {
     panic("ZBRPRNReadMagByTrk not implemented")
-    ret, _, _ = zBRPRNReadMagByTrk.Call(
+    ret, _, _ := zBRPRNReadMagByTrk.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNResetMagEncoder(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResetMagEncoder() (ret uintptr) {
+func ZBRPRNResetMagEncoder() (success SuccessReturn) {
     panic("ZBRPRNResetMagEncoder not implemented")
-    ret, _, _ = zBRPRNResetMagEncoder.Call(
+    ret, _, _ := zBRPRNResetMagEncoder.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNResetPrinter(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResetPrinter() (ret uintptr) {
+func ZBRPRNResetPrinter() (success SuccessReturn) {
     panic("ZBRPRNResetPrinter not implemented")
-    ret, _, _ = zBRPRNResetPrinter.Call(
+    ret, _, _ := zBRPRNResetPrinter.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNResync(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNResync() (ret uintptr) {
+func ZBRPRNResync() (success SuccessReturn) {
     panic("ZBRPRNResync not implemented")
-    ret, _, _ = zBRPRNResync.Call(
+    ret, _, _ := zBRPRNResync.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNReversePrintReady(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNReversePrintReady() (ret uintptr) {
+func ZBRPRNReversePrintReady() (success SuccessReturn) {
     panic("ZBRPRNReversePrintReady not implemented")
-    ret, _, _ = zBRPRNReversePrintReady.Call(
+    ret, _, _ := zBRPRNReversePrintReady.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSelfAdj(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNSelfAdj() (ret uintptr) {
+func ZBRPRNSelfAdj() (success SuccessReturn) {
     panic("ZBRPRNSelfAdj not implemented")
-    ret, _, _ = zBRPRNSelfAdj.Call(
+    ret, _, _ := zBRPRNSelfAdj.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetCardFeedingMode(IntPtr hprinter, int printertype, int mode, out int err);
-func ZBRPRNSetCardFeedingMode() (ret uintptr) {
+func ZBRPRNSetCardFeedingMode() (success SuccessReturn) {
     panic("ZBRPRNSetCardFeedingMode not implemented")
-    ret, _, _ = zBRPRNSetCardFeedingMode.Call(
+    ret, _, _ := zBRPRNSetCardFeedingMode.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetCleaningParam(IntPtr hprinter, int printertype, int ribbonpanelcounter, int cleancardpass, out int err);
-func ZBRPRNSetCleaningParam() (ret uintptr) {
+func ZBRPRNSetCleaningParam() (success SuccessReturn) {
     panic("ZBRPRNSetCleaningParam not implemented")
-    ret, _, _ = zBRPRNSetCleaningParam.Call(
+    ret, _, _ := zBRPRNSetCleaningParam.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetColorContrast(IntPtr hprinter, int printertype, int imgbufidx, int contrast, out int err);
-func ZBRPRNSetColorContrast() (ret uintptr) {
+func ZBRPRNSetColorContrast() (success SuccessReturn) {
     panic("ZBRPRNSetColorContrast not implemented")
-    ret, _, _ = zBRPRNSetColorContrast.Call(
+    ret, _, _ := zBRPRNSetColorContrast.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetContrastIntensityLvl(IntPtr hprinter, int printertype, int imgbufidx, int intensity, out int err);
-func ZBRPRNSetContrastIntensityLvl() (ret uintptr) {
+func ZBRPRNSetContrastIntensityLvl() (success SuccessReturn) {
     panic("ZBRPRNSetContrastIntensityLvl not implemented")
-    ret, _, _ = zBRPRNSetContrastIntensityLvl.Call(
+    ret, _, _ := zBRPRNSetContrastIntensityLvl.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetEncoderCoercivity(IntPtr hprinter, int printertype, int coercivity, out int err);
-func ZBRPRNSetEncoderCoercivity() (ret uintptr) {
+func ZBRPRNSetEncoderCoercivity() (success SuccessReturn) {
     panic("ZBRPRNSetEncoderCoercivity not implemented")
-    ret, _, _ = zBRPRNSetEncoderCoercivity.Call(
+    ret, _, _ := zBRPRNSetEncoderCoercivity.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetEncodingDir(IntPtr hprinter, int printertype, int dir, out int err);
-func ZBRPRNSetEncodingDir() (ret uintptr) {
+func ZBRPRNSetEncodingDir() (success SuccessReturn) {
     panic("ZBRPRNSetEncodingDir not implemented")
-    ret, _, _ = zBRPRNSetEncodingDir.Call(
+    ret, _, _ := zBRPRNSetEncodingDir.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetEndOfPrint(IntPtr hprinter, int printertype, int xwidth, out int err);
-func ZBRPRNSetEndOfPrint() (ret uintptr) {
+func ZBRPRNSetEndOfPrint() (success SuccessReturn) {
     panic("ZBRPRNSetEndOfPrint not implemented")
-    ret, _, _ = zBRPRNSetEndOfPrint.Call(
+    ret, _, _ := zBRPRNSetEndOfPrint.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetHologramIntensity(IntPtr hprinter, int printertype, int intensity, out int err);
-func ZBRPRNSetHologramIntensity() (ret uintptr) {
+func ZBRPRNSetHologramIntensity() (success SuccessReturn) {
     panic("ZBRPRNSetHologramIntensity not implemented")
-    ret, _, _ = zBRPRNSetHologramIntensity.Call(
+    ret, _, _ := zBRPRNSetHologramIntensity.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetMagEncodingStd(IntPtr hprinter, int printertype, int standard, out int err);
-func ZBRPRNSetMagEncodingStd() (ret uintptr) {
+func ZBRPRNSetMagEncodingStd() (success SuccessReturn) {
     panic("ZBRPRNSetMagEncodingStd not implemented")
-    ret, _, _ = zBRPRNSetMagEncodingStd.Call(
+    ret, _, _ := zBRPRNSetMagEncodingStd.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetMonoContrast(IntPtr hprinter, int printertype, int contrast, out int err);
-func ZBRPRNSetMonoContrast() (ret uintptr) {
+func ZBRPRNSetMonoContrast() (success SuccessReturn) {
     panic("ZBRPRNSetMonoContrast not implemented")
-    ret, _, _ = zBRPRNSetMonoContrast.Call(
+    ret, _, _ := zBRPRNSetMonoContrast.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetMonoIntensity(IntPtr hprinter, int printertype, int intensity, out int err);
-func ZBRPRNSetMonoIntensity() (ret uintptr) {
+func ZBRPRNSetMonoIntensity() (success SuccessReturn) {
     panic("ZBRPRNSetMonoIntensity not implemented")
-    ret, _, _ = zBRPRNSetMonoIntensity.Call(
+    ret, _, _ := zBRPRNSetMonoIntensity.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetOverlayMode(HANDLE hPrinter, int printerType, int side, OverlayType overlay, char *filename, int *err);
-func ZBRPRNSetOverlayMode() (ret uintptr) {
+func ZBRPRNSetOverlayMode() (success SuccessReturn) {
     panic("ZBRPRNSetOverlayMode not implemented")
-    ret, _, _ = zBRPRNSetOverlayMode.Call(
+    ret, _, _ := zBRPRNSetOverlayMode.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetPrintHeadResistance(IntPtr hprinter, int printertype, int resistance, out int err);
-func ZBRPRNSetPrintHeadResistance() (ret uintptr) {
+func ZBRPRNSetPrintHeadResistance() (success SuccessReturn) {
     panic("ZBRPRNSetPrintHeadResistance not implemented")
-    ret, _, _ = zBRPRNSetPrintHeadResistance.Call(
+    ret, _, _ := zBRPRNSetPrintHeadResistance.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetRelativeXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetRelativeXOffset() (ret uintptr) {
+func ZBRPRNSetRelativeXOffset() (success SuccessReturn) {
     panic("ZBRPRNSetRelativeXOffset not implemented")
-    ret, _, _ = zBRPRNSetRelativeXOffset.Call(
+    ret, _, _ := zBRPRNSetRelativeXOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetRelativeYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetRelativeYOffset() (ret uintptr) {
+func ZBRPRNSetRelativeYOffset() (success SuccessReturn) {
     panic("ZBRPRNSetRelativeYOffset not implemented")
-    ret, _, _ = zBRPRNSetRelativeYOffset.Call(
+    ret, _, _ := zBRPRNSetRelativeYOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetStartPrintSideBOffset(IntPtr hprinter, int printertype, int x_y, int offset, out int err);
-func ZBRPRNSetStartPrintSideBOffset() (ret uintptr) {
+func ZBRPRNSetStartPrintSideBOffset() (success SuccessReturn) {
     panic("ZBRPRNSetStartPrintSideBOffset not implemented")
-    ret, _, _ = zBRPRNSetStartPrintSideBOffset.Call(
+    ret, _, _ := zBRPRNSetStartPrintSideBOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetStartPrintSideBXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintSideBXOffset() (ret uintptr) {
+func ZBRPRNSetStartPrintSideBXOffset() (success SuccessReturn) {
     panic("ZBRPRNSetStartPrintSideBXOffset not implemented")
-    ret, _, _ = zBRPRNSetStartPrintSideBXOffset.Call(
+    ret, _, _ := zBRPRNSetStartPrintSideBXOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetStartPrintSideBYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintSideBYOffset() (ret uintptr) {
+func ZBRPRNSetStartPrintSideBYOffset() (success SuccessReturn) {
     panic("ZBRPRNSetStartPrintSideBYOffset not implemented")
-    ret, _, _ = zBRPRNSetStartPrintSideBYOffset.Call(
+    ret, _, _ := zBRPRNSetStartPrintSideBYOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetStartPrintXOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintXOffset() (ret uintptr) {
+func ZBRPRNSetStartPrintXOffset() (success SuccessReturn) {
     panic("ZBRPRNSetStartPrintXOffset not implemented")
-    ret, _, _ = zBRPRNSetStartPrintXOffset.Call(
+    ret, _, _ := zBRPRNSetStartPrintXOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetStartPrintYOffset(IntPtr hprinter, int printertype, int offset, out int err);
-func ZBRPRNSetStartPrintYOffset() (ret uintptr) {
+func ZBRPRNSetStartPrintYOffset() (success SuccessReturn) {
     panic("ZBRPRNSetStartPrintYOffset not implemented")
-    ret, _, _ = zBRPRNSetStartPrintYOffset.Call(
+    ret, _, _ := zBRPRNSetStartPrintYOffset.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSetTrkDensity(IntPtr hprinter, int printertype, int trknum, int density, out int err);
-func ZBRPRNSetTrkDensity() (ret uintptr) {
+func ZBRPRNSetTrkDensity() (success SuccessReturn) {
     panic("ZBRPRNSetTrkDensity not implemented")
-    ret, _, _ = zBRPRNSetTrkDensity.Call(
+    ret, _, _ := zBRPRNSetTrkDensity.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNStartCleaningCardSeq(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNStartCleaningCardSeq() (ret uintptr) {
+func ZBRPRNStartCleaningCardSeq() (success SuccessReturn) {
     panic("ZBRPRNStartCleaningCardSeq not implemented")
-    ret, _, _ = zBRPRNStartCleaningCardSeq.Call(
+    ret, _, _ := zBRPRNStartCleaningCardSeq.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNStartCleaningSeq(IntPtr hprinter, int printertype, out int err);
-func ZBRPRNStartCleaningSeq() (ret uintptr) {
+func ZBRPRNStartCleaningSeq() (success SuccessReturn) {
     panic("ZBRPRNStartCleaningSeq not implemented")
-    ret, _, _ = zBRPRNStartCleaningSeq.Call(
+    ret, _, _ := zBRPRNStartCleaningSeq.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNStartSmartCard(IntPtr _handle, int printertype, int cardtype, out int err);
-func ZBRPRNStartSmartCard() (ret uintptr) {
+func ZBRPRNStartSmartCard() (success SuccessReturn) {
     panic("ZBRPRNStartSmartCard not implemented")
-    ret, _, _ = zBRPRNStartSmartCard.Call(
+    ret, _, _ := zBRPRNStartSmartCard.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNSuppressStatusMsgs(IntPtr hprinter, int printertype, int suppressmsgs, out int err);
-func ZBRPRNSuppressStatusMsgs() (ret uintptr) {
+func ZBRPRNSuppressStatusMsgs() (success SuccessReturn) {
     panic("ZBRPRNSuppressStatusMsgs not implemented")
-    ret, _, _ = zBRPRNSuppressStatusMsgs.Call(
+    ret, _, _ := zBRPRNSuppressStatusMsgs.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNUpgradeFirmware(HANDLE hPrinter, int printerType, char *filename, int *err);
-func ZBRPRNUpgradeFirmware() (ret uintptr) {
+func ZBRPRNUpgradeFirmware() (success SuccessReturn) {
     panic("ZBRPRNUpgradeFirmware not implemented")
-    ret, _, _ = zBRPRNUpgradeFirmware.Call(
+    ret, _, _ := zBRPRNUpgradeFirmware.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteBarCode(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
-func ZBRPRNWriteBarCode() (ret uintptr) {
+func ZBRPRNWriteBarCode() (success SuccessReturn) {
     panic("ZBRPRNWriteBarCode not implemented")
-    ret, _, _ = zBRPRNWriteBarCode.Call(
+    ret, _, _ := zBRPRNWriteBarCode.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteBox(IntPtr hprinter, int printertype, int startx, int starty, int width, int height, int thickness, out int err);
-func ZBRPRNWriteBox() (ret uintptr) {
+func ZBRPRNWriteBox() (success SuccessReturn) {
     panic("ZBRPRNWriteBox not implemented")
-    ret, _, _ = zBRPRNWriteBox.Call(
+    ret, _, _ := zBRPRNWriteBox.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteBoxEx(IntPtr hprinter, int printertype, int startx, int starty, int width, int height, int thickness, int gmode, int isvarnish, out int err);
-func ZBRPRNWriteBoxEx() (ret uintptr) {
+func ZBRPRNWriteBoxEx() (success SuccessReturn) {
     panic("ZBRPRNWriteBoxEx not implemented")
-    ret, _, _ = zBRPRNWriteBoxEx.Call(
+    ret, _, _ := zBRPRNWriteBoxEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteMag(IntPtr handle, int printertype, int trkstowrite, byte[] trk1data, byte[] trk2data, byte[] trk3data, out int err);
-func ZBRPRNWriteMag() (ret uintptr) {
+func ZBRPRNWriteMag() (success SuccessReturn) {
     panic("ZBRPRNWriteMag not implemented")
-    ret, _, _ = zBRPRNWriteMag.Call(
+    ret, _, _ := zBRPRNWriteMag.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteMagByTrk(IntPtr hprinter, int printertype, int trknum, byte[] trkdata, out int err);
-func ZBRPRNWriteMagByTrk() (ret uintptr) {
+func ZBRPRNWriteMagByTrk() (success SuccessReturn) {
     panic("ZBRPRNWriteMagByTrk not implemented")
-    ret, _, _ = zBRPRNWriteMagByTrk.Call(
+    ret, _, _ := zBRPRNWriteMagByTrk.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteMagPassThru(IntPtr hdc, int printertype, int trknum, byte[] trkdata, out int err);
-func ZBRPRNWriteMagPassThru() (ret uintptr) {
+func ZBRPRNWriteMagPassThru() (success SuccessReturn) {
     panic("ZBRPRNWriteMagPassThru not implemented")
-    ret, _, _ = zBRPRNWriteMagPassThru.Call(
+    ret, _, _ := zBRPRNWriteMagPassThru.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteText(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int isbold, int height, byte[] text, out int err);
-func ZBRPRNWriteText() (ret uintptr) {
+func ZBRPRNWriteText() (success SuccessReturn) {
     panic("ZBRPRNWriteText not implemented")
-    ret, _, _ = zBRPRNWriteText.Call(
+    ret, _, _ := zBRPRNWriteText.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
 
 // extern int ZBRPRNWriteTextEx(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int isbold, int widht, int height, int gmode, byte[] text, int isvarnish, out int err);
-func ZBRPRNWriteTextEx() (ret uintptr) {
+func ZBRPRNWriteTextEx() (success SuccessReturn) {
     panic("ZBRPRNWriteTextEx not implemented")
-    ret, _, _ = zBRPRNWriteTextEx.Call(
+    ret, _, _ := zBRPRNWriteTextEx.Call(
         )
-    return ret
+    return SuccessReturn(ret)
 }
