@@ -2,7 +2,7 @@
 package zebrazxp13
 
 func ZBRCloseHandle(handle Handle) (ret SuccessReturn, err uint) { panic("ZBRCloseHandle cannot be called on a non-Windows platform"); return 0,0 }
-func ZBRGetHandle(drvName string) (ret SuccessReturn, handle Handle, prn_type uint, err uint) { panic("ZBRGetHandle cannot be called on a non-Windows platform"); return 0,0,0,0 }
+func ZBRGetHandle(drvName string) (ret SuccessReturn, handle Handle, prn_type PrinterType, err uint) { panic("ZBRGetHandle cannot be called on a non-Windows platform"); return 0,0,0,0 }
 func ZBRPRNCheckForErrors() (ret SuccessReturn) { panic("ZBRPRNCheckForErrors cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNChkDueForCleaning() (ret SuccessReturn) { panic("ZBRPRNChkDueForCleaning cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNClrColorImgBuf() (ret SuccessReturn) { panic("ZBRPRNClrColorImgBuf cannot be called on a non-Windows platform"); return 0 }
@@ -12,7 +12,7 @@ func ZBRPRNClrMediaPath() (ret SuccessReturn) { panic("ZBRPRNClrMediaPath cannot
 func ZBRPRNClrMonoImgBuf() (ret SuccessReturn) { panic("ZBRPRNClrMonoImgBuf cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNClrMonoImgBufs() (ret SuccessReturn) { panic("ZBRPRNClrMonoImgBufs cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNClrSpecifiedBmp() (ret SuccessReturn) { panic("ZBRPRNClrSpecifiedBmp cannot be called on a non-Windows platform"); return 0 }
-func ZBRPRNEjectCard(handle Handle, prn_type uint) (ret SuccessReturn, err uint) { panic("ZBRPRNEjectCard cannot be called on a non-Windows platform"); return 0,0 }
+func ZBRPRNEjectCard(handle Handle, prn_type PrinterType) (ret SuccessReturn, err uint) { panic("ZBRPRNEjectCard cannot be called on a non-Windows platform"); return 0,0 }
 func ZBRPRNEnableMagReadDataEncryption() (ret SuccessReturn) { panic("ZBRPRNEnableMagReadDataEncryption cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNEndSmartCard() (ret SuccessReturn) { panic("ZBRPRNEndSmartCard cannot be called on a non-Windows platform"); return 0 }
 func ZBRPRNFlipCard() (ret SuccessReturn) { panic("ZBRPRNFlipCard cannot be called on a non-Windows platform"); return 0 }

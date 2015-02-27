@@ -9,3 +9,7 @@ type BarCodeRotation  int
 type BarCodeType      int
 type BarCodeWidth     int
 type BarCodeTextUnder int
+type Overlay          int
+type Card             int
+type OperatingMode    int
+type PrinterType      int

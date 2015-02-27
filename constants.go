@@ -166,3 +166,29 @@ const (
     BARCODE_TEXT_UNDER_YES BarCodeTextUnder = 1
     BARCODE_TEXT_UNDER_NO  BarCodeTextUnder = 0
 )
+
+const (
+    OVERLAY_FULL           Overlay = 0
+    OVERLAY_NONE           Overlay = 1
+    OVERLAY_SELECTED_AREA  Overlay = 2
+    OVERLAY_SELECTED_BLANK Overlay = 3
+    OVERLAY_BITMAP_BASED   Overlay = 4
+    OVERLAY_SMART_ISO      Overlay = 5
+    OVERLAY_SMART_AFNOR    Overlay = 6
+    OVERLAY_MAG_STRIPE     Overlay = 7
+)
+
+const (
+    CARD_TYPE_SYNCHRONOUS Card = 1
+    CARD_TYPE_ISO_78163   Card = 2
+)
+
+const (
+    MODE_ISO OperatingMode = 0
+    MODE_EMV OperatingMode = 1
+)
+
+const (
+    TYPE_ZXP3_SINGLE_SIDE PrinterType = 31
+    TYPE_ZXP3_DUAL_SIDE   PrinterType = 32
+)

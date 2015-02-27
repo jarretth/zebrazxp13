@@ -111,7 +111,7 @@ func ZBRCloseHandle(handle Handle) (success SuccessReturn, err uint) {
 }
 
 // extern int ZBRGetHandle(out IntPtr handle, byte[] drvname, out int printertype, out int err);
-func ZBRGetHandle(drvName string) (success SuccessReturn, handle Handle, prn_type uint, err uint) {
+func ZBRGetHandle(drvName string) (success SuccessReturn, handle Handle, prn_type PrinterType, err uint) {
     ret, _, _ := zBRGetHandle.Call(
             uintptr(unsafe.Pointer(&handle)),
             uintptr(unsafe.Pointer(&([]byte(drvName))[0])),
@@ -194,10 +194,10 @@ func ZBRPRNClrSpecifiedBmp() (success SuccessReturn) {
 }
 
 // extern int ZBRPRNEjectCard(IntPtr _handle, int prn_type, out int err);
-func ZBRPRNEjectCard(handle Handle, prn_type uint) (success SuccessReturn, err uint) {
+func ZBRPRNEjectCard(handle Handle, prn_type PrinterType) (success SuccessReturn, err uint) {
     ret, _, _ := zBRPRNEjectCard.Call(
             uintptr(handle),
-            uintptr(prn_type),
+            uintptr(uint(prn_type)),
             uintptr(unsafe.Pointer(&err)),
     )
     return SuccessReturn(ret), err
