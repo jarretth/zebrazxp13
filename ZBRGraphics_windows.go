@@ -80,7 +80,7 @@ func ZBRGDIGetSDKProductVer() (success SuccessReturn) {
 }
 
 // extern int ZBRGDIInitGraphics(byte[] printername, out IntPtr hdc, out int err);
-func ZBRGDIInitGraphics(strPrinterName string) (success SuccessReturn, handle syscall.Handle, err uint) {
+func ZBRGDIInitGraphics(strPrinterName string) (success SuccessReturn, handle Handle, err uint) {
         ret, _, _ := zBRGDIInitGraphics.Call(
                 uintptr(unsafe.Pointer(&([]byte(strPrinterName))[0])),
                 uintptr(unsafe.Pointer(&handle)),
@@ -106,7 +106,7 @@ func ZBRGDIInitGraphicsFromPrintDlg() (success SuccessReturn) {
 }
 
 // extern int ZBRGDICloseGraphics(IntPtr hdc, out int err);
-func ZBRGDICloseGraphics(handle syscall.Handle) (success SuccessReturn, err uint){
+func ZBRGDICloseGraphics(handle Handle) (success SuccessReturn, err uint){
     ret, _, _ := zBRGDICloseGraphics.Call(
         uintptr(handle),
         uintptr(unsafe.Pointer(&err)),
@@ -147,7 +147,7 @@ func ZBRGDIPreviewGraphics() (success SuccessReturn) {
 }
 
 // extern int ZBRGDIPrintGraphics(IntPtr hdc, out int err);
-func ZBRGDIPrintGraphics(handle syscall.Handle) (success SuccessReturn, err uint) {
+func ZBRGDIPrintGraphics(handle Handle) (success SuccessReturn, err uint) {
         ret, _, _ := zBRGDIPrintGraphics.Call(
                 uintptr(handle),
                 uintptr(unsafe.Pointer(&err)),
