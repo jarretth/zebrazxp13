@@ -1,6 +1,7 @@
 package zebrazxp13
 
 import (
+    "math"
     "syscall"
     "unsafe"
 )
@@ -275,7 +276,7 @@ func ZBRGDIDrawLine(x1 uint, y1 uint, x2 uint, y2 uint, color uint32, thickness 
         uintptr(x2),
         uintptr(y2),
         uintptr(color),
-        uintptr(thickness),
+        uintptr(math.Float32bits(thickness)),
         uintptr(unsafe.Pointer(&err)),
     )
     return SuccessReturn(ret), err
@@ -336,7 +337,7 @@ func ZBRGDIDrawRectangle(x uint, y uint, width uint, height uint, thickness floa
         uintptr(y),
         uintptr(width),
         uintptr(height),
-        uintptr(thickness),
+        uintptr(Math.Float32bits(thickness)),
         uintptr(color),
         uintptr(unsafe.Pointer(&err)),
     )
