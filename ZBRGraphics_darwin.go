@@ -1,4 +1,3 @@
-// +build !windows
 package zebrazxp13
 
 func ZBRGDIGetSDKVer() (major, minor, engLevel int) { panic("ZBRGDIGetSDKVer Cannot be called on a non-windows platform"); return }
