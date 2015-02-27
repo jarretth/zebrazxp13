@@ -1,194 +1,124 @@
-package zbrprinter
+package zebrazxp13
 
 import (
-    "fmt"
     "syscall"
     "unsafe"
 )
 
-func abort(funcname string, err error) {
-    panic(fmt.Sprintf("%s failed: %v", funcname, err))
-}
-
 var (
-    zBRPrinter                        , _ = syscall.NewLazyDLL("ZBRPrinter.dll")
-    zBRCloseHandle                    , _ = zBRPrinter.NewProc("ZBRCloseHandle")
-    zBRGetHandle                      , _ = zBRPrinter.NewProc("ZBRGetHandle")
-    zBRPRNCheckForErrors              , _ = zBRPrinter.NewProc("ZBRPRNCheckForErrors")
-    zBRPRNChkDueForCleaning           , _ = zBRPrinter.NewProc("ZBRPRNChkDueForCleaning")
-    zBRPRNClrColorImgBuf              , _ = zBRPrinter.NewProc("ZBRPRNClrColorImgBuf")
-    zBRPRNClrColorImgBufs             , _ = zBRPrinter.NewProc("ZBRPRNClrColorImgBufs")
-    zBRPRNClrErrStatusLn              , _ = zBRPrinter.NewProc("ZBRPRNClrErrStatusLn")
-    zBRPRNClrMediaPath                , _ = zBRPrinter.NewProc("ZBRPRNClrMediaPath")
-    zBRPRNClrMonoImgBuf               , _ = zBRPrinter.NewProc("ZBRPRNClrMonoImgBuf")
-    zBRPRNClrMonoImgBufs              , _ = zBRPrinter.NewProc("ZBRPRNClrMonoImgBufs")
-    zBRPRNClrSpecifiedBmp             , _ = zBRPrinter.NewProc("ZBRPRNClrSpecifiedBmp")
-    zBRPRNEjectCard                   , _ = zBRPrinter.NewProc("ZBRPRNEjectCard")
-    zBRPRNEnableMagReadDataEncryption , _ = zBRPrinter.NewProc("ZBRPRNEnableMagReadDataEncryption")
-    zBRPRNEndSmartCard                , _ = zBRPrinter.NewProc("ZBRPRNEndSmartCard")
-    zBRPRNFlipCard                    , _ = zBRPrinter.NewProc("ZBRPRNFlipCard")
-    zBRPRNGetChecksum                 , _ = zBRPrinter.NewProc("ZBRPRNGetChecksum")
-    zBRPRNGetCleaningParam            , _ = zBRPrinter.NewProc("ZBRPRNGetCleaningParam")
-    zBRPRNGetIPAddress                , _ = zBRPrinter.NewProc("ZBRPRNGetIPAddress")
-    zBRPRNGetMsgSuppressionState      , _ = zBRPrinter.NewProc("ZBRPRNGetMsgSuppressionState")
-    zBRPRNGetOpParam                  , _ = zBRPrinter.NewProc("ZBRPRNGetOpParam")
-    zBRPRNGetPanelsPrinted            , _ = zBRPrinter.NewProc("ZBRPRNGetPanelsPrinted")
-    zBRPRNGetPanelsRemaining          , _ = zBRPrinter.NewProc("ZBRPRNGetPanelsRemaining")
-    zBRPRNGetPrintCount               , _ = zBRPrinter.NewProc("ZBRPRNGetPrintCount")
-    zBRPRNGetPrinterOptions           , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterOptions")
-    zBRPRNGetPrinterSerialNumb        , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumb")
-    zBRPRNGetPrinterSerialNumber      , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumber")
-    zBRPRNGetPrinterStatus            , _ = zBRPrinter.NewProc("ZBRPRNGetPrinterStatus")
-    zBRPRNGetPrintHeadSerialNumb      , _ = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumb")
-    zBRPRNGetPrintHeadSerialNumber    , _ = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumber")
-    zBRPRNGetPrintStatus              , _ = zBRPrinter.NewProc("ZBRPRNGetPrintStatus")
-    zBRPRNGetSDKProductVer            , _ = zBRPrinter.NewProc("ZBRPRNGetSDKProductVer")
-    zBRPRNGetSDKVer                   , _ = zBRPrinter.NewProc("ZBRPRNGetSDKVer")
-    zBRPRNGetSDKVsn                   , _ = zBRPrinter.NewProc("ZBRPRNGetSDKVsn")
-    zBRPRNGetSensorStatus             , _ = zBRPrinter.NewProc("ZBRPRNGetSensorStatus")
-    zBRPRNImmediateParamSave          , _ = zBRPrinter.NewProc("ZBRPRNImmediateParamSave")
-    zBRPRNIsPrinterReady              , _ = zBRPrinter.NewProc("ZBRPRNIsPrinterReady")
-    zBRPRNMoveCard                    , _ = zBRPrinter.NewProc("ZBRPRNMoveCard")
-    zBRPRNMoveCardBkwd                , _ = zBRPrinter.NewProc("ZBRPRNMoveCardBkwd")
-    zBRPRNMoveCardFwd                 , _ = zBRPrinter.NewProc("ZBRPRNMoveCardFwd")
-    zBRPRNMovePrintReady              , _ = zBRPrinter.NewProc("ZBRPRNMovePrintReady")
-    zBRPRNPrintCardPanel              , _ = zBRPrinter.NewProc("ZBRPRNPrintCardPanel")
-    zBRPRNPrintClearVarnish           , _ = zBRPrinter.NewProc("ZBRPRNPrintClearVarnish")
-    zBRPRNPrintColorImgBuf            , _ = zBRPrinter.NewProc("ZBRPRNPrintColorImgBuf")
-    zBRPRNPrintHologramOverlay        , _ = zBRPrinter.NewProc("ZBRPRNPrintHologramOverlay")
-    zBRPRNPrintMonoImgBuf             , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBuf")
-    zBRPRNPrintMonoImgBufEx           , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBufEx")
-    zBRPRNPrintMonoPanel              , _ = zBRPrinter.NewProc("ZBRPRNPrintMonoPanel")
-    zBRPRNPrintPrnFile                , _ = zBRPrinter.NewProc("ZBRPRNPrintPrnFile")
-    zBRPRNPrintTestCard               , _ = zBRPrinter.NewProc("ZBRPRNPrintTestCard")
-    zBRPRNPrintVarnish                , _ = zBRPrinter.NewProc("ZBRPRNPrintVarnish")
-    zBRPRNPrintVarnishEx              , _ = zBRPrinter.NewProc("ZBRPRNPrintVarnishEx")
-    zBRPRNReadMag                     , _ = zBRPrinter.NewProc("ZBRPRNReadMag")
-    zBRPRNReadMagByTrk                , _ = zBRPrinter.NewProc("ZBRPRNReadMagByTrk")
-    zBRPRNResetMagEncoder             , _ = zBRPrinter.NewProc("ZBRPRNResetMagEncoder")
-    zBRPRNResetPrinter                , _ = zBRPrinter.NewProc("ZBRPRNResetPrinter")
-    zBRPRNResync                      , _ = zBRPrinter.NewProc("ZBRPRNResync")
-    zBRPRNReversePrintReady           , _ = zBRPrinter.NewProc("ZBRPRNReversePrintReady")
-    zBRPRNSelfAdj                     , _ = zBRPrinter.NewProc("ZBRPRNSelfAdj")
-    zBRPRNSetCardFeedingMode          , _ = zBRPrinter.NewProc("ZBRPRNSetCardFeedingMode")
-    zBRPRNSetCleaningParam            , _ = zBRPrinter.NewProc("ZBRPRNSetCleaningParam")
-    zBRPRNSetColorContrast            , _ = zBRPrinter.NewProc("ZBRPRNSetColorContrast")
-    zBRPRNSetContrastIntensityLvl     , _ = zBRPrinter.NewProc("ZBRPRNSetContrastIntensityLvl")
-    zBRPRNSetEncoderCoercivity        , _ = zBRPrinter.NewProc("ZBRPRNSetEncoderCoercivity")
-    zBRPRNSetEncodingDir              , _ = zBRPrinter.NewProc("ZBRPRNSetEncodingDir")
-    zBRPRNSetEndOfPrint               , _ = zBRPrinter.NewProc("ZBRPRNSetEndOfPrint")
-    zBRPRNSetHologramIntensity        , _ = zBRPrinter.NewProc("ZBRPRNSetHologramIntensity")
-    zBRPRNSetMagEncodingStd           , _ = zBRPrinter.NewProc("ZBRPRNSetMagEncodingStd")
-    zBRPRNSetMonoContrast             , _ = zBRPrinter.NewProc("ZBRPRNSetMonoContrast")
-    zBRPRNSetMonoIntensity            , _ = zBRPrinter.NewProc("ZBRPRNSetMonoIntensity")
-    zBRPRNSetOverlayMode              , _ = zBRPrinter.NewProc("ZBRPRNSetOverlayMode")
-    zBRPRNSetPrintHeadResistance      , _ = zBRPrinter.NewProc("ZBRPRNSetPrintHeadResistance")
-    zBRPRNSetRelativeXOffset          , _ = zBRPrinter.NewProc("ZBRPRNSetRelativeXOffset")
-    zBRPRNSetRelativeYOffset          , _ = zBRPrinter.NewProc("ZBRPRNSetRelativeYOffset")
-    zBRPRNSetStartPrintSideBOffset    , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBOffset")
-    zBRPRNSetStartPrintSideBXOffset   , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBXOffset")
-    zBRPRNSetStartPrintSideBYOffset   , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBYOffset")
-    zBRPRNSetStartPrintXOffset        , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintXOffset")
-    zBRPRNSetStartPrintYOffset        , _ = zBRPrinter.NewProc("ZBRPRNSetStartPrintYOffset")
-    zBRPRNSetTrkDensity               , _ = zBRPrinter.NewProc("ZBRPRNSetTrkDensity")
-    zBRPRNStartCleaningCardSeq        , _ = zBRPrinter.NewProc("ZBRPRNStartCleaningCardSeq")
-    zBRPRNStartCleaningSeq            , _ = zBRPrinter.NewProc("ZBRPRNStartCleaningSeq")
-    zBRPRNStartSmartCard              , _ = zBRPrinter.NewProc("ZBRPRNStartSmartCard")
-    zBRPRNSuppressStatusMsgs          , _ = zBRPrinter.NewProc("ZBRPRNSuppressStatusMsgs")
-    zBRPRNUpgradeFirmware             , _ = zBRPrinter.NewProc("ZBRPRNUpgradeFirmware")
-    zBRPRNWriteBarCode                , _ = zBRPrinter.NewProc("ZBRPRNWriteBarCode")
-    zBRPRNWriteBox                    , _ = zBRPrinter.NewProc("ZBRPRNWriteBox")
-    zBRPRNWriteBoxEx                  , _ = zBRPrinter.NewProc("ZBRPRNWriteBoxEx")
-    zBRPRNWriteMag                    , _ = zBRPrinter.NewProc("ZBRPRNWriteMag")
-    zBRPRNWriteMagByTrk               , _ = zBRPrinter.NewProc("ZBRPRNWriteMagByTrk")
-    zBRPRNWriteMagPassThru            , _ = zBRPrinter.NewProc("ZBRPRNWriteMagPassThru")
-    zBRPRNWriteText                   , _ = zBRPrinter.NewProc("ZBRPRNWriteText")
-    zBRPRNWriteTextEx                 , _ = zBRPrinter.NewProc("ZBRPRNWriteTextEx")
-)
-
-const (
-    ZBR_ERROR_PRINTER_MECHANICAL_ERROR              = -1
-    ZBR_ERROR_BROKEN_RIBBON                         = 1
-    ZBR_ERROR_TEMPERATURE                           = 2
-    ZBR_ERROR_MECHANICAL_ERROR                      = 3
-    ZBR_ERROR_OUT_OF_CARD                           = 4
-    ZBR_ERROR_CARD_IN_ENCODER                       = 5
-    ZBR_ERROR_CARD_NOT_IN_ENCODER                   = 6
-    ZBR_ERROR_PRINT_HEAD_OPEN                       = 7
-    ZBR_ERROR_OUT_OF_RIBBON                         = 8
-    ZBR_ERROR_REMOVE_RIBBON                         = 9
-    ZBR_ERROR_PARAMETERS_ERROR                      = 10
-    ZBR_ERROR_INVALID_COORDINATES                   = 11
-    ZBR_ERROR_UNKNOWN_BARCODE                       = 12
-    ZBR_ERROR_UNKNOWN_TEXT                          = 13
-    ZBR_ERROR_COMMAND_ERROR                         = 14
-    ZBR_ERROR_BARCODE_DATA_SYNTAX                   = 20
-    ZBR_ERROR_TEXT_DATA_SYNTAX                      = 21
-    ZBR_ERROR_GRAPHIC_DATA_SYNTAX                   = 22
-    ZBR_ERROR_GRAPHIC_IMAGE_INITIALIZATION          = 30
-    ZBR_ERROR_GRAPHIC_IMAGE_MAXIMUM_WIDTH_EXCEEDED  = 31
-    ZBR_ERROR_GRAPHIC_IMAGE_MAXIMUM_HEIGHT_EXCEEDED = 32
-    ZBR_ERROR_GRAPHIC_IMAGE_DATA_CHECKSUM_ERROR     = 33
-    ZBR_ERROR_DATA_TRANSFER_TIME_OUT                = 34
-    ZBR_ERROR_CHECK_RIBBON                          = 35
-    ZBR_ERROR_INVALID_MAGNETIC_DATA                 = 40
-    ZBR_ERROR_MAG_ENCODER_WRITE                     = 41
-    ZBR_ERROR_READING_ERROR                         = 42
-    ZBR_ERROR_MAG_ENCODER_MECHANICAL                = 43
-    ZBR_ERROR_MAG_ENCODER_NOT_RESPONDING            = 44
-    ZBR_ERROR_MAG_ENCODER_MISSING_OR_CARD_          = 45
-    ZBR_ERROR_ROTATION_ERROR                        = 47
-    ZBR_ERROR_COVER_OPEN                            = 48
-    ZBR_ERROR_ENCODING_ERROR                        = 49
-    ZBR_ERROR_MAGNETIC_ERROR                        = 50
-    ZBR_ERROR_BLANK_TRACK                           = 51
-    ZBR_ERROR_FLASH_ERROR                           = 52
-    ZBR_ERROR_NO_ACCESS                             = 53
-    ZBR_ERROR_SEQUENCE_ERROR                        = 54
-    ZBR_ERROR_PROX_ERROR                            = 55
-    ZBR_ERROR_CONTACT_DATA_ERROR                    = 56
-    ZBR_ERROR_PROX_DATA_ERROR                       = 57
-    ZBR_SDK_ERROR_PRINTER_NOT_SUPPORTED             = 60
-    ZBR_SDK_ERROR_CANNOT_GET_PRINTER_HANDLE         = 61
-    ZBR_SDK_ERROR_CANNOT_GET_PRINTER_DRIVER         = 62
-    ZBR_SDK_ERROR_INVALID_PARAMETER                 = 63
-    ZBR_SDK_ERROR_PRINTER_BUSY                      = 64
-    ZBR_SDK_ERROR_INVALID_PRINTER_HANDLE            = 65
-    ZBR_SDK_ERROR_CLOSE_HANDLE_ERROR                = 66
-    ZBR_SDK_ERROR_COMMUNICATION_ERROR               = 67
-    ZBR_SDK_ERROR_BUFFER_OVERFLOW                   = 68
-    ZBR_SDK_ERROR_READ_DATA_ERROR                   = 69
-    ZBR_SDK_ERROR_WRITE_DATA_ERROR                  = 70
-    ZBR_SDK_ERROR_LOAD_LIBRARY_ERROR                = 71
-    ZBR_SDK_ERROR_INVALID_STRUCT_ALIGNMENT          = 72
-    ZBR_SDK_ERROR_GETTING_DEVICE_CONTEXT            = 73
-    ZBR_SDK_ERROR_SPOOLER_ERROR                     = 74
-    ZBR_SDK_ERROR_OUT_OF_MEMORY                     = 75
-    ZBR_SDK_ERROR_OUT_OF_DISK_SPACE                 = 76
-    ZBR_SDK_ERROR_USER_ABORT                        = 77
-    ZBR_SDK_ERROR_APPLICATION_ABORT                 = 78
-    ZBR_SDK_ERROR_CREATE_FILE_ERROR                 = 79
-    ZBR_SDK_ERROR_WRITE_FILE_ERROR                  = 80
-    ZBR_SDK_ERROR_READ_FILE_ERROR                   = 81
-    ZBR_SDK_ERROR_INVALID_MEDIA                     = 82
-    ZBR_SDK_ERROR_MEMORY_ALLOCATION                 = 83
-    ZBR_SDK_ERROR_UNKNOWN_ERROR                     = 255
+    zBRPrinter                        = syscall.NewLazyDLL("ZBRPrinter.dll")
+    zBRCloseHandle                    = zBRPrinter.NewProc("ZBRCloseHandle")
+    zBRGetHandle                      = zBRPrinter.NewProc("ZBRGetHandle")
+    zBRPRNCheckForErrors              = zBRPrinter.NewProc("ZBRPRNCheckForErrors")
+    zBRPRNChkDueForCleaning           = zBRPrinter.NewProc("ZBRPRNChkDueForCleaning")
+    zBRPRNClrColorImgBuf              = zBRPrinter.NewProc("ZBRPRNClrColorImgBuf")
+    zBRPRNClrColorImgBufs             = zBRPrinter.NewProc("ZBRPRNClrColorImgBufs")
+    zBRPRNClrErrStatusLn              = zBRPrinter.NewProc("ZBRPRNClrErrStatusLn")
+    zBRPRNClrMediaPath                = zBRPrinter.NewProc("ZBRPRNClrMediaPath")
+    zBRPRNClrMonoImgBuf               = zBRPrinter.NewProc("ZBRPRNClrMonoImgBuf")
+    zBRPRNClrMonoImgBufs              = zBRPrinter.NewProc("ZBRPRNClrMonoImgBufs")
+    zBRPRNClrSpecifiedBmp             = zBRPrinter.NewProc("ZBRPRNClrSpecifiedBmp")
+    zBRPRNEjectCard                   = zBRPrinter.NewProc("ZBRPRNEjectCard")
+    zBRPRNEnableMagReadDataEncryption = zBRPrinter.NewProc("ZBRPRNEnableMagReadDataEncryption")
+    zBRPRNEndSmartCard                = zBRPrinter.NewProc("ZBRPRNEndSmartCard")
+    zBRPRNFlipCard                    = zBRPrinter.NewProc("ZBRPRNFlipCard")
+    zBRPRNGetChecksum                 = zBRPrinter.NewProc("ZBRPRNGetChecksum")
+    zBRPRNGetCleaningParam            = zBRPrinter.NewProc("ZBRPRNGetCleaningParam")
+    zBRPRNGetIPAddress                = zBRPrinter.NewProc("ZBRPRNGetIPAddress")
+    zBRPRNGetMsgSuppressionState      = zBRPrinter.NewProc("ZBRPRNGetMsgSuppressionState")
+    zBRPRNGetOpParam                  = zBRPrinter.NewProc("ZBRPRNGetOpParam")
+    zBRPRNGetPanelsPrinted            = zBRPrinter.NewProc("ZBRPRNGetPanelsPrinted")
+    zBRPRNGetPanelsRemaining          = zBRPrinter.NewProc("ZBRPRNGetPanelsRemaining")
+    zBRPRNGetPrintCount               = zBRPrinter.NewProc("ZBRPRNGetPrintCount")
+    zBRPRNGetPrinterOptions           = zBRPrinter.NewProc("ZBRPRNGetPrinterOptions")
+    zBRPRNGetPrinterSerialNumb        = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumb")
+    zBRPRNGetPrinterSerialNumber      = zBRPrinter.NewProc("ZBRPRNGetPrinterSerialNumber")
+    zBRPRNGetPrinterStatus            = zBRPrinter.NewProc("ZBRPRNGetPrinterStatus")
+    zBRPRNGetPrintHeadSerialNumb      = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumb")
+    zBRPRNGetPrintHeadSerialNumber    = zBRPrinter.NewProc("ZBRPRNGetPrintHeadSerialNumber")
+    zBRPRNGetPrintStatus              = zBRPrinter.NewProc("ZBRPRNGetPrintStatus")
+    zBRPRNGetSDKProductVer            = zBRPrinter.NewProc("ZBRPRNGetSDKProductVer")
+    zBRPRNGetSDKVer                   = zBRPrinter.NewProc("ZBRPRNGetSDKVer")
+    zBRPRNGetSDKVsn                   = zBRPrinter.NewProc("ZBRPRNGetSDKVsn")
+    zBRPRNGetSensorStatus             = zBRPrinter.NewProc("ZBRPRNGetSensorStatus")
+    zBRPRNImmediateParamSave          = zBRPrinter.NewProc("ZBRPRNImmediateParamSave")
+    zBRPRNIsPrinterReady              = zBRPrinter.NewProc("ZBRPRNIsPrinterReady")
+    zBRPRNMoveCard                    = zBRPrinter.NewProc("ZBRPRNMoveCard")
+    zBRPRNMoveCardBkwd                = zBRPrinter.NewProc("ZBRPRNMoveCardBkwd")
+    zBRPRNMoveCardFwd                 = zBRPrinter.NewProc("ZBRPRNMoveCardFwd")
+    zBRPRNMovePrintReady              = zBRPrinter.NewProc("ZBRPRNMovePrintReady")
+    zBRPRNPrintCardPanel              = zBRPrinter.NewProc("ZBRPRNPrintCardPanel")
+    zBRPRNPrintClearVarnish           = zBRPrinter.NewProc("ZBRPRNPrintClearVarnish")
+    zBRPRNPrintColorImgBuf            = zBRPrinter.NewProc("ZBRPRNPrintColorImgBuf")
+    zBRPRNPrintHologramOverlay        = zBRPrinter.NewProc("ZBRPRNPrintHologramOverlay")
+    zBRPRNPrintMonoImgBuf             = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBuf")
+    zBRPRNPrintMonoImgBufEx           = zBRPrinter.NewProc("ZBRPRNPrintMonoImgBufEx")
+    zBRPRNPrintMonoPanel              = zBRPrinter.NewProc("ZBRPRNPrintMonoPanel")
+    zBRPRNPrintPrnFile                = zBRPrinter.NewProc("ZBRPRNPrintPrnFile")
+    zBRPRNPrintTestCard               = zBRPrinter.NewProc("ZBRPRNPrintTestCard")
+    zBRPRNPrintVarnish                = zBRPrinter.NewProc("ZBRPRNPrintVarnish")
+    zBRPRNPrintVarnishEx              = zBRPrinter.NewProc("ZBRPRNPrintVarnishEx")
+    zBRPRNReadMag                     = zBRPrinter.NewProc("ZBRPRNReadMag")
+    zBRPRNReadMagByTrk                = zBRPrinter.NewProc("ZBRPRNReadMagByTrk")
+    zBRPRNResetMagEncoder             = zBRPrinter.NewProc("ZBRPRNResetMagEncoder")
+    zBRPRNResetPrinter                = zBRPrinter.NewProc("ZBRPRNResetPrinter")
+    zBRPRNResync                      = zBRPrinter.NewProc("ZBRPRNResync")
+    zBRPRNReversePrintReady           = zBRPrinter.NewProc("ZBRPRNReversePrintReady")
+    zBRPRNSelfAdj                     = zBRPrinter.NewProc("ZBRPRNSelfAdj")
+    zBRPRNSetCardFeedingMode          = zBRPrinter.NewProc("ZBRPRNSetCardFeedingMode")
+    zBRPRNSetCleaningParam            = zBRPrinter.NewProc("ZBRPRNSetCleaningParam")
+    zBRPRNSetColorContrast            = zBRPrinter.NewProc("ZBRPRNSetColorContrast")
+    zBRPRNSetContrastIntensityLvl     = zBRPrinter.NewProc("ZBRPRNSetContrastIntensityLvl")
+    zBRPRNSetEncoderCoercivity        = zBRPrinter.NewProc("ZBRPRNSetEncoderCoercivity")
+    zBRPRNSetEncodingDir              = zBRPrinter.NewProc("ZBRPRNSetEncodingDir")
+    zBRPRNSetEndOfPrint               = zBRPrinter.NewProc("ZBRPRNSetEndOfPrint")
+    zBRPRNSetHologramIntensity        = zBRPrinter.NewProc("ZBRPRNSetHologramIntensity")
+    zBRPRNSetMagEncodingStd           = zBRPrinter.NewProc("ZBRPRNSetMagEncodingStd")
+    zBRPRNSetMonoContrast             = zBRPrinter.NewProc("ZBRPRNSetMonoContrast")
+    zBRPRNSetMonoIntensity            = zBRPrinter.NewProc("ZBRPRNSetMonoIntensity")
+    zBRPRNSetOverlayMode              = zBRPrinter.NewProc("ZBRPRNSetOverlayMode")
+    zBRPRNSetPrintHeadResistance      = zBRPrinter.NewProc("ZBRPRNSetPrintHeadResistance")
+    zBRPRNSetRelativeXOffset          = zBRPrinter.NewProc("ZBRPRNSetRelativeXOffset")
+    zBRPRNSetRelativeYOffset          = zBRPrinter.NewProc("ZBRPRNSetRelativeYOffset")
+    zBRPRNSetStartPrintSideBOffset    = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBOffset")
+    zBRPRNSetStartPrintSideBXOffset   = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBXOffset")
+    zBRPRNSetStartPrintSideBYOffset   = zBRPrinter.NewProc("ZBRPRNSetStartPrintSideBYOffset")
+    zBRPRNSetStartPrintXOffset        = zBRPrinter.NewProc("ZBRPRNSetStartPrintXOffset")
+    zBRPRNSetStartPrintYOffset        = zBRPrinter.NewProc("ZBRPRNSetStartPrintYOffset")
+    zBRPRNSetTrkDensity               = zBRPrinter.NewProc("ZBRPRNSetTrkDensity")
+    zBRPRNStartCleaningCardSeq        = zBRPrinter.NewProc("ZBRPRNStartCleaningCardSeq")
+    zBRPRNStartCleaningSeq            = zBRPrinter.NewProc("ZBRPRNStartCleaningSeq")
+    zBRPRNStartSmartCard              = zBRPrinter.NewProc("ZBRPRNStartSmartCard")
+    zBRPRNSuppressStatusMsgs          = zBRPrinter.NewProc("ZBRPRNSuppressStatusMsgs")
+    zBRPRNUpgradeFirmware             = zBRPrinter.NewProc("ZBRPRNUpgradeFirmware")
+    zBRPRNWriteBarCode                = zBRPrinter.NewProc("ZBRPRNWriteBarCode")
+    zBRPRNWriteBox                    = zBRPrinter.NewProc("ZBRPRNWriteBox")
+    zBRPRNWriteBoxEx                  = zBRPrinter.NewProc("ZBRPRNWriteBoxEx")
+    zBRPRNWriteMag                    = zBRPrinter.NewProc("ZBRPRNWriteMag")
+    zBRPRNWriteMagByTrk               = zBRPrinter.NewProc("ZBRPRNWriteMagByTrk")
+    zBRPRNWriteMagPassThru            = zBRPrinter.NewProc("ZBRPRNWriteMagPassThru")
+    zBRPRNWriteText                   = zBRPrinter.NewProc("ZBRPRNWriteText")
+    zBRPRNWriteTextEx                 = zBRPrinter.NewProc("ZBRPRNWriteTextEx")
 )
 
 // extern int ZBRCloseHandle(IntPtr handle, out int err);
-func ZBRCloseHandle() (ret uintptr) {
-    panic("ZBRCloseHandle not implemented")
+func ZBRCloseHandle(handle syscall.Handle) (ret uintptr, err uint) {
     ret, _, _ = zBRCloseHandle.Call(
-        )
-    return ret
+        uintptr(handle),
+        uintptr(unsafe.Pointer(&err)),
+    )
+    return ret, err
 }
 
 // extern int ZBRGetHandle(out IntPtr handle, byte[] drvname, out int printertype, out int err);
-func ZBRGetHandle() (ret uintptr) {
-    panic("ZBRGetHandle not implemented")
-    ret, _, _ = zBRGetHandle.Call(
-        )
-    return ret
+func ZBRGetHandle(drvName string) (ret uint, handle syscall.Handle, prn_type uint, err uint) {
+    retu, _, _ := zBRGetHandle.Call(
+            uintptr(unsafe.Pointer(&handle)),
+            uintptr(unsafe.Pointer(&([]byte(drvName))[0])),
+            uintptr(unsafe.Pointer(&prn_type)),
+            uintptr(unsafe.Pointer(&err)),
+    )
+    return uint(retu), handle, prn_type, err
 }
 
 // extern int ZBRPRNCheckForErrors(IntPtr hprinter, int printertype);
@@ -264,11 +194,13 @@ func ZBRPRNClrSpecifiedBmp() (ret uintptr) {
 }
 
 // extern int ZBRPRNEjectCard(IntPtr _handle, int prn_type, out int err);
-func ZBRPRNEjectCard() (ret uintptr) {
-    panic("ZBRPRNEjectCard not implemented")
+func ZBRPRNEjectCard(handle syscall.Handle, prn_type uint) (ret uintptr, err uint) {
     ret, _, _ = zBRPRNEjectCard.Call(
-        )
-    return ret
+            uintptr(handle),
+            uintptr(prn_type),
+            uintptr(unsafe.Pointer(&err)),
+    )
+    return ret, err
 }
 
 // extern int ZBRPRNEnableMagReadDataEncryption(IntPtr handle, int printertype, out int err);
@@ -424,11 +356,13 @@ func ZBRPRNGetSDKProductVer() (ret uintptr) {
 }
 
 // extern void ZBRPRNGetSDKVer(out int major, out int minor, out int englevel);
-func ZBRPRNGetSDKVer() (ret uintptr) {
-    panic("ZBRPRNGetSDKVer not implemented")
-    ret, _, _ = zBRPRNGetSDKVer.Call(
-        )
-    return ret
+func ZBRPRNGetSDKVer() (major, minor, engLevel int) {
+    _, _, _ = zBRPRNGetSDKVer.Call(
+        uintptr(unsafe.Pointer(&major)),
+        uintptr(unsafe.Pointer(&minor)),
+        uintptr(unsafe.Pointer(&engLevel)),
+    )
+    return
 }
 
 // extern void ZBRPRNGetSDKVsn(out int major, out int minor, out int englevel);
@@ -552,9 +486,9 @@ func ZBRPRNPrintMonoPanel() (ret uintptr) {
 }
 
 // extern int ZBRPRNPrintPRNFile(IntPtr hprinter, int printertype, byte[] filename, out int err);
-func ZBRPRNPrintPRNFile() (ret uintptr) {
-    panic("ZBRPRNPrintPRNFile not implemented")
-    ret, _, _ = zBRPRNPrintPRNFile.Call(
+func ZBRPRNPrintPrnFile() (ret uintptr) {
+    panic("ZBRPRNPrintPrnFile not implemented")
+    ret, _, _ = zBRPRNPrintPrnFile.Call(
         )
     return ret
 }
@@ -839,18 +773,18 @@ func ZBRPRNSuppressStatusMsgs() (ret uintptr) {
     return ret
 }
 
-// extern intZBRPRNUpgradeFirmware(HANDLE hPrinter, int printerType, char *filename, int *err);
-func HANDLE() (ret uintptr) {
-    panic("HANDLE not implemented")
-    ret, _, _ = hANDLE.Call(
+// extern int ZBRPRNUpgradeFirmware(HANDLE hPrinter, int printerType, char *filename, int *err);
+func ZBRPRNUpgradeFirmware() (ret uintptr) {
+    panic("ZBRPRNUpgradeFirmware not implemented")
+    ret, _, _ = zBRPRNUpgradeFirmware.Call(
         )
     return ret
 }
 
-// extern int ZBRPRNWriteBarcode(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
-func ZBRPRNWriteBarcode() (ret uintptr) {
-    panic("ZBRPRNWriteBarcode not implemented")
-    ret, _, _ = zBRPRNWriteBarcode.Call(
+// extern int ZBRPRNWriteBarCode(IntPtr hprinter, int printertype, int startx, int starty, int rotation, int barcodetype, int barwidthratio, int barcodemultiplier, int barcodeheight, int textunder, byte[] barcodedata, out int err);
+func ZBRPRNWriteBarCode() (ret uintptr) {
+    panic("ZBRPRNWriteBarCode not implemented")
+    ret, _, _ = zBRPRNWriteBarCode.Call(
         )
     return ret
 }
